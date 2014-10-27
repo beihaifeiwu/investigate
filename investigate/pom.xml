@@ -3,6 +3,11 @@
   <groupId>com.freetmp</groupId>
   <artifactId>investigate</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <jcseg.version>1.9.5</jcseg.version>
+  </properties>
   
   <dependencies>
 		<dependency>
@@ -31,13 +36,13 @@
 		<dependency>
    			<groupId>org.lionsoul.jcseg</groupId>	
   			<artifactId>jcseg-core</artifactId>	
-  			<version>1.9.5</version>
+  			<version>${jcseg.version}</version>
 		</dependency>
 
 		<dependency>
    			<groupId>org.lionsoul.jcseg</groupId>	
   			<artifactId>jcseg-tools</artifactId>	
-  			<version>1.9.5</version>
+  			<version>${jcseg.version}</version>
 		</dependency>
 		
 		<!-- 二维码生成 -->
@@ -56,18 +61,20 @@
 			 
   </dependencies>
   
-  <plugins>
-   <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-surefire-plugin</artifactId>
-    <version>2.17</version>
-    <dependencies>
-      <dependency>
-        <groupId>org.apache.maven.surefire</groupId>
-        <artifactId>surefire-junit47</artifactId>
-        <version>2.17</version>
-      </dependency>
-    </dependencies>
-   </plugin>
-  </plugins>
+  <build>
+	  <plugins>
+	   <plugin>
+	    <groupId>org.apache.maven.plugins</groupId>
+	    <artifactId>maven-surefire-plugin</artifactId>
+	    <version>2.17</version>
+	    <dependencies>
+	      <dependency>
+	        <groupId>org.apache.maven.surefire</groupId>
+	        <artifactId>surefire-junit47</artifactId>
+	        <version>2.17</version>
+	      </dependency>
+	    </dependencies>
+	   </plugin>
+	  </plugins>
+  </build>
 </project>
