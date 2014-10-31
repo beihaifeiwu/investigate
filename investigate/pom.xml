@@ -7,6 +7,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <jcseg.version>1.9.5</jcseg.version>
+  	<selenium.version>2.43.1</selenium.version>
   </properties>
   
   <dependencies>
@@ -58,7 +59,26 @@
 			<artifactId>rxjava</artifactId>
 			<version>1.0.0-rc.7</version>
 		</dependency>
-			 
+		
+		<!-- 社交平台 -->
+		<dependency>
+		    <groupId>com.belerweb</groupId>
+		    <artifactId>social-sdk</artifactId>
+		    <version>0.0.5</version>
+		</dependency>
+
+		<!-- 模拟浏览器 -->
+	    <dependency>
+		  <groupId>org.seleniumhq.selenium</groupId>
+		  <artifactId>selenium-java</artifactId>
+		  <version>${selenium.version}</version>
+		</dependency>			 
+		<dependency>
+			<groupId>net.sourceforge.htmlunit</groupId>
+			<artifactId>htmlunit</artifactId>
+			<version>2.15</version>
+		</dependency>
+
   </dependencies>
   
   <build>
