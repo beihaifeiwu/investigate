@@ -1,11 +1,17 @@
 package com.freetmp.investigate.el;
 
+import java.beans.FeatureDescriptor;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.el.ELContext;
+import javax.el.ELResolver;
 import javax.el.ExpressionFactory;
 import javax.el.StandardELContext;
 import javax.el.ValueExpression;
+
+import org.apache.commons.lang3.reflect.FieldUtils;
 
 import com.sun.el.ExpressionFactoryImpl;
 
@@ -30,6 +36,59 @@ public class GlassfishEl {
 		public void setCity(String city) {
 			this.city = city;
 		}
+	}
+	
+	public static class MyELResolver extends ELResolver {
+
+		private Persion persion;
+		
+		public MyELResolver(Persion persion) {
+			super();
+			this.persion = persion;
+		}
+
+		@Override
+		public Object getValue(ELContext context, Object base, Object property) {
+			if(base == null){
+				try {
+					Object value = FieldUtils.readDeclaredField(persion, (String)property,true);
+					if(value != null) context.setPropertyResolved(true);
+					return value;
+				} catch (IllegalAccessException e) {
+					e.printStackTrace();
+				}
+			}
+			return null;
+		}
+
+		@Override
+		public Class<?> getType(ELContext context, Object base, Object property) {
+			if(base == null){
+				return FieldUtils.getDeclaredField(Persion.class, (String)property).getType();
+			}
+			return null;
+		}
+
+		@Override
+		public void setValue(ELContext context, Object base, Object property, Object value) {
+			
+		}
+
+		@Override
+		public boolean isReadOnly(ELContext context, Object base, Object property) {
+			return false;
+		}
+
+		@Override
+		public Iterator<FeatureDescriptor> getFeatureDescriptors(ELContext context, Object base) {
+			return null;
+		}
+
+		@Override
+		public Class<?> getCommonPropertyType(ELContext context, Object base) {
+			return null;
+		}
+		
 	}
 
 	public static void main(String[] args) throws NoSuchMethodException, SecurityException {
@@ -66,5 +125,10 @@ public class GlassfishEl {
 		//测试映射创建
 		ValueExpression map = factory.createValueExpression(context, "${{\"one\":1, \"two\":2, \"three\":3}}", Map.class);
 		System.out.println(map.getValue(context));
+		
+		//测试自定义的解析器
+		context.addELResolver(new MyELResolver(persion));
+		ValueExpression city = factory.createValueExpression(context, "${city}",String.class);
+		System.out.println(city.getValue(context));
 	}
 }

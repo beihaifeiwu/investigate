@@ -113,6 +113,13 @@
 			<version>4.4</version>
 		</dependency>
 		
+		<!-- Eclipse AST -->
+		<dependency>
+			<groupId>com.google.code.maven-play-plugin.org.eclipse.jdt</groupId>
+			<artifactId>org.eclipse.jdt.core</artifactId>
+			<version>3.9.50.v20140317-1741</version>
+		</dependency>
+		
 		<!-- Tomcat中的jsp编译器 -->
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
