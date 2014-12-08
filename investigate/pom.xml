@@ -1,16 +1,17 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.freetmp</groupId>
-  <artifactId>investigate</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.freetmp</groupId>
+	<artifactId>investigate</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <jcseg.version>1.9.5</jcseg.version>
-  	<selenium.version>2.43.1</selenium.version>
-  </properties>
-  
-  <dependencies>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jcseg.version>1.9.5</jcseg.version>
+		<selenium.version>2.43.1</selenium.version>
+	</properties>
+
+	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -31,70 +32,124 @@
 			<groupId>com.chenlb.mmseg4j</groupId>
 			<artifactId>mmseg4j-core</artifactId>
 			<version>1.10.0</version>
-		</dependency> 
-		
-		<!-- 中文分词  -->
+		</dependency>
+
+		<!-- 中文分词 -->
 		<dependency>
-   			<groupId>org.lionsoul.jcseg</groupId>	
-  			<artifactId>jcseg-core</artifactId>	
-  			<version>${jcseg.version}</version>
+			<groupId>org.lionsoul.jcseg</groupId>
+			<artifactId>jcseg-core</artifactId>
+			<version>${jcseg.version}</version>
 		</dependency>
 
 		<dependency>
-   			<groupId>org.lionsoul.jcseg</groupId>	
-  			<artifactId>jcseg-tools</artifactId>	
-  			<version>${jcseg.version}</version>
+			<groupId>org.lionsoul.jcseg</groupId>
+			<artifactId>jcseg-tools</artifactId>
+			<version>${jcseg.version}</version>
 		</dependency>
-		
+
 		<!-- 二维码生成 -->
 		<dependency>
 			<groupId>net.glxn</groupId>
 			<artifactId>qrgen</artifactId>
 			<version>1.4</version>
 		</dependency>
-		
+
 		<!-- 响应式编程RxJava -->
 		<dependency>
 			<groupId>io.reactivex</groupId>
 			<artifactId>rxjava</artifactId>
 			<version>1.0.0-rc.7</version>
 		</dependency>
-		
+
 		<!-- 社交平台 -->
 		<dependency>
-		    <groupId>com.belerweb</groupId>
-		    <artifactId>social-sdk</artifactId>
-		    <version>0.0.5</version>
+			<groupId>com.belerweb</groupId>
+			<artifactId>social-sdk</artifactId>
+			<version>0.0.5</version>
 		</dependency>
 
 		<!-- 模拟浏览器 -->
-	    <dependency>
-		  <groupId>org.seleniumhq.selenium</groupId>
-		  <artifactId>selenium-java</artifactId>
-		  <version>${selenium.version}</version>
-		</dependency>			 
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>net.sourceforge.htmlunit</groupId>
 			<artifactId>htmlunit</artifactId>
 			<version>2.15</version>
 		</dependency>
 
-  </dependencies>
-  
-  <build>
-	  <plugins>
-	   <plugin>
-	    <groupId>org.apache.maven.plugins</groupId>
-	    <artifactId>maven-surefire-plugin</artifactId>
-	    <version>2.17</version>
-	    <dependencies>
-	      <dependency>
-	        <groupId>org.apache.maven.surefire</groupId>
-	        <artifactId>surefire-junit47</artifactId>
-	        <version>2.17</version>
-	      </dependency>
-	    </dependencies>
-	   </plugin>
-	  </plugins>
-  </build>
+		<!-- JFreeChart图表库 -->
+		<dependency>
+			<groupId>org.jfree</groupId>
+			<artifactId>jfreechart</artifactId>
+			<version>1.0.19</version>
+		</dependency>
+
+		<!-- EL表达式的API及实现 -->
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.el</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		
+	  	<!-- ognl 对象图导航语言 -->
+		<dependency>
+			<groupId>ognl</groupId>
+			<artifactId>ognl</artifactId>
+			<version>3.0.8</version>
+		</dependency>
+	
+		<!-- Eclipse Compiler for Java -->
+		<dependency>
+			<groupId>org.eclipse.jdt.core.compiler</groupId>
+			<artifactId>ecj</artifactId>
+			<version>4.4</version>
+		</dependency>
+		
+		<!-- Eclipse AST -->
+		<dependency>
+			<groupId>com.google.code.maven-play-plugin.org.eclipse.jdt</groupId>
+			<artifactId>org.eclipse.jdt.core</artifactId>
+			<version>3.9.50.v20140317-1741</version>
+		</dependency>
+		
+		<!-- Tomcat中的jsp编译器 -->
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jasper</artifactId>
+			<version>7.0.57</version>
+		</dependency>
+		
+		<!-- ANT -->
+		<dependency>
+			<groupId>org.apache.ant</groupId>
+			<artifactId>ant</artifactId>
+			<version>1.9.4</version>
+		</dependency>
+				
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.17</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.surefire</groupId>
+						<artifactId>surefire-junit47</artifactId>
+						<version>2.17</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
 </project>
