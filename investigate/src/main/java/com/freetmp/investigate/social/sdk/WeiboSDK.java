@@ -34,12 +34,12 @@ import com.google.common.base.Predicate;
 
 public class WeiboSDK {
 	
-	private static final String id = "435214623";
+	private static final String id = "926729591";
 	
-	private static final String secret = "1c00fba6c840e5d106b524ce9cfdccd3";
+	private static final String secret = "1c96cfd680e74d493a15ac4358c077cf";
 	
-	private static final String acnt = "15140684001";
-	private static final String pwd	 = "147258";
+	private static final String acnt = "ams@palmaplus.com";
+	private static final String pwd	 = "Abc123";
 	
 	@Deprecated
 	public static String resolveCode(String url) {
