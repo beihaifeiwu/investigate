@@ -79,7 +79,7 @@ interface PersonFactory<P extends Person>{
 
 public class NewFeatureTest {
 
-	public static void interfaceDefaultMethod(){
+	public void interfaceDefaultMethod(){
 		Formula formula = new Formula() {
 			
 			@Override
@@ -92,48 +92,48 @@ public class NewFeatureTest {
 		print(formula.sqrt(16));
 	}
 	
-	public static void lambda(){
+	public void lambda(){
 		List<String> names = Arrays.asList("peter", "anna", "mike", "xenia");
 		
 		Collections.sort(names, (a,b)->b.compareTo(a));
 		print(names);
 	}
 	
-	public static void functionalInterface(){
+	public void functionalInterface(){
 		Converter<String,Integer> converter = (from) -> Integer.valueOf(from);
 		Integer convertered = converter.convert("123");
 		print(convertered);
 	}
 	
-	public static void methodReference(){
+	public void methodReference(){
 		Converter<String,Integer> converter = Integer::valueOf;
 		Integer convertered = converter.convert("123");
 		print(convertered);		
 	}
 	
-	public static void constructReference(){
+	public void constructReference(){
 		PersonFactory<Person> personFactory = Person::new;
 		Person person = personFactory.create("Peter", "Parker");
 		print(person);
 	}
 	
-	public static void accessLocals(){
+	public void accessLocals(){
 		final int num = 1;
 		Converter<Integer,String> stringConverter = (from) -> String.valueOf(from + num);
 		print(stringConverter.convert(2));
 	}
 	
-	public static void supplier(){
+	public void supplier(){
 		Supplier<Person> personSupplier = Person::new;
 		print(personSupplier.get());
 	}
 	
-	public static void consumer(){
+	public void consumer(){
 		Consumer<Person> greeter = (p) -> {print("Hello " + p.firstName);};
 		greeter.accept(new Person("Luke", "Skywalker"));
 	}
 	
-	public static void comparator(){
+	public void comparator(){
 		Comparator<Person> comparator = (p1, p2) -> p1.firstName.compareTo(p2.firstName);
 
 		Person p1 = new Person("John", "Doe");
@@ -143,13 +143,13 @@ public class NewFeatureTest {
 		print(comparator.reversed().compare(p1, p2));
 	}
 	
-	public static void function(){
+	public void function(){
 		Function<String, Integer> stoi = Integer::valueOf;
 		Function<String, String> itos = stoi.andThen(String::valueOf);
 		print(itos.apply("123"));
 	}
 	
-	public static void optional(){
+	public void optional(){
 		Optional<String> optional = Optional.of("bam");
 		print(optional.isPresent());
 		print(optional.get());
@@ -157,7 +157,7 @@ public class NewFeatureTest {
 		optional.ifPresent((s)->print(s.charAt(0)));
 	}
 	
-	public static void stream(){
+	public void stream(){
 		List<String> stringCollection = new ArrayList<>();
 		stringCollection.add("ddd2");
 		stringCollection.add("aaa2");
@@ -190,7 +190,7 @@ public class NewFeatureTest {
 		print(stringCollection);
 	}
 	
-	public static void parallelOrNot(){
+	public void parallelOrNot(){
 		int max = 1000000;
 		List<String> values = new ArrayList<>(max);
 		for (int i = 0; i < max; i++) {
@@ -217,7 +217,7 @@ public class NewFeatureTest {
 		print(String.format("parallel sort took: %d ms", millis));
 	}
 	
-	public static void map(){
+	public void map(){
 		Map<Integer, String> map = new HashMap<>();
 
 		for (int i = 0; i < 10; i++) {
@@ -239,7 +239,7 @@ public class NewFeatureTest {
 		print(map.get(3));
 	}
 	
-	public static void time(){
+	public void time(){
 		Clock clock = Clock.systemDefaultZone();
 		long millis = clock.millis();
 		print(millis);
@@ -313,7 +313,7 @@ public class NewFeatureTest {
 		
 	}
 	
-	public static void annotations(){
+	public void annotations(){
 		Hint hint = Person.class.getAnnotation(Hint.class);
 		System.out.println(hint);                   // null
 
@@ -329,37 +329,37 @@ public class NewFeatureTest {
 	}
 	
 	public static void main(String...args){
+		NewFeatureTest nf = new NewFeatureTest();
+		nf.interfaceDefaultMethod();
 		
-		interfaceDefaultMethod();
+		nf.lambda();
 		
-		lambda();
+		nf.functionalInterface();
 		
-		functionalInterface();
+		nf.methodReference();
 		
-		methodReference();
+		nf.constructReference();
 		
-		constructReference();
+		nf.accessLocals();
 		
-		accessLocals();
+		nf.supplier();
 		
-		supplier();
+		nf.consumer();
 		
-		consumer();
+		nf.function();
 		
-		function();
+		nf.comparator();
 		
-		comparator();
+		nf.optional();
 		
-		optional();
+		nf.stream();
 		
-		stream();
+		nf.map();
 		
-		map();
+		nf.parallelOrNot();
 		
-		parallelOrNot();
+		nf.time();
 		
-		time();
-		
-		annotations();
+		nf.annotations();
 	}
 }
