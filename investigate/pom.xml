@@ -6,6 +6,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jcseg.version>1.9.5</jcseg.version>
 		<selenium.version>2.43.1</selenium.version>
@@ -114,10 +117,47 @@
 		</dependency>
 		
 		<!-- Eclipse AST -->
-		<dependency>
+<!-- 		<dependency>
 			<groupId>com.google.code.maven-play-plugin.org.eclipse.jdt</groupId>
 			<artifactId>org.eclipse.jdt.core</artifactId>
 			<version>3.9.50.v20140317-1741</version>
+		</dependency> -->
+		<dependency>
+			<groupId>org.eclipse.jdt</groupId>
+			<artifactId>core</artifactId>
+			<version>3.3.0-v_771</version>
+		</dependency>
+		<!-- Eclipse Core Runtime -->
+		<dependency>
+			<groupId>org.eclipse.core</groupId>
+			<artifactId>runtime</artifactId>
+			<version>3.10.0-v20140318-2214</version>
+		</dependency>
+		
+		<!-- Eclipse Core Resources -->
+		<dependency>
+			<groupId>org.eclipse.core</groupId>
+			<artifactId>resources</artifactId>
+			<version>3.3.0-v20070604</version>
+		</dependency>
+
+		<!-- Eclipse JFace -->
+		<dependency>
+			<groupId>org.eclipse.jface</groupId>
+			<artifactId>text</artifactId>
+			<version>3.3.0-v20070606-0010</version>
+		</dependency>
+		
+		<!-- Eclipse SWT -->
+		<dependency>
+			<groupId>org.eclipse</groupId>
+			<artifactId>swt</artifactId>
+			<version>3.3.0-v3346</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.swt.win32.win32</groupId>
+			<artifactId>x86</artifactId>
+			<version>3.3.0-v3346</version>
 		</dependency>
 		
 		<!-- Tomcat中的jsp编译器 -->
