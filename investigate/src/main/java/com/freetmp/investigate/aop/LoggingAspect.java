@@ -21,7 +21,7 @@ public class LoggingAspect {
   @Pointcut("execution(* com.freetmp.investigate.aop.SpringAopMain.test*(..))")
   public void test(){}
   
-  @Pointcut("execution(* com.freetmp.investigate.java8.NewFeatureTest.*(..))")
+  @Pointcut("execution(* com.freetmp.investigate.*.NewFeatureTest.*(..))")
   public void other(){}
   
   @Pointcut("execution(* *(..))")

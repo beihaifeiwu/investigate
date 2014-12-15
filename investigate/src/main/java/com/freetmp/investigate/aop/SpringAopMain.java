@@ -23,6 +23,11 @@ public class SpringAopMain {
     NewFeatureTest newFeatureTest = (NewFeatureTest) context.getBean("newFeatureTest");
     newFeatureTest.accessLocals();
     newFeatureTest.time();
+    AnnotationCglibProxy acp = context.getBean(AnnotationCglibProxy.class);
+    acp.test2();
+    acp.test4();
+    InheritedMethodProxy imp = context.getBean(InheritedMethodProxy.class);
+    imp.test3();
   }
 
 }
