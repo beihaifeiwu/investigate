@@ -7,7 +7,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>investigate-mess</artifactId>
-	<package>jar</package>
+	<packaging>jar</packaging>
 	<properties>
 		<jcseg.version>1.9.5</jcseg.version>
 		<selenium.version>2.43.1</selenium.version>
