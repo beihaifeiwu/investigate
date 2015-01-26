@@ -21,7 +21,7 @@ public class AstParser {
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		/*------------ 创建编译单元 ----------------------*/
-		ASTParser parser = ASTParser.newParser(AST.JLS3);
+		ASTParser parser = ASTParser.newParser(AST.JLS8);
 		//使用空数组初始化解析器，如果不这样做，就会在访问编译单元时遇到异常
 		parser.setSource("".toCharArray());
 		//createAST()方法的IProgressMonitor可以在长时间的解析中提供反馈信息
