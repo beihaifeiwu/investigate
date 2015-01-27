@@ -1,0 +1,260 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.freetmp</groupId>
+		<artifactId>investigate-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>investigate-mess</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<properties>
+		<jcseg.version>1.9.5</jcseg.version>
+		<selenium.version>2.43.1</selenium.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpasyncclient</artifactId>
+			<version>4.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.chenlb.mmseg4j</groupId>
+			<artifactId>mmseg4j-core</artifactId>
+			<version>1.10.0</version>
+		</dependency>
+
+		<!-- 中文分词 -->
+		<dependency>
+			<groupId>org.lionsoul.jcseg</groupId>
+			<artifactId>jcseg-core</artifactId>
+			<version>${jcseg.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.lionsoul.jcseg</groupId>
+			<artifactId>jcseg-tools</artifactId>
+			<version>${jcseg.version}</version>
+		</dependency>
+
+		<!-- 二维码生成 -->
+		<dependency>
+			<groupId>net.glxn</groupId>
+			<artifactId>qrgen</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+		<!-- 响应式编程RxJava -->
+		<dependency>
+			<groupId>io.reactivex</groupId>
+			<artifactId>rxjava</artifactId>
+			<version>1.0.0-rc.7</version>
+		</dependency>
+
+		<!-- 社交平台 -->
+		<dependency>
+			<groupId>com.belerweb</groupId>
+			<artifactId>social-sdk</artifactId>
+			<version>0.0.5</version>
+		</dependency>
+
+		<!-- 模拟浏览器 -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sourceforge.htmlunit</groupId>
+			<artifactId>htmlunit</artifactId>
+			<version>2.15</version>
+		</dependency>
+
+		<!-- JFreeChart图表库 -->
+		<dependency>
+			<groupId>org.jfree</groupId>
+			<artifactId>jfreechart</artifactId>
+			<version>1.0.19</version>
+		</dependency>
+
+		<!-- EL表达式的API及实现 -->
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.el</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		
+	  	<!-- ognl 对象图导航语言 -->
+		<dependency>
+			<groupId>ognl</groupId>
+			<artifactId>ognl</artifactId>
+			<version>3.0.8</version>
+		</dependency>
+	
+		<!-- Eclipse Compiler for Java -->
+		<dependency>
+			<groupId>org.eclipse.jdt.core.compiler</groupId>
+			<artifactId>ecj</artifactId>
+			<version>4.4</version>
+		</dependency>
+		
+		<!-- Eclipse AST -->
+		<dependency>
+			<groupId>org.eclipse.tycho</groupId>
+			<artifactId>org.eclipse.jdt.core</artifactId>
+			<version>3.10.0.v20140604-1726</version>
+		</dependency>	
+		<!-- Eclipse Core Runtime -->
+		<dependency>
+			<groupId>org.eclipse.core</groupId>
+			<artifactId>runtime</artifactId>
+			<version>3.10.0-v20140318-2214</version>
+		</dependency>
+		<!-- Eclipse Core Resources -->
+		<dependency>
+			<groupId>org.eclipse.birt.runtime</groupId>
+			<artifactId>org.eclipse.core.resources</artifactId>
+			<version>3.9.1.v20140825-1431</version>
+		</dependency>
+		
+		<!-- Tomcat中的jsp编译器 -->
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jasper</artifactId>
+			<version>7.0.57</version>
+		</dependency>
+		
+		<!-- ANT -->
+		<dependency>
+			<groupId>org.apache.ant</groupId>
+			<artifactId>ant</artifactId>
+			<version>1.9.4</version>
+		</dependency>
+		
+		<!-- Spring Core -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>4.1.2.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>4.1.2.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>4.1.2.RELEASE</version>
+		</dependency>
+		
+		<!-- Spring AOP -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>4.1.2.RELEASE</version>
+		</dependency>
+				
+		<!-- AsectJ AOP -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.8.3</version>
+		</dependency>
+
+		<!-- Groovy Lib -->
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-all</artifactId>
+			<version>2.3.9</version>
+		</dependency>
+
+		<!-- Netty -->
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+			<version>4.0.25.Final</version>
+		</dependency>
+		
+		<!-- JSR356 Websocket API -->
+		<dependency>
+		    <groupId>javax.websocket</groupId>
+		    <artifactId>javax.websocket-api</artifactId>
+		    <version>1.1</version>
+		</dependency>
+		
+		<!-- Tyrus JSR356 implementation -->
+		<dependency>
+		    <groupId>org.glassfish.tyrus</groupId>
+		    <artifactId>tyrus-server</artifactId>
+		    <version>1.1</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.glassfish.tyrus</groupId>
+		    <artifactId>tyrus-client</artifactId>
+		    <version>1.1</version>
+		</dependency>
+		
+		<!-- Tyrus Container -->		
+		<dependency>
+			<groupId>org.glassfish.tyrus</groupId>
+			<artifactId>tyrus-container-grizzly</artifactId>
+			<version>1.1</version>
+		</dependency>
+		
+		<!-- WildFly的Web服务器 -->
+		<dependency>
+            <groupId>io.undertow</groupId>
+            <artifactId>undertow-servlet</artifactId>
+            <version>1.1.1.Final</version>
+        </dependency>
+		<dependency>
+			<groupId>io.undertow</groupId>
+			<artifactId>undertow-websockets-jsr</artifactId>
+			<version>1.1.1.Final</version>
+		</dependency>						
+	</dependencies>
+	
+<!-- 	<repositories>
+	    <repository>
+	        <id>swt-repo</id>
+	        <url>https://swt-repo.googlecode.com/svn/repo/</url>
+	    </repository>
+	</repositories> -->
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.17</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.surefire</groupId>
+						<artifactId>surefire-junit47</artifactId>
+						<version>2.17</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+</project>
