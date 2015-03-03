@@ -13,10 +13,41 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <postgis.version>1.3.3</postgis.version>
+        <postgresql.version>9.3-1102-jdbc41</postgresql.version>
 	</properties>
 
 	<modules>
 		<module>investigate-mess</module>
+        <module>investigate-nutz-base</module>
 
-	</modules>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- postgre jdbc支持库 -->
+            <dependency>
+                <groupId>org.postgis</groupId>
+                <artifactId>postgis-jdbc</artifactId>
+                <version>${postgis.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.postgis</groupId>
+                        <artifactId>postgis-stubs</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>postgresql</groupId>
+                        <artifactId>postgresql</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
