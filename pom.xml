@@ -21,6 +21,7 @@
 	<modules>
 		<module>investigate-mess</module>
         <module>investigate-nutz-base</module>
+        <module>investigate-selfmade-tomcat</module>
 
     </modules>
 
