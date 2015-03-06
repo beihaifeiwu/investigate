@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jquery hover鼠标滑过图片背景高亮闪烁</title>
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery.1.4.2-min.js"></script>
+</head>
+<body>
+<div class="headeline"></div>
+<!--演示内容开始-->
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;text-decoration:none;}
+body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
+/* brands-list */
+.brands-list{width:480px;height:460px;overflow:hidden;margin:20px auto 0 auto;}
+.brands-list li{float:left;width:155px;margin:0 4px 7px 0;display:inline;}
+.brands-list li a{position:relative;height:104px;display:block;overflow:hidden;cursor:pointer;}
+.brands-list li a .title{z-index:2;position:absolute;bottom:10px;left:-160px;width:150px;height:20px;padding:0 0 0 10px;color:#f1e8eb;line-height:17px;background:url(images/img_caption_bg.png) no-repeat;}
+.brands-list li a .shine{z-index:3;position:absolute;top:0;left:0;width:160px;height:104px;background:url(images/shine_brands.png) no-repeat -160px 0;}
+
+.brands-list li a .title{_background:none;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src='images/img_caption_bg.png');}
+.brands-list li a .shine{_background:none;}
+</style>
+
+<div class="brands-list">
+	<ul>
+		<li><a href="http://www.ablanxue.com/"><img src="images/01.jpg" alt="Prada"/><span class="title">Prada</span><span class="shine">&nbsp;</span></a></li>
+		<li><a href="http://www.ablanxue.com/"><img src="images/02.jpg" alt="Dolce&#038;Gabbana"/><span class="title">Dolce&#038;Gabbana</span><span class="shine">&nbsp;</span></a></li>
+		<li><a href="http://www.ablanxue.com/"><img src="images/03.jpg" alt="Etro"/><span class="title">Etro</span><span class="shine">&nbsp;</span></a></li>
+		<li><a href="http://www.ablanxue.com/"><img src="images/04.jpg" alt="Fendi"/><span class="title">Fendi</span><span class="shine">&nbsp;</span></a></li>
+		<li><a href="http://www.ablanxue.com/"><img src="images/05.jpg" alt="Michael Kors"/><span class="title">Michael Kors</span><span class="shine">&nbsp;</span></a></li>
+		<li><a href="http://www.ablanxue.com/"><img src="images/06.jpg" alt="Neil Barrett"/><span class="title">Neil Barrett</span><span class="shine">&nbsp;</span></a></li>
+		<li><a href="http://www.ablanxue.com/"><img src="images/07.jpg" alt="Moncler"/><span class="title">Moncler</span><span class="shine">&nbsp;</span></a></li>
+		<li><a href="http://www.ablanxue.com/"><img src="images/09.jpg" alt="Parosh"/><span class="title">Parosh</span><span class="shine">&nbsp;</span></a></li>
+		<li><a href="http://www.ablanxue.com/"><img src="images/04.jpg" alt="Fendi"/><span class="title">Fendi</span><span class="shine">&nbsp;</span></a></li>
+	</ul>
+</div><!--brands-list end-->
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".brands-list li a").hover(function(){
+		$(this).find(".shine").stop();
+		$(this).find(".shine").css("background-position","-160px 0"); 
+		$(this).find(".shine").animate({backgroundPosition: '160px 0'},500);
+		$(this).find(".title").stop().animate({left:'0px'},{queue:false,duration:450});
+	},function(){
+		$(this).find(".title").stop().animate({left:'-160px'},{queue:false,duration:200});
+	});
+});
+</script>
+<!--演示内容结束-->
+<div style="text-align:center;clear:both">
+<p>适用浏览器：IE8、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 代码整理：http://www.ablanxue.com</p>
+</div>
+</body>
+</html>
