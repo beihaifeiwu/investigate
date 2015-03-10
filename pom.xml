@@ -22,6 +22,7 @@
 		<module>investigate-mess</module>
         <module>investigate-nutz-base</module>
         <module>investigate-selfmade-tomcat</module>
+        <module>investigate-spring-boot</module>
 
     </modules>
 
