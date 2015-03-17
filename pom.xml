@@ -23,6 +23,7 @@
         <module>investigate-nutz-base</module>
         <module>investigate-selfmade-tomcat</module>
         <module>investigate-spring-boot</module>
+        <module>investigate-mqtt</module>
 
     </modules>
 
