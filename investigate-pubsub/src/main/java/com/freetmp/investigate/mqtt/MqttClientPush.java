@@ -1,3 +1,5 @@
+package com.freetmp.investigate.mqtt;
+
 import org.fusesource.mqtt.client.BlockingConnection;
 import org.fusesource.mqtt.client.MQTT;
 import org.fusesource.mqtt.client.QoS;
@@ -11,10 +13,9 @@ public class MqttClientPush {
 
     public static void main(String[] args) throws Exception {
         MQTT mqtt = new MQTT();
-        mqtt.setHost("localhost",1883);
+        mqtt.setHost("localhost", 1883);
         mqtt.setUserName("testuser");
         mqtt.setPassword("passwd");
-        mqtt.setWillQos(QoS.AT_MOST_ONCE);
 
         BlockingConnection connection = mqtt.blockingConnection();
         connection.connect();

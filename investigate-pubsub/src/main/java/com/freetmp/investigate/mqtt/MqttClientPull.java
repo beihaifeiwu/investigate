@@ -1,3 +1,5 @@
+package com.freetmp.investigate.mqtt;
+
 import org.fusesource.mqtt.client.*;
 
 /**

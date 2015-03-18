@@ -1,3 +1,5 @@
+package com.freetmp.investigate.mqtt;
+
 import org.dna.mqtt.moquette.server.Server;
 
 import java.io.IOException;
