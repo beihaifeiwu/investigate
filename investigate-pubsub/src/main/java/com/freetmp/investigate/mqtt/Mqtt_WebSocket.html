@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>MQTT WEBSOCKET</title>
+		<script type="application/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+		<script type="application/javascript" src="http://git.eclipse.org/c/paho/org.eclipse.paho.mqtt.javascript.git/plain/src/mqttws31.js"></script>
+	</head>
+	<body>
+		<h1>Please Open the Console</h1>
+		<script type="application/javascript">
+			//Create a client instance
+			var client = new Paho.MQTT.Client("192.168.3.190",61623,"clientId");
+			
+			// set callback handlers
+			client.onConnectionLost = onConnectionLost;
+			client.onMessageArrived = onMessageArrived;
+			
+			// connect the client
+			client.connect({
+				userName:'admin',
+				password:'password',
+				onSuccess:onConnect
+			});
+			
+			// called when the client connects
+			function onConnect(){
+				console.log("onConnect");
+				client.subscribe("1108");
+			}
+			
+			// called when the client loses its connection
+			function onConnectionLost(responseObject){
+				if(responseObject.errorCode != 0){
+					console.log("onConnectionLost:" + responseObject.errorMessage);
+				}
+				
+			}
+			
+			// called when a message arrives
+			function onMessageArrived(message){
+				console.log("onMessageArrived:" + message.payloadString);
+			}
+		</script>
+	</body>
+</html>

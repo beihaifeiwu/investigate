@@ -15,6 +15,7 @@ import java.io.IOException;
 /**
  * Created by LiuPin on 2015/3/18.
  */
+/*
 @AtmosphereHandlerService(path = "/chat",
         broadcasterCache = UUIDBroadcasterCache.class,
         interceptors = {
@@ -31,3 +32,4 @@ public class ChatRoom extends OnMessage<String> {
         response.write(mapper.writeValueAsString(mapper.readValue(message,Data.class)));
     }
 }
+*/
