@@ -1,5 +1,7 @@
 package com.freetmp.investigate.mqtt;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import de.undercouch.bson4jackson.BsonFactory;
 import org.fusesource.mqtt.client.*;
 
 /**
@@ -20,10 +22,12 @@ public class MqttClientPullRemote {
 
         System.out.println("Connection to the mqtt server");
 
+        ObjectMapper mapper = new ObjectMapper(new BsonFactory());
+
         while(true){
             Message message = connection.receive();
             System.out.print(message.getTopic());
-            System.out.println(" : " + new String(message.getPayload()));
+            System.out.println(" : " + mapper.readValue(message.getPayload(), LocationData.class));
             message.ack();
         }
 

@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>MQTT WEBSOCKET</title>
+		<script src="https://cdn.rawgit.com/mongodb/js-bson/master/browser_build/bson.js" type="application/javascript"></script>
 		<script type="application/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
 		<script type="application/javascript" src="http://git.eclipse.org/c/paho/org.eclipse.paho.mqtt.javascript.git/plain/src/mqttws31.js"></script>
 	</head>
@@ -10,7 +11,9 @@
 		<h1>Please Open the Console</h1>
 		<script type="application/javascript">
 			//Create a client instance
-			var client = new Paho.MQTT.Client("192.168.3.190",61623,"clientId");
+			var client = new Paho.MQTT.Client("localhost",61623,"clientId");
+			
+			var BSON = bson().BSON;
 			
 			// set callback handlers
 			client.onConnectionLost = onConnectionLost;
@@ -39,7 +42,7 @@
 			
 			// called when a message arrives
 			function onMessageArrived(message){
-				console.log("onMessageArrived:" + message.payloadString);
+				console.table(JSON.stringify(BSON.deserialize(message.payloadBytes)));
 			}
 		</script>
 	</body>
