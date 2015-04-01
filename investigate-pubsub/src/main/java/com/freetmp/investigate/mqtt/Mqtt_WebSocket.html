@@ -6,14 +6,146 @@
 		<script src="https://cdn.rawgit.com/mongodb/js-bson/master/browser_build/bson.js" type="application/javascript"></script>
 		<script type="application/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
 		<script type="application/javascript" src="http://git.eclipse.org/c/paho/org.eclipse.paho.mqtt.javascript.git/plain/src/mqttws31.js"></script>
+		<script type="application/javascript" src="https://cdn.rawgit.com/dcodeIO/Long.js/master/dist/Long.min.js"></script>
+		<script type="application/javascript" src="https://cdn.rawgit.com/dcodeIO/ByteBuffer.js/master/dist/ByteBufferAB.min.js"></script>
+		<script type="application/javascript" src="https://cdn.rawgit.com/dcodeIO/ProtoBuf.js/master/dist/ProtoBuf.min.js"></script>
+		<script type="application/javascript">
+			if (typeof dcodeIO === 'undefined' || !dcodeIO.ProtoBuf) {
+			    throw(new Error("ProtoBuf.js is not present. Please see www/index.html for manual setup instructions."));
+			}
+			// Initialize ProtoBuf.js
+			var ProtoBuf = dcodeIO.ProtoBuf;
+		</script>
 	</head>
 	<body>
 		<h1>Please Open the Console</h1>
 		<script type="application/javascript">
 			//Create a client instance
-			var client = new Paho.MQTT.Client("localhost",61623,"clientId");
-			
+			var client = new Paho.MQTT.Client("localhost",1884,"/mqtt","clientId");
+
 			var BSON = bson().BSON;
+			
+			var PROTOCOLS = ProtoBuf.newBuilder({})['import']({
+				"package": "com.palmaplus.location.protocol",
+				"messages": [{
+					"name": "LoginRequest",
+					"fields": [{
+						"rule": "required",
+						"type": "string",
+						"name": "user_name",
+						"id": 1
+					}, {
+						"rule": "required",
+						"type": "string",
+						"name": "password",
+						"id": 2
+					}]
+				}, {
+					"name": "LoginResponse",
+					"fields": [{
+						"rule": "required",
+						"type": "Result",
+						"name": "result",
+						"id": 1
+					}],
+					"enums": [{
+						"name": "Result",
+						"values": [{
+							"name": "SUCCESS",
+							"id": 1
+						}, {
+							"name": "WRONG_USERNAME_OR_PASSWORD",
+							"id": 2
+						}]
+					}]
+				}, {
+					"name": "Location",
+					"fields": [{
+						"rule": "required",
+						"type": "IdentityType",
+						"name": "id_type",
+						"id": 1
+					}, {
+						"rule": "required",
+						"type": "string",
+						"name": "id_data",
+						"id": 2
+					}, {
+						"rule": "required",
+						"type": "double",
+						"name": "x",
+						"id": 3
+					}, {
+						"rule": "required",
+						"type": "double",
+						"name": "y",
+						"id": 4
+					}, {
+						"rule": "required",
+						"type": "int64",
+						"name": "map_id",
+						"id": 5
+					}, {
+						"rule": "required",
+						"type": "int64",
+						"name": "timestamp",
+						"id": 6
+					}, {
+						"rule": "required",
+						"type": "int64",
+						"name": "expires_in",
+						"id": 7
+					}, {
+						"rule": "optional",
+						"type": "Status",
+						"name": "status",
+						"id": 8
+					}]
+				}, {
+					"name": "Locations",
+					"fields": [{
+						"rule": "optional",
+						"type": "Location",
+						"name": "locations",
+						"id": 1
+					}]
+				}],
+				"enums": [{
+					"name": "Error",
+					"values": [{
+						"name": "RESOURCE_NOT_FOUND",
+						"id": 1
+					}]
+				}, {
+					"name": "IdentityType",
+					"values": [{
+						"name": "MAC",
+						"id": 1
+					}, {
+						"name": "UDID",
+						"id": 2
+					}, {
+						"name": "MAC_MD5",
+						"id": 3
+					}]
+				}, {
+					"name": "Status",
+					"values": [{
+						"name": "ENTER",
+						"id": 1
+					}, {
+						"name": "MOVE",
+						"id": 2
+					}, {
+						"name": "HEART_BEAT",
+						"id": 3
+					}, {
+						"name": "OUT",
+						"id": 4
+					}]
+				}]
+			}).build();
+			
 			
 			// set callback handlers
 			client.onConnectionLost = onConnectionLost;
@@ -42,7 +174,7 @@
 			
 			// called when a message arrives
 			function onMessageArrived(message){
-				console.table(JSON.stringify(BSON.deserialize(message.payloadBytes)));
+				console.log(PROTOCOLS.com.palmaplus.location.protocol.Location.decode(message.payloadBytes));
 			}
 		</script>
 	</body>

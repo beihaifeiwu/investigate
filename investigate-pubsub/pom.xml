@@ -52,7 +52,19 @@
         <dependency>
             <groupId>org.apache.qpid</groupId>
             <artifactId>proton-hawtdispatch</artifactId>
-            <version>0.8</version>
+            <version>0.9</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.qpid</groupId>
+            <artifactId>qpid-amqp-1-0-client</artifactId>
+            <version>0.32</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-all</artifactId>
+            <version>5.11.1</version>
         </dependency>
 
         <!-- ZeroMQ -->
@@ -63,11 +75,36 @@
         </dependency>-->
 
         <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>2.5.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.zeromq</groupId>
             <artifactId>jeromq</artifactId>
             <version>0.3.4</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
+                <configuration>
+                    <target>
+                        <exec executable="D:/jar/protoc-2.6.0-win32/protoc.exe">
+                            <arg value="--java_out=${project.basedir}/src/main/java"/>
+                            <arg value="--proto_path=${project.basedir}/src/main/resources"/>
+                            <arg value="${project.basedir}/src/main/resources/protocol.proto"/>
+                        </exec>
+                    </target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <repositories>
         <repository>

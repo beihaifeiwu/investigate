@@ -1,0 +1,46 @@
+package com.freetmp.investigate.transport;
+
+enum Error {
+    RESOURCE_NOT_FOUND = 1;
+}
+
+message LoginRequest {
+    required string user_name = 1;
+    required string password = 2;
+}
+
+message LoginResponse {
+    enum Result {
+        SUCCESS = 1;
+        WRONG_USERNAME_OR_PASSWORD = 2;
+    }
+    required Result result = 1;
+}
+
+enum IdentityType {
+    MAC = 1;
+    UDID = 2;
+    MAC_MD5 = 3;
+}
+
+enum Status {
+    ENTER = 1;
+    MOVE = 2;
+    HEART_BEAT = 3;
+    OUT = 4;
+}
+
+message Location {
+    required IdentityType id_type = 1;
+    required string id_data = 2;
+    required double x = 3;
+    required double y = 4;
+    required int64 map_id = 5;
+    required int64 timestamp = 6;
+    required int64 expires_in = 7;
+    optional Status status = 8;
+}
+
+message Locations {
+    repeated Location locations = 1;
+}

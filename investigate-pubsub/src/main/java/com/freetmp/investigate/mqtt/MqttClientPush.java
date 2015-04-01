@@ -14,8 +14,8 @@ public class MqttClientPush {
     public static void main(String[] args) throws Exception {
         MQTT mqtt = new MQTT();
         mqtt.setHost("localhost", 1883);
-        mqtt.setUserName("testuser");
-        mqtt.setPassword("passwd");
+        mqtt.setUserName("admin");
+        mqtt.setPassword("password");
 
         BlockingConnection connection = mqtt.blockingConnection();
         connection.connect();
