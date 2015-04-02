@@ -18,11 +18,24 @@
         <java.version>1.8</java.version>
     </properties>
 
-    <!-- Add typical dependencies for a web application -->
     <dependencies>
+
+        <!-- Add typical dependencies for a web application -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Creating an Asynchronous, Event-Driven Application with Reactor -->
+        <dependency>
+            <groupId>org.projectreactor.spring</groupId>
+            <artifactId>reactor-spring-context</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectreactor</groupId>
+            <artifactId>reactor-core</artifactId>
+            <version>1.1.6.RELEASE</version>
         </dependency>
     </dependencies>
 

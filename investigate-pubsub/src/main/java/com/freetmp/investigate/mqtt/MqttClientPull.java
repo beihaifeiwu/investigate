@@ -64,7 +64,7 @@ public class MqttClientPull {
 
     private static void newConnection() throws Exception {
         MQTT mqtt = new MQTT();
-        mqtt.setHost("192.168.3.177",1883);
+        mqtt.setHost("192.168.3.190",1883);
         mqtt.setUserName("admin");
         mqtt.setPassword("password");
         mqtt.setWillQos(QoS.AT_MOST_ONCE);

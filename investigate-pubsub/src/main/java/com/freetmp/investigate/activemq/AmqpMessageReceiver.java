@@ -20,9 +20,9 @@ import static java.lang.Integer.MAX_VALUE;
 public class AmqpMessageReceiver {
 
     public static void main(String[] args) throws URISyntaxException, InterruptedException, JMSException, ConnectionException, TimeoutException {
-        //useQpid();
+        useQpid();
         //useActiveMq();
-        useQpidClient();
+        //useQpidClient();
     }
 
     private static void useActiveMq() throws JMSException {
@@ -78,6 +78,7 @@ public class AmqpMessageReceiver {
         options.setHost("127.0.0.1",5445);
         options.setUser("admin");
         options.setPassword("password");
+        options.setRemoteContainerId("investigate-receiver");
 
         AmqpConnection connection = AmqpConnection.connect(options);
 
@@ -116,6 +117,8 @@ public class AmqpMessageReceiver {
                 System.out.println("received msg : " + msg);
                 msg.settle();
             });
+
+            receiver.resume();
         });
 
         Thread.sleep(Integer.MAX_VALUE);

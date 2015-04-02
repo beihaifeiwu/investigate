@@ -18,6 +18,8 @@ public class AmqpMessager {
         options.setHost("127.0.0.1",5445);
         options.setUser("admin");
         options.setPassword("password");
+        options.setLocalContainerId("def");
+        options.setRemoteContainerId("def");
 
         AmqpConnection connection = AmqpConnection.connect(options);
 
@@ -56,6 +58,9 @@ public class AmqpMessager {
                 System.out.println("received msg : " + msg);
                 msg.settle();
             });
+
+            // 开始接收消息
+            receiver.resume();
         });
 
         Target target = new Target();

@@ -20,9 +20,9 @@ import static javax.jms.DeliveryMode.*;
 public class AmqpMessageSender {
     public static void main(String[] args) throws InterruptedException, URISyntaxException, JMSException, ConnectionException, LinkDetachedException, TimeoutException, Sender.SenderCreationException {
 
-        //useQpid();
+        useQpid();
         //useActiveMq();
-        useQpidClient();
+        //useQpidClient();
     }
 
     private static void useActiveMq() throws JMSException {
@@ -72,6 +72,8 @@ public class AmqpMessageSender {
         options.setHost("127.0.0.1",5445);
         options.setUser("admin");
         options.setPassword("password");
+        // 避免ClinetID为空的异常发生
+        options.setRemoteContainerId("investigate-sender");
 
         AmqpConnection connection = AmqpConnection.connect(options);
 
