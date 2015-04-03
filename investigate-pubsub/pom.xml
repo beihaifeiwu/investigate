@@ -67,6 +67,12 @@
             <version>5.11.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-jaas</artifactId>
+            <version>5.11.1</version>
+        </dependency>
+
         <!-- ZeroMQ -->
 <!--        <dependency>
             <groupId>org.zeromq</groupId>

@@ -16,8 +16,8 @@ public class AmqpMessager {
     public static void main(String[] args) throws InterruptedException, URISyntaxException {
         AmqpConnectOptions options = new AmqpConnectOptions();
         options.setHost("127.0.0.1",5445);
-        options.setUser("admin");
-        options.setPassword("password");
+        options.setUser("1227898377@qq.com");
+        options.setPassword("a86972268");
         options.setLocalContainerId("def");
         options.setRemoteContainerId("def");
 
