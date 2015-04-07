@@ -73,24 +73,37 @@
             <version>5.11.1</version>
         </dependency>
 
-        <!-- ZeroMQ -->
-<!--        <dependency>
-            <groupId>org.zeromq</groupId>
-            <artifactId>jzmq</artifactId>
-            <version>3.1.0</version>
-        </dependency>-->
-
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
             <version>2.5.0</version>
         </dependency>
 
+        <!-- ZeroMQ -->
+        <!--        <dependency>
+                    <groupId>org.zeromq</groupId>
+                    <artifactId>jzmq</artifactId>
+                    <version>3.1.0</version>
+                </dependency>-->
+
         <dependency>
             <groupId>org.zeromq</groupId>
             <artifactId>jeromq</artifactId>
             <version>0.3.4</version>
         </dependency>
+
+        <!-- Camel -->
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-core</artifactId>
+            <version>2.14.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jms</artifactId>
+            <version>2.14.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -107,6 +120,23 @@
                             <arg value="${project.basedir}/src/main/resources/protocol.proto"/>
                         </exec>
                     </target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.4.0</version>
+                <executions>
+                    <execution>
+                        <goals><goal>java</goal></goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <mainClass>org.apache.camel.main.Main</mainClass>
+                    <arguments>
+                        <argument>-r</argument>
+                        <argument>com.freetmp.investigate.camel.TimeRouterBuilder</argument>
+                    </arguments>
                 </configuration>
             </plugin>
         </plugins>
