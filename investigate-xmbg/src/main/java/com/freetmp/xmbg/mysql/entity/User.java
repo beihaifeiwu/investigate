@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class User implements Serializable {
+
     private Long id;
 
     private String loginName;
@@ -83,7 +84,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new  StringBuilder();
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());

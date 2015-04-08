@@ -11,6 +11,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface TaskMapper {
+
     int countByExample(TaskExample example);
 
     int deleteByExample(TaskExample example);

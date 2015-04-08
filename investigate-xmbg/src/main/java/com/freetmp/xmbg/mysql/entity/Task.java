@@ -8,6 +8,7 @@ package com.freetmp.xmbg.mysql.entity;
 import java.io.Serializable;
 
 public class Task implements Serializable {
+
     private Long id;
 
     private String title;
@@ -52,7 +53,7 @@ public class Task implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new  StringBuilder();
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());

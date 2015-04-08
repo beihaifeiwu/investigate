@@ -30,6 +30,7 @@
         <module>investigate-xmbg</module>
         <module>investigate-webservice</module>
         <module>investigate-persistence</module>
+        <module>investigate-spring-jersey1</module>
 
     </modules>
 
@@ -102,6 +103,13 @@
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
                 <version>${postgresql.version}</version>
+            </dependency>
+
+            <!-- 子模块 -->
+            <dependency>
+                <groupId>com.freetmp</groupId>
+                <artifactId>investigate-persistence</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
