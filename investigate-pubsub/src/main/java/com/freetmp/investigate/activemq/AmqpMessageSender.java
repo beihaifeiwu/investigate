@@ -3,6 +3,7 @@ package com.freetmp.investigate.activemq;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.qpid.amqp_1_0.client.*;
 import org.apache.qpid.amqp_1_0.client.Message;
+import org.apache.qpid.proton.amqp.messaging.Header;
 import org.apache.qpid.proton.amqp.messaging.Target;
 import org.apache.qpid.proton.hawtdispatch.api.*;
 
@@ -108,6 +109,9 @@ public class AmqpMessageSender {
         AmqpSession session = connection.createSession();
         AmqpSender sender = session.createSender(target);
 
+        org.apache.qpid.proton.message.Message message =  session.createBinaryMessage("".getBytes());
+        Header header = new Header();
+        message.setHeader(header);
         for (int i = 0; i < 1000; i++) {
             String messsage = "test " + i;
             MessageDelivery delivery = sender.send(session.createTextMessage(messsage));

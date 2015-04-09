@@ -40,7 +40,7 @@ public class RestService {
         final NetworkListener listener = new NetworkListener("grizzly", NetworkListener.DEFAULT_NETWORK_HOST, 9998);
         listener.setSecure(false);
         server.addListener(listener);
-        ResourceConfig rc = new ClassNamesResourceConfig(AuthorizeResource.class,AuthorizationResource.class);
+        ResourceConfig rc = new ClassNamesResourceConfig(AuthenticationResource.class,AuthorizationResource.class);
 
         // Let Jersey know about our existing context
         SpringComponentProviderFactory handler = new SpringComponentProviderFactory(rc, (ConfigurableApplicationContext) context);

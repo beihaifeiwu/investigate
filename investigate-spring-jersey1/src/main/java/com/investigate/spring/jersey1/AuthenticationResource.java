@@ -19,7 +19,7 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
  */
 @Component
 @Path("/login")
-public class AuthorizeResource {
+public class AuthenticationResource {
 
     @Autowired
     QueryDSL dsl;
@@ -32,9 +32,14 @@ public class AuthorizeResource {
 
         if(!StringUtils.isEmpty(username) && !StringUtils.isEmpty(password)){
             QUradioPlanarGraph uradioPlanarGraph = QUradioPlanarGraph.uradioPlanarGraph;
-            UradioPlanarGraph found = dsl.query().from(uradioPlanarGraph)
-                    .where(uradioPlanarGraph.id.eq(username.toUpperCase()+password))
-                    .uniqueResult(uradioPlanarGraph);
+            UradioPlanarGraph found;
+            try {
+                found = dsl.query().from(uradioPlanarGraph)
+                        .where(uradioPlanarGraph.id.eq(username.toUpperCase()+password))
+                        .uniqueResult(uradioPlanarGraph);
+            } finally {
+                dsl.release();
+            }
 
             if(found != null) return found;
         }

@@ -1,5 +1,6 @@
 package com.freetmp.investigate.mqtt;
 
+import com.freetmp.investigate.transport.Protocol;
 import org.fusesource.mqtt.client.BlockingConnection;
 import org.fusesource.mqtt.client.MQTT;
 import org.fusesource.mqtt.client.QoS;
@@ -20,10 +21,19 @@ public class MqttClientPush {
         BlockingConnection connection = mqtt.blockingConnection();
         connection.connect();
         int i = 10000;
+        Protocol.Location location = Protocol.Location.newBuilder()
+                .setMapId(1108)
+                .setIdType(Protocol.IdentityType.MAC)
+                .setX(0d)
+                .setY(0d)
+                .setTimestamp(System.currentTimeMillis())
+                .setExpiresIn(60000)
+                .setIdData("f8:a4:5f:3c:88:87")
+                .build();
         while(i > 0) {
-            connection.publish("foo", "Hello".getBytes(), QoS.AT_MOST_ONCE, false);
+            connection.publish("dispatch", location.toByteArray(), QoS.AT_MOST_ONCE, false);
             i--;
-            Thread.sleep(100);
+            Thread.sleep(4000);
         }
     }
 }

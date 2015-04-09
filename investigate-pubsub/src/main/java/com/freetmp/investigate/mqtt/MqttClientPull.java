@@ -64,14 +64,14 @@ public class MqttClientPull {
 
     private static void newConnection() throws Exception {
         MQTT mqtt = new MQTT();
-        mqtt.setHost("192.168.3.190",1883);
+        mqtt.setHost("localhost",1883);
         mqtt.setUserName("admin");
         mqtt.setPassword("password");
         mqtt.setWillQos(QoS.AT_MOST_ONCE);
 
         BlockingConnection connection = mqtt.blockingConnection();
         connection.connect();
-        Topic[] topics = {new Topic("1176",QoS.AT_MOST_ONCE)};
+        Topic[] topics = {new Topic("15/#",QoS.AT_MOST_ONCE)};
         byte[] qoses = connection.subscribe(topics);
 
         System.out.println("Connection to the mqtt server");
