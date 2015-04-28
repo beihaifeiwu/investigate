@@ -1,19 +1,22 @@
 package com.freetmp.investigate.activemq;
 
+import com.freetmp.investigate.transport.Protocol;
 import org.apache.activemq.ActiveMQConnectionFactory;
-import org.apache.qpid.amqp_1_0.client.*;
+import org.apache.qpid.amqp_1_0.client.ConnectionException;
+import org.apache.qpid.amqp_1_0.client.LinkDetachedException;
 import org.apache.qpid.amqp_1_0.client.Message;
-import org.apache.qpid.proton.amqp.messaging.Header;
+import org.apache.qpid.amqp_1_0.client.Sender;
+import org.apache.qpid.proton.amqp.messaging.ApplicationProperties;
 import org.apache.qpid.proton.amqp.messaging.Target;
 import org.apache.qpid.proton.hawtdispatch.api.*;
 
 import javax.jms.*;
-import javax.jms.Connection;
-import javax.jms.Session;
 import java.net.URISyntaxException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeoutException;
 
-import static javax.jms.DeliveryMode.*;
+import static javax.jms.DeliveryMode.NON_PERSISTENT;
 
 /**
  * Created by LiuPin on 2015/3/28.
@@ -21,9 +24,10 @@ import static javax.jms.DeliveryMode.*;
 public class AmqpMessageSender {
     public static void main(String[] args) throws InterruptedException, URISyntaxException, JMSException, ConnectionException, LinkDetachedException, TimeoutException, Sender.SenderCreationException {
 
-        useQpid();
+        //useQpid();
         //useActiveMq();
         //useQpidClient();
+        useQpidWithProperty();
     }
 
     private static void useActiveMq() throws JMSException {
@@ -70,6 +74,59 @@ public class AmqpMessageSender {
 
     private static void useQpid() throws URISyntaxException, InterruptedException {
         AmqpConnectOptions options = new AmqpConnectOptions();
+        options.setHost("127.0.0.1", 5445);
+        options.setUser("username_temp");
+        options.setPassword("password_temp");
+        // 避免ClinetID为空的异常发生
+        options.setRemoteContainerId("investigate-sender");
+
+        AmqpConnection connection = AmqpConnection.connect(options);
+
+        connection.queue().execute(() -> {
+            connection.onConnected(new Callback<Void>() {
+                @Override
+                public void onSuccess(Void value) {
+                    System.out.println("connected success: " + value);
+                    synchronized (options) {
+                        options.notify();
+                    }
+                }
+
+                @Override
+                public void onFailure(Throwable value) {
+                    System.out.println("connected failure: " + value);
+                    synchronized (options) {
+                        options.notify();
+                    }
+                }
+            });
+        });
+
+        synchronized (options) {
+            options.wait(Integer.MAX_VALUE);
+        }
+
+
+        Target target = new Target();
+        target.setAddress("topic://15.1108.f8:a4:5f:3c:88:87");
+
+        AmqpSession session = connection.createSession();
+        AmqpSender sender = session.createSender(target);
+
+        for (int i = 0; i < 1000; i++) {
+            String messsage = "test " + i;
+            MessageDelivery delivery = sender.send(session.createTextMessage(messsage));
+            System.out.println("Sender : " + messsage );
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private static void useQpidWithProperty() throws URISyntaxException, InterruptedException {
+        AmqpConnectOptions options = new AmqpConnectOptions();
         options.setHost("127.0.0.1",5445);
         options.setUser("admin");
         options.setPassword("password");
@@ -104,24 +161,32 @@ public class AmqpMessageSender {
 
 
         Target target = new Target();
-        target.setAddress("queue://location");
+        target.setAddress("topic://dispatch");
 
         AmqpSession session = connection.createSession();
         AmqpSender sender = session.createSender(target);
 
-        org.apache.qpid.proton.message.Message message =  session.createBinaryMessage("".getBytes());
-        Header header = new Header();
-        message.setHeader(header);
-        for (int i = 0; i < 1000; i++) {
-            String messsage = "test " + i;
-            MessageDelivery delivery = sender.send(session.createTextMessage(messsage));
-            System.out.println("Sender : " + messsage );
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+        Protocol.Location location = Protocol.Location.newBuilder()
+                .setFloorId(1108)
+                .setIdType(Protocol.IdentityType.MAC)
+                .setX(0d)
+                .setY(0d)
+                .setTimestamp(System.currentTimeMillis())
+                .setExpiresIn(60000)
+                .setIdData("f8:a4:5f:3c:88:87")
+                .build();
+
+        org.apache.qpid.proton.message.Message message = session.createBinaryMessage(location.toByteArray());
+        Map<String,Object> map = new HashMap<>();
+        map.put("floorId",location.getFloorId());
+        map.put("mac",location.getIdData());
+        message.setApplicationProperties(new ApplicationProperties(map));
+
+        sender.send(message);
+
+        Thread.sleep(1000);
+
+        session.close();
     }
 
 }

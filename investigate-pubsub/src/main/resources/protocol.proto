@@ -35,7 +35,7 @@ message Location {
     required string id_data = 2;
     required double x = 3;
     required double y = 4;
-    required int64 map_id = 5;
+    required int64 floor_id = 5;
     required int64 timestamp = 6;
     required int64 expires_in = 7;
     optional Status status = 8;

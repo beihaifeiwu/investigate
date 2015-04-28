@@ -1463,13 +1463,13 @@ public final class Protocol {
     double getY();
 
     /**
-     * <code>required int64 map_id = 5;</code>
+     * <code>required int64 floor_id = 5;</code>
      */
-    boolean hasMapId();
+    boolean hasFloorId();
     /**
-     * <code>required int64 map_id = 5;</code>
+     * <code>required int64 floor_id = 5;</code>
      */
-    long getMapId();
+    long getFloorId();
 
     /**
      * <code>required int64 timestamp = 6;</code>
@@ -1579,7 +1579,7 @@ public final class Protocol {
             }
             case 40: {
               bitField0_ |= 0x00000010;
-              mapId_ = input.readInt64();
+              floorId_ = input.readInt64();
               break;
             }
             case 48: {
@@ -1730,19 +1730,19 @@ public final class Protocol {
       return y_;
     }
 
-    public static final int MAP_ID_FIELD_NUMBER = 5;
-    private long mapId_;
+    public static final int FLOOR_ID_FIELD_NUMBER = 5;
+    private long floorId_;
     /**
-     * <code>required int64 map_id = 5;</code>
+     * <code>required int64 floor_id = 5;</code>
      */
-    public boolean hasMapId() {
+    public boolean hasFloorId() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>required int64 map_id = 5;</code>
+     * <code>required int64 floor_id = 5;</code>
      */
-    public long getMapId() {
-      return mapId_;
+    public long getFloorId() {
+      return floorId_;
     }
 
     public static final int TIMESTAMP_FIELD_NUMBER = 6;
@@ -1795,7 +1795,7 @@ public final class Protocol {
       idData_ = "";
       x_ = 0D;
       y_ = 0D;
-      mapId_ = 0L;
+      floorId_ = 0L;
       timestamp_ = 0L;
       expiresIn_ = 0L;
       status_ = com.freetmp.investigate.transport.Protocol.Status.ENTER;
@@ -1822,7 +1822,7 @@ public final class Protocol {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasMapId()) {
+      if (!hasFloorId()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1854,7 +1854,7 @@ public final class Protocol {
         output.writeDouble(4, y_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt64(5, mapId_);
+        output.writeInt64(5, floorId_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeInt64(6, timestamp_);
@@ -1892,7 +1892,7 @@ public final class Protocol {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(5, mapId_);
+          .computeInt64Size(5, floorId_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
@@ -2031,7 +2031,7 @@ public final class Protocol {
         bitField0_ = (bitField0_ & ~0x00000004);
         y_ = 0D;
         bitField0_ = (bitField0_ & ~0x00000008);
-        mapId_ = 0L;
+        floorId_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000010);
         timestamp_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000020);
@@ -2086,7 +2086,7 @@ public final class Protocol {
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.mapId_ = mapId_;
+        result.floorId_ = floorId_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
@@ -2129,8 +2129,8 @@ public final class Protocol {
         if (other.hasY()) {
           setY(other.getY());
         }
-        if (other.hasMapId()) {
-          setMapId(other.getMapId());
+        if (other.hasFloorId()) {
+          setFloorId(other.getFloorId());
         }
         if (other.hasTimestamp()) {
           setTimestamp(other.getTimestamp());
@@ -2162,7 +2162,7 @@ public final class Protocol {
           
           return false;
         }
-        if (!hasMapId()) {
+        if (!hasFloorId()) {
           
           return false;
         }
@@ -2371,34 +2371,34 @@ public final class Protocol {
         return this;
       }
 
-      private long mapId_ ;
+      private long floorId_ ;
       /**
-       * <code>required int64 map_id = 5;</code>
+       * <code>required int64 floor_id = 5;</code>
        */
-      public boolean hasMapId() {
+      public boolean hasFloorId() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>required int64 map_id = 5;</code>
+       * <code>required int64 floor_id = 5;</code>
        */
-      public long getMapId() {
-        return mapId_;
+      public long getFloorId() {
+        return floorId_;
       }
       /**
-       * <code>required int64 map_id = 5;</code>
+       * <code>required int64 floor_id = 5;</code>
        */
-      public Builder setMapId(long value) {
+      public Builder setFloorId(long value) {
         bitField0_ |= 0x00000010;
-        mapId_ = value;
+        floorId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int64 map_id = 5;</code>
+       * <code>required int64 floor_id = 5;</code>
        */
-      public Builder clearMapId() {
+      public Builder clearFloorId() {
         bitField0_ = (bitField0_ & ~0x00000010);
-        mapId_ = 0L;
+        floorId_ = 0L;
         onChanged();
         return this;
       }
@@ -3236,18 +3236,18 @@ public final class Protocol {
       "se\022G\n\006result\030\001 \002(\01627.com.freetmp.investi" +
       "gate.transport.LoginResponse.Result\"5\n\006R" +
       "esult\022\013\n\007SUCCESS\020\001\022\036\n\032WRONG_USERNAME_OR_" +
-      "PASSWORD\020\002\"\345\001\n\010Location\022@\n\007id_type\030\001 \002(\016" +
+      "PASSWORD\020\002\"\347\001\n\010Location\022@\n\007id_type\030\001 \002(\016" +
       "2/.com.freetmp.investigate.transport.Ide" +
       "ntityType\022\017\n\007id_data\030\002 \002(\t\022\t\n\001x\030\003 \002(\001\022\t\n" +
-      "\001y\030\004 \002(\001\022\016\n\006map_id\030\005 \002(\003\022\021\n\ttimestamp\030\006 ",
-      "\002(\003\022\022\n\nexpires_in\030\007 \002(\003\0229\n\006status\030\010 \001(\0162" +
-      ").com.freetmp.investigate.transport.Stat" +
-      "us\"K\n\tLocations\022>\n\tlocations\030\001 \003(\0132+.com" +
-      ".freetmp.investigate.transport.Location*" +
-      "\037\n\005Error\022\026\n\022RESOURCE_NOT_FOUND\020\001*.\n\014Iden" +
-      "tityType\022\007\n\003MAC\020\001\022\010\n\004UDID\020\002\022\013\n\007MAC_MD5\020\003" +
-      "*6\n\006Status\022\t\n\005ENTER\020\001\022\010\n\004MOVE\020\002\022\016\n\nHEART" +
-      "_BEAT\020\003\022\007\n\003OUT\020\004"
+      "\001y\030\004 \002(\001\022\020\n\010floor_id\030\005 \002(\003\022\021\n\ttimestamp\030",
+      "\006 \002(\003\022\022\n\nexpires_in\030\007 \002(\003\0229\n\006status\030\010 \001(" +
+      "\0162).com.freetmp.investigate.transport.St" +
+      "atus\"K\n\tLocations\022>\n\tlocations\030\001 \003(\0132+.c" +
+      "om.freetmp.investigate.transport.Locatio" +
+      "n*\037\n\005Error\022\026\n\022RESOURCE_NOT_FOUND\020\001*.\n\014Id" +
+      "entityType\022\007\n\003MAC\020\001\022\010\n\004UDID\020\002\022\013\n\007MAC_MD5" +
+      "\020\003*6\n\006Status\022\t\n\005ENTER\020\001\022\010\n\004MOVE\020\002\022\016\n\nHEA" +
+      "RT_BEAT\020\003\022\007\n\003OUT\020\004"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -3278,7 +3278,7 @@ public final class Protocol {
     internal_static_com_freetmp_investigate_transport_Location_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_com_freetmp_investigate_transport_Location_descriptor,
-        new java.lang.String[] { "IdType", "IdData", "X", "Y", "MapId", "Timestamp", "ExpiresIn", "Status", });
+        new java.lang.String[] { "IdType", "IdData", "X", "Y", "FloorId", "Timestamp", "ExpiresIn", "Status", });
     internal_static_com_freetmp_investigate_transport_Locations_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_com_freetmp_investigate_transport_Locations_fieldAccessorTable = new

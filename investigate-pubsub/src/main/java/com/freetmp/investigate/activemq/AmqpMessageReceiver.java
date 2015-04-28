@@ -1,7 +1,12 @@
 package com.freetmp.investigate.activemq;
 
+import com.freetmp.investigate.transport.Protocol;
+import com.google.protobuf.ByteString;
+import com.google.protobuf.InvalidProtocolBufferException;
+import com.googlecode.protobuf.format.JsonFormat;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.qpid.amqp_1_0.client.*;
+import org.apache.qpid.proton.amqp.messaging.Data;
 import org.apache.qpid.proton.amqp.messaging.Source;
 import org.apache.qpid.proton.hawtdispatch.api.*;
 
@@ -75,9 +80,9 @@ public class AmqpMessageReceiver {
 
     private static void useQpid() throws URISyntaxException, InterruptedException {
         AmqpConnectOptions options = new AmqpConnectOptions();
-        options.setHost("127.0.0.1",5445);
-        options.setUser("admin");
-        options.setPassword("password");
+        options.setHost("192.168.3.190",5445);
+        options.setUser("username_temp");
+        options.setPassword("password_temp");
         options.setRemoteContainerId("investigate-receiver");
 
         AmqpConnection connection = AmqpConnection.connect(options);
@@ -108,13 +113,23 @@ public class AmqpMessageReceiver {
 
         connection.queue().execute(() -> {
             Source source = new Source();
-            source.setAddress("queue://location");
+            source.setAddress("topic://15.1108.*");
 
             AmqpSession session = connection.createSession();
             AmqpReceiver receiver = session.createReceiver(source);
 
             receiver.setDeliveryListener((msg) -> {
-                System.out.println("received msg : " + msg);
+                try {
+                    org.apache.qpid.proton.amqp.messaging.Section section = msg.getMessage().getBody();
+                    Object string = section;
+                    if(section instanceof Data){
+                        Protocol.Location location = Protocol.Location.parseFrom(ByteString.copyFrom(((Data)section).getValue().asByteBuffer()));
+                        string = JsonFormat.printToString(location);
+                    }
+                    System.out.println("received msg : " + string);
+                } catch (InvalidProtocolBufferException e) {
+                    e.printStackTrace();
+                }
                 msg.settle();
             });
 
