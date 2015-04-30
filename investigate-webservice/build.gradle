@@ -1,8 +1,0 @@
-
-description = ''
-dependencies {
-    compile group: 'org.apache.axis2', name: 'axis2', version:'1.6.2'
-    compile group: 'org.apache.axis2', name: 'axis2-xmlbeans', version:'1.6.2'
-    compile group: 'org.apache.axis2', name: 'axis2-transport-http', version:'1.6.2'
-    compile group: 'org.apache.axis2', name: 'axis2-transport-local', version:'1.6.2'
-}

@@ -1,8 +1,0 @@
-
-description = ''
-dependencies {
-    compile group: 'org.qi4j.core', name: 'org.qi4j.core.bootstrap', version:'2.0'
-    compile group: 'org.qi4j.core', name: 'org.qi4j.core.runtime', version:'2.0'
-    compile group: 'org.qi4j.library', name: 'org.qi4j.library.constraints', version:'2.0'
-    testCompile group: 'org.qi4j.core', name: 'org.qi4j.core.testsupport', version:'2.0'
-}

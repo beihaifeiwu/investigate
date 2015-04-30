@@ -1,6 +1,0 @@
-
-description = ''
-dependencies {
-    compile group: 'org.nutz', name: 'nutz', version:'1.b.52'
-    compile group: 'org.postgresql', name: 'postgresql', version:'9.3-1102-jdbc41'
-}
