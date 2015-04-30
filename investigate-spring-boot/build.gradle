@@ -1,0 +1,11 @@
+
+description = ''
+dependencies {
+    compile(group: 'org.springframework.boot', name: 'spring-boot-starter', version:'1.2.2.RELEASE') {
+exclude(module: 'commons-logging')
+    }
+    compile group: 'org.springframework', name: 'spring-web', version:'4.1.5.RELEASE'
+    compile group: 'org.projectreactor.spring', name: 'reactor-spring-context', version:'1.1.3.RELEASE'
+    compile group: 'org.projectreactor', name: 'reactor-core', version:'1.1.6.RELEASE'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version:'2.4.5'
+}

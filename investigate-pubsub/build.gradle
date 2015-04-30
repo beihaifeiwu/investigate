@@ -1,0 +1,19 @@
+
+description = ''
+dependencies {
+    compile group: 'org.fusesource.mqtt-client', name: 'mqtt-client', version:'1.10'
+    compile group: 'org.dna.mqtt', name: 'moquette-broker', version:'0.6'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version:'2.4.5'
+    compile group: 'org.atmosphere', name: 'atmosphere-runtime', version:'2.2.6'
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version:'3.1.0'
+    compile group: 'de.undercouch', name: 'bson4jackson', version:'2.4.0'
+    compile group: 'org.apache.qpid', name: 'proton-hawtdispatch', version:'0.9'
+    compile group: 'org.apache.qpid', name: 'qpid-amqp-1-0-client', version:'0.32'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.11.1'
+    compile group: 'org.apache.activemq', name: 'activemq-jaas', version:'5.11.1'
+    compile group: 'com.google.protobuf', name: 'protobuf-java', version:'2.5.0'
+    compile group: 'com.googlecode.protobuf-java-format', name: 'protobuf-java-format', version:'1.2'
+    compile group: 'org.zeromq', name: 'jeromq', version:'0.3.4'
+    compile group: 'org.apache.camel', name: 'camel-core', version:'2.14.1'
+    compile group: 'org.apache.camel', name: 'camel-jms', version:'2.14.1'
+}
