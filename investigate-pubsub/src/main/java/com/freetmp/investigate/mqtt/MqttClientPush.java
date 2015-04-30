@@ -5,8 +5,6 @@ import org.fusesource.mqtt.client.BlockingConnection;
 import org.fusesource.mqtt.client.MQTT;
 import org.fusesource.mqtt.client.QoS;
 
-import java.net.URISyntaxException;
-
 /**
  * Created by LiuPin on 2015/3/17.
  */

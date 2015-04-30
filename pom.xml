@@ -82,15 +82,6 @@
             <scope>runtime</scope>
         </dependency>
         <!-- LOGGING end -->
-
-        <!-- Test Asserts -->
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- Test End -->
     </dependencies>
 
     <dependencyManagement>
@@ -124,6 +115,15 @@
                 <artifactId>investigate-persistence</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
+
+            <!-- Test Asserts -->
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>${assertj-core.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- Test End -->
         </dependencies>
     </dependencyManagement>
 </project>
