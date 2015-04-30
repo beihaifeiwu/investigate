@@ -80,9 +80,9 @@ public class AmqpMessageReceiver {
 
     private static void useQpid() throws URISyntaxException, InterruptedException {
         AmqpConnectOptions options = new AmqpConnectOptions();
-        options.setHost("192.168.3.190",5445);
-        options.setUser("username_temp");
-        options.setPassword("password_temp");
+        options.setHost("127.0.0.1",5445);
+        options.setUser("admin");
+        options.setPassword("password");
         options.setRemoteContainerId("investigate-receiver");
 
         AmqpConnection connection = AmqpConnection.connect(options);
@@ -113,7 +113,7 @@ public class AmqpMessageReceiver {
 
         connection.queue().execute(() -> {
             Source source = new Source();
-            source.setAddress("topic://15.1108.*");
+            source.setAddress("topic://66.>");
 
             AmqpSession session = connection.createSession();
             AmqpReceiver receiver = session.createReceiver(source);

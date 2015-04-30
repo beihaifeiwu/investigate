@@ -27,6 +27,11 @@
             <version>${qi4j.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.qi4j.library</groupId>
+            <artifactId>org.qi4j.library.constraints</artifactId>
+            <version>${qi4j.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.qi4j.core</groupId>
             <artifactId>org.qi4j.core.testsupport</artifactId>
             <version>${qi4j.version}</version>

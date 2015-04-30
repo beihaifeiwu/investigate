@@ -1,8 +1,7 @@
 package com.freetmp.investigate.mqtt;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.freetmp.investigate.transport.Protocol;
-import de.undercouch.bson4jackson.BsonFactory;
+import com.google.protobuf.ByteString;
 import org.fusesource.mqtt.client.*;
 
 /**
@@ -30,25 +29,23 @@ public class MqttClientPullRemote {
     private static void print(BlockingConnection connection,String mark) throws Exception {
         Message message = connection.receive();
         System.out.println("*************************" + mark + "*************************");
-        System.out.println(Protocol.Location.parseFrom(message.getPayload()));
+        System.out.println(Protocol.Location.parseFrom(ByteString.copyFrom(message.getPayload())));
         message.ack();
     }
 
     private static void newConnection() throws Exception {
         MQTT mqtt = new MQTT();
-        mqtt.setHost("192.168.3.190",1885);
+        mqtt.setHost("127.0.0.1", 1883);
         mqtt.setUserName("admin");
         mqtt.setPassword("password");
         mqtt.setWillQos(QoS.AT_MOST_ONCE);
 
         BlockingConnection connection = mqtt.blockingConnection();
         connection.connect();
-        Topic[] topics = {new Topic("1108",QoS.AT_MOST_ONCE)};
+        Topic[] topics = {new Topic("66/#",QoS.AT_MOST_ONCE)};
         byte[] qoses = connection.subscribe(topics);
 
         System.out.println("Connection to the mqtt server");
-
-        ObjectMapper mapper = new ObjectMapper(new BsonFactory());
 
         while(true){
             print(connection,"Remote");
