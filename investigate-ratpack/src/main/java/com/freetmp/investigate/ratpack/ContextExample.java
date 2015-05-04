@@ -57,7 +57,7 @@ public class ContextExample {
                 )
         ).test(httpClient ->{
             Assertions.assertThat(httpClient.get("person/10/status").getBody().getText()).isEqualTo("person 10 status: example-status");
-            Assertions.assertThat(httpClient.get("person/6/age").getBody().getText()).isEqualTo("person 6 status: example-age");
+            Assertions.assertThat(httpClient.get("person/6/age").getBody().getText()).isEqualTo("person 6 age: example-age");
         });
     }
 }
