@@ -23,9 +23,11 @@ import static ratpack.util.Types.listOf;
 public class JsonExample {
   public static class Person {
     private final String name;
+
     public Person(@JsonProperty("name") String name) {
       this.name = name;
     }
+
     public String getName() {
       return name;
     }

@@ -35,6 +35,7 @@
         <module>investigate-spring-jersey1</module>
         <module>investigate-qi4j</module>
         <module>investigate-ratpack</module>
+        <module>investigate-akka</module>
 
     </modules>
 
