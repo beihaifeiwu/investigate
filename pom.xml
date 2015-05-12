@@ -37,7 +37,7 @@
         <module>investigate-ratpack</module>
         <module>investigate-akka</module>
         <module>investigate-script</module>
-
+        <module>investigate-algorithm</module>    
     </modules>
 
     <dependencies>
