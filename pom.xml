@@ -36,6 +36,7 @@
         <module>investigate-qi4j</module>
         <module>investigate-ratpack</module>
         <module>investigate-akka</module>
+        <module>investigate-script</module>
 
     </modules>
 
