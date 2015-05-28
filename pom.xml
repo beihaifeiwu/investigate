@@ -38,6 +38,7 @@
     <module>investigate-akka</module>
     <module>investigate-script</module>
     <module>investigate-algorithm</module>
+    <module>investigate-apidoc</module>
   </modules>
 
   <dependencies>
