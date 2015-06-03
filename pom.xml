@@ -39,6 +39,7 @@
     <module>investigate-script</module>
     <module>investigate-algorithm</module>
     <module>investigate-apidoc</module>
+    <module>investigate-kotlin</module>
   </modules>
 
   <dependencies>
