@@ -14,9 +14,7 @@ row.setBorder(padding);
 frame.pack();
 frame.visible = true;
 
-frame.addWindowListener(function (e, name) {
-    if (name === "windowClosing") java.lang.System.exit(0);
-});
+frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
 
 button.addActionListener(function () {
     try {
@@ -24,6 +22,7 @@ button.addActionListener(function () {
         var response = filechooser.showSaveDialog(frame);
         if (response != javax.swing.JFileChooser.APPROVE_OPTION) return;
         var file = filechooser.getSelectedFile();
+        print(file);
         new java.lang.Thread(function () {
             download(url, file);
         }).start();
@@ -36,11 +35,12 @@ button.addActionListener(function () {
 function download(url, file) {
     try{
 
-        var row = new javax.swing.Box.createHorizontalBox();
+        var row = javax.swing.Box.createHorizontalBox();
         row.setBorder(padding);
         var label = url.toString() + ": ";
         row.add(new javax.swing.JLabel(label));
         var bar = new javax.swing.JProgressBar(0,100);
+        bar.value = 0;
         bar.stringPainted = true;
         bar.string = file.toString();
         row.add(bar);
@@ -51,8 +51,9 @@ function download(url, file) {
 
         var conn = url.openConnection();
         conn.connect();
-        var len = conn.contentLength;
+        var len = conn.contentLengthLong;
         if(len){
+            print("file content length: " + len);
             bar.maximum = len;
             bar.indeterminate = false;
         }
@@ -68,10 +69,12 @@ function download(url, file) {
         }
         output.close();
         input.close();
-
+        javax.swing.JOptionPane.showMessageDialog(frame,"File " + file + " download completed!",
+            "Message",javax.swing.JOptionPane.INFORMATION_MESSAGE);
     }catch (e){
         if(bar){
-
+            bar.indeterminate = false;
+            bar.string = e.toString();
         }
     }
 }
