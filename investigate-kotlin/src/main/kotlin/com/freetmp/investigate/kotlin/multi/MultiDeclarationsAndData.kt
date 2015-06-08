@@ -11,10 +11,9 @@ fun main(args: Array<String>) {
   println("num = $num, name = $name")
 
   println("****************Data classes****************")
-  if (true) {
-    val (name, id) = User("Alex", 1)
-    println("name = $name, id = $id")
-  }
+
+  val (name2, id) = User("Alex", 1)
+  println("name = $name2, id = $id")
 
   println("****************Traversing a map*****************")
   val map = hashMapOf<String, Int>()

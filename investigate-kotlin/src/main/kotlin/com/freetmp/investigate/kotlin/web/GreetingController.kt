@@ -1,4 +1,4 @@
-package com.freetmp.investigate.kotlin
+package com.freetmp.investigate.kotlin.web
 
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication

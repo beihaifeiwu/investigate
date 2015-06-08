@@ -33,18 +33,18 @@ fun higherOrderFunctions() {
   var ints = arrayListOf(1, 2, 3, 4, 5, 6)
   println(ints.map { it * 2 })
   var strings = arrayListOf("function", "closure", "expression", "literals")
-  println(strings filter { it.length > 5 } sortBy { it } map { it.toUpperCase() })
+  println(strings filter { it.length() > 5 } sortBy { it } map { it.toUpperCase() })
 }
 
 fun functionTypes() {
-  fun max<T>(collection: Collection<out T>, less: (T, T) -> Boolean): T? {
-    var max: T? = null
+  fun max<T>(collection: Collection<T>, less: (T, T) -> Boolean): T {
+    var max: T = null
     for ( it in collection)
-      if (max == null || less(max!!, it)) max = it
+      if (max == null || less(max, it)) max = it
     return max
   }
   println(max(arrayListOf(4, 6, 1, 9), { x, y -> x < y }))
-  println(max(arrayListOf("function", "closure", "expression", "literals"), { a, b -> a.length < b.length }))
+  println(max(arrayListOf("function", "closure", "expression", "literals"), { a, b -> a.length() < b.length() }))
 }
 
 fun functionLiteralAndExpression() {
