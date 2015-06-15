@@ -4,7 +4,7 @@
   <groupId>com.freetmp</groupId>
   <artifactId>investigate-parent</artifactId>
   <packaging>pom</packaging>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.2-SNAPSHOT</version>
   <name>freetmp investigate</name>
   <url>http://investigate.freetmp.com</url>
 
@@ -117,7 +117,7 @@
       <dependency>
         <groupId>com.freetmp</groupId>
         <artifactId>investigate-persistence</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.2-SNAPSHOT</version>
       </dependency>
 
       <!-- Test Asserts -->
@@ -136,4 +136,14 @@
       <!-- Test End -->
     </dependencies>
   </dependencyManagement>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>versions-maven-plugin</artifactId>
+        <version>2.2</version>
+      </plugin>
+    </plugins>
+  </build>
 </project>
