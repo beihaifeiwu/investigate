@@ -40,6 +40,7 @@
     <module>investigate-algorithm</module>
     <module>investigate-kotlin</module>
     <module>investigate-apidoc</module>
+    <module>investigate-vaadin</module>
   </modules>
 
   <dependencies>
