@@ -66,11 +66,7 @@ public class WordgameClientEndpoint {
     try {
       client.connectToServer(WordgameClientEndpoint.class, new URI("ws://localhost:8025/websockets/game"));
       latch.await();
-    } catch (DeploymentException e) {
-      e.printStackTrace();
-    } catch (URISyntaxException e) {
-      e.printStackTrace();
-    } catch (InterruptedException e) {
+    } catch (DeploymentException | InterruptedException | URISyntaxException | IOException e) {
       e.printStackTrace();
     }
   }

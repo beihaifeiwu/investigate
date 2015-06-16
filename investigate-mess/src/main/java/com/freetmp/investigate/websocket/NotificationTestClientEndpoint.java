@@ -1,5 +1,6 @@
 package com.freetmp.investigate.websocket;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.concurrent.CountDownLatch;
@@ -44,17 +45,13 @@ public class NotificationTestClientEndpoint {
     latch.countDown();
   }
   
-  public static void main(String...strings ){
+  public static void main(String...strings ) {
     latch = new CountDownLatch(1);
     ClientManager client = ClientManager.createClient();
     try {
       client.connectToServer(NotificationTestClientEndpoint.class, new URI("ws://localhost:8080/websocket/position/1108"));
       latch.await();
-    } catch (DeploymentException e) {
-      e.printStackTrace();
-    } catch (URISyntaxException e) {
-      e.printStackTrace();
-    } catch (InterruptedException e) {
+    } catch (DeploymentException | URISyntaxException | IOException | InterruptedException e) {
       e.printStackTrace();
     }
   }

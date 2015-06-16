@@ -24,12 +24,12 @@
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpasyncclient</artifactId>
-			<version>4.0.1</version>
+			<version>4.1</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.11</version>
+			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -62,7 +62,7 @@
 		<dependency>
 			<groupId>io.reactivex</groupId>
 			<artifactId>rxjava</artifactId>
-			<version>1.0.0-rc.7</version>
+			<version>1.0.12</version>
 		</dependency>
 
 		<!-- 社交平台 -->
@@ -81,7 +81,7 @@
 		<dependency>
 			<groupId>net.sourceforge.htmlunit</groupId>
 			<artifactId>htmlunit</artifactId>
-			<version>2.15</version>
+			<version>2.17</version>
 		</dependency>
 
 		<!-- JFreeChart图表库 -->
@@ -95,39 +95,39 @@
 		<dependency>
 			<groupId>javax.el</groupId>
 			<artifactId>javax.el-api</artifactId>
-			<version>3.0.0</version>
+			<version>3.0.1-b04</version>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish</groupId>
 			<artifactId>javax.el</artifactId>
-			<version>3.0.0</version>
+			<version>3.0.1-b08</version>
 		</dependency>
 		
 	  	<!-- ognl 对象图导航语言 -->
 		<dependency>
 			<groupId>ognl</groupId>
 			<artifactId>ognl</artifactId>
-			<version>3.0.8</version>
+			<version>3.0.11</version>
 		</dependency>
 	
 		<!-- Eclipse Compiler for Java -->
 		<dependency>
 			<groupId>org.eclipse.jdt.core.compiler</groupId>
 			<artifactId>ecj</artifactId>
-			<version>4.4</version>
+			<version>4.4.2</version>
 		</dependency>
 		
 		<!-- Eclipse AST -->
 		<dependency>
 			<groupId>org.eclipse.tycho</groupId>
 			<artifactId>org.eclipse.jdt.core</artifactId>
-			<version>3.10.0.v20140604-1726</version>
+			<version>3.11.0.v20150520-2033</version>
 		</dependency>	
 		<!-- Eclipse Core Runtime -->
 		<dependency>
 			<groupId>org.eclipse.core</groupId>
 			<artifactId>runtime</artifactId>
-			<version>3.10.0-v20140318-2214</version>
+			<version>20070801</version>
 		</dependency>
 		<!-- Eclipse Core Resources -->
 		<dependency>
@@ -140,59 +140,59 @@
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-jasper</artifactId>
-			<version>7.0.57</version>
+			<version>8.0.23</version>
 		</dependency>
 		
 		<!-- ANT -->
 		<dependency>
 			<groupId>org.apache.ant</groupId>
 			<artifactId>ant</artifactId>
-			<version>1.9.4</version>
+			<version>1.9.5</version>
 		</dependency>
 		
 		<!-- Spring Core -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
-			<version>4.1.2.RELEASE</version>
+			<version>4.2.0.RC1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-			<version>4.1.2.RELEASE</version>
+			<version>4.2.0.RC1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>4.1.2.RELEASE</version>
+			<version>4.2.0.RC1</version>
 		</dependency>
 		
 		<!-- Spring AOP -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
-			<version>4.1.2.RELEASE</version>
+			<version>4.2.0.RC1</version>
 		</dependency>
 				
 		<!-- AsectJ AOP -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
-			<version>1.8.3</version>
+			<version>1.9.0.BETA-1</version>
 		</dependency>
 
 		<!-- Groovy Lib -->
 		<dependency>
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy-all</artifactId>
-			<version>2.3.9</version>
+			<version>2.4.3</version>
 		</dependency>
 
 		<!-- Netty -->
 		<dependency>
 			<groupId>io.netty</groupId>
 			<artifactId>netty-all</artifactId>
-			<version>4.0.25.Final</version>
+			<version>5.0.0.Alpha2</version>
 		</dependency>
 		
 		<!-- JSR356 Websocket API -->
@@ -206,31 +206,31 @@
 		<dependency>
 		    <groupId>org.glassfish.tyrus</groupId>
 		    <artifactId>tyrus-server</artifactId>
-		    <version>1.1</version>
+		    <version>1.10</version>
 		</dependency>
 		<dependency>
 		    <groupId>org.glassfish.tyrus</groupId>
 		    <artifactId>tyrus-client</artifactId>
-		    <version>1.1</version>
+		    <version>1.10</version>
 		</dependency>
 		
 		<!-- Tyrus Container -->		
 		<dependency>
 			<groupId>org.glassfish.tyrus</groupId>
 			<artifactId>tyrus-container-grizzly</artifactId>
-			<version>1.1</version>
+			<version>1.2.1</version>
 		</dependency>
 		
 		<!-- WildFly的Web服务器 -->
 		<dependency>
             <groupId>io.undertow</groupId>
             <artifactId>undertow-servlet</artifactId>
-            <version>1.1.1.Final</version>
+            <version>1.3.0.Beta1</version>
         </dependency>
 		<dependency>
 			<groupId>io.undertow</groupId>
 			<artifactId>undertow-websockets-jsr</artifactId>
-			<version>1.1.1.Final</version>
+			<version>1.3.0.Beta1</version>
 		</dependency>
 
 		<!-- JavaBean映射 -->
@@ -243,7 +243,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.30</version>
+			<version>5.1.35</version>
 		</dependency>
 
 </dependencies>
