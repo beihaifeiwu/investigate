@@ -2,6 +2,7 @@ package com.freetmp.investigate.vaadin;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
+import com.vaadin.server.StreamResource;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.*;
 
@@ -19,6 +20,19 @@ public class HelloWorld extends UI {
     content.addComponent(new Label("Hello World!"));
 
     // Have a clickable button
-    content.addComponent(new Button("Push Me!",(event)-> Notification.show("Pushed!")));
+    content.addComponent(new Button("Push Me!", (event) -> Notification.show("Pushed!")));
+
+    // Create an instance of our stream source
+    StreamResource.StreamSource imageSource = new MyImageSource();
+
+    // Create a resource that uses the stream source and give it a name.
+    // The constructor will automatically register the resource in
+    // the application.
+    StreamResource resource = new StreamResource(imageSource, System.currentTimeMillis() + ".png");
+
+    // Create an image component that gets its contents from the resource.
+    Image image = new Image("Image title", resource);
+    content.addComponent(image);
+    content.addComponent(new Button("Reload image", event -> image.setSource(new StreamResource(imageSource, System.currentTimeMillis() + ".png"))));
   }
 }

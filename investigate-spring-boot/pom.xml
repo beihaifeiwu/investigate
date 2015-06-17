@@ -102,9 +102,6 @@
           <daemons>
             <daemon>
               <mainClass>com.freetmp.investigate.springboot.Application</mainClass>
-<!--              <commandLineArguments>
-                <commandLineArgument>&#45;&#45;spring.profiles.active=online</commandLineArgument>
-              </commandLineArguments>-->
               <generatorConfigurations>
                 <generatorConfiguration>
                   <generator>jsw</generator>
