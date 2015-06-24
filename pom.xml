@@ -21,6 +21,7 @@
     <postgresql.version>9.3-1102-jdbc41</postgresql.version>
 
     <assertj-core.version>3.0.0</assertj-core.version>
+
   </properties>
 
   <modules>
