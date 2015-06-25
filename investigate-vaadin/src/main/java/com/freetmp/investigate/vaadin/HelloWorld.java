@@ -34,5 +34,9 @@ public class HelloWorld extends UI {
     Image image = new Image("Image title", resource);
     content.addComponent(image);
     content.addComponent(new Button("Reload image", event -> image.setSource(new StreamResource(imageSource, System.currentTimeMillis() + ".png"))));
+
+    // Here's some code that produces an uncaught exception
+    content.addComponent(new Button("Fail Me!", (Button.ClickListener) event -> ((String)null).length()));
+
   }
 }
