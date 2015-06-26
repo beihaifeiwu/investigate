@@ -22,11 +22,20 @@
       <artifactId>jmh-core</artifactId>
       <version>${jmh.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.openjdk.jmh</groupId>
+      <artifactId>jmh-generator-annprocess</artifactId>
+      <version>${jmh.version}</version>
+    </dependency>
 
     <!-- Kotlin -->
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
       <artifactId>kotlin-stdlib</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-annotation-processing</artifactId>
     </dependency>
   </dependencies>
 
@@ -39,39 +48,6 @@
       <plugin>
         <groupId>org.jetbrains.kotlin</groupId>
         <artifactId>kotlin-maven-plugin</artifactId>
-      </plugin>
-      <!--
-           Invoke JMH generators to produce benchmark code
-      -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>1.2.1</version>
-        <executions>
-          <execution>
-            <phase>process-sources</phase>
-            <goals>
-              <goal>java</goal>
-            </goals>
-            <configuration>
-              <includePluginDependencies>true</includePluginDependencies>
-              <mainClass>org.openjdk.jmh.generators.bytecode.JmhBytecodeGenerator</mainClass>
-              <arguments>
-                <argument>${project.basedir}/target/classes/</argument>
-                <argument>${project.basedir}/target/generated-sources/jmh/</argument>
-                <argument>${project.basedir}/target/classes/</argument>
-                <argument>default</argument>
-              </arguments>
-            </configuration>
-          </execution>
-        </executions>
-        <dependencies>
-          <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-generator-bytecode</artifactId>
-            <version>${jmh.version}</version>
-          </dependency>
-        </dependencies>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
