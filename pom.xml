@@ -21,7 +21,7 @@
     <postgresql.version>9.3-1102-jdbc41</postgresql.version>
 
     <assertj-core.version>3.0.0</assertj-core.version>
-    <kotlin.version>0.12.613</kotlin.version>
+    <kotlin.version>0.12.1218</kotlin.version>
   </properties>
 
   <modules>
