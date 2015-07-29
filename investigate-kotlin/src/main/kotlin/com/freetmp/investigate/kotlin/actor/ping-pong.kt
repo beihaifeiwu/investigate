@@ -49,7 +49,7 @@ public class Pong() : Actor() {
 
 }
 
-fun main(args: Array<String>){
+public fun main(args: Array<String>){
   spawn(register("pong", Pong()))
   spawn(Ping(3))
 }
