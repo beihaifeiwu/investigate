@@ -29,6 +29,11 @@
       <artifactId>spring-web</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-jersey</artifactId>
+    </dependency>
+
     <!-- Creating an Asynchronous, Event-Driven Application with Reactor -->
     <dependency>
       <groupId>org.projectreactor.spring</groupId>
