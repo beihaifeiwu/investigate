@@ -43,6 +43,7 @@
 <!--     <module>investigate-apidoc</module> -->
     <module>investigate-vaadin</module>
     <module>investigate-quasar</module>
+    <module>investigate-scala</module>
   </modules>
 
   <dependencies>
