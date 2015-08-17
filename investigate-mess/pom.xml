@@ -11,7 +11,7 @@
 	<packaging>jar</packaging>
 
 	<properties>
-		<jcseg.version>1.9.5</jcseg.version>
+		<jcseg.version>1.9.6</jcseg.version>
 		<selenium.version>2.43.1</selenium.version>
 	</properties>
 

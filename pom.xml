@@ -34,13 +34,13 @@
     <module>investigate-webservice</module>
     <module>investigate-persistence</module>
     <module>investigate-spring-jersey1</module>
-    <module>investigate-qi4j</module>
+<!--     <module>investigate-qi4j</module> -->
     <module>investigate-ratpack</module>
     <module>investigate-akka</module>
     <module>investigate-script</module>
     <module>investigate-algorithm</module>
     <module>investigate-kotlin</module>
-    <module>investigate-apidoc</module>
+<!--     <module>investigate-apidoc</module> -->
     <module>investigate-vaadin</module>
     <module>investigate-quasar</module>
     <module>investigate-scala</module>
