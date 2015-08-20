@@ -1,4 +1,4 @@
-package com.freetmp.investigate.springboot;
+package com.freetmp.investigate.springboot.reactor;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
