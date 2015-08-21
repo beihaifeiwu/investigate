@@ -1,4 +1,4 @@
-package com.freetmp.investigate.springboot;
+package com.freetmp.investigate.springboot.reactor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
