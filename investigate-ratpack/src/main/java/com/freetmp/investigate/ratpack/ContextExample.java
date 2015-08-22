@@ -9,7 +9,7 @@ import static ratpack.registry.Registries.*;
  */
 public class ContextExample {
 
-    public static interface Person {
+    public interface Person {
         String getId();
         String getStatus();
         String getAge();

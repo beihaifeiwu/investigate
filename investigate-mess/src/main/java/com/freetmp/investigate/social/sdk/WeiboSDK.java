@@ -204,8 +204,7 @@ public class WeiboSDK {
 			
 			@Override
 			public boolean apply(WebDriver input) {
-				if(input.getCurrentUrl().contains("code=")) return true;
-				return false;
+				return input.getCurrentUrl().contains("code=");
 			}
 		});
 		

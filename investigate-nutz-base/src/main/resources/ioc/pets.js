@@ -21,4 +21,4 @@ var ioc = {
             friend : {refer : 'xiaobai'} // 指向容器里另外一个对象
         }
     }
-}
+};

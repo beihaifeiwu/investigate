@@ -139,13 +139,13 @@ public class RxJavaTry {
 			if(false == aSubscriber.isUnsubscribed()) aSubscriber.onNext("Three");
 			if(false == aSubscriber.isUnsubscribed()) aSubscriber.onNext("Two");
 			if(false == aSubscriber.isUnsubscribed()) aSubscriber.onNext("One");
-			if(false == aSubscriber.isUnsubscribed()) aSubscriber.onError(null);;
+			if(false == aSubscriber.isUnsubscribed()) aSubscriber.onError(null);
 		});
 		Observable<String> fallback = Observable.create((aSubscriber) -> {
 			if(false == aSubscriber.isUnsubscribed()) aSubscriber.onNext("0");
 			if(false == aSubscriber.isUnsubscribed()) aSubscriber.onNext("1");
 			if(false == aSubscriber.isUnsubscribed()) aSubscriber.onNext("2");
-			if(false == aSubscriber.isUnsubscribed()) aSubscriber.onCompleted();;
+			if(false == aSubscriber.isUnsubscribed()) aSubscriber.onCompleted();
 		});
 		origin.onErrorResumeNext(fallback).subscribe(
 			(value)->{System.err.println(value);},

@@ -15,7 +15,7 @@ import java.util.Collections;
  */
 public class AsyncExample {
 
-  public static interface Datastore {
+  public interface Datastore {
     Integer deleteOlderThan(int days) throws IOException;
   }
 

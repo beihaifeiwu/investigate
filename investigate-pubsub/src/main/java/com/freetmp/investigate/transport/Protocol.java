@@ -73,7 +73,7 @@ public final class Protocol {
     private final int index;
     private final int value;
 
-    private Error(int index, int value) {
+    Error(int index, int value) {
       this.index = index;
       this.value = value;
     }
@@ -164,7 +164,7 @@ public final class Protocol {
     private final int index;
     private final int value;
 
-    private IdentityType(int index, int value) {
+    IdentityType(int index, int value) {
       this.index = index;
       this.value = value;
     }
@@ -264,7 +264,7 @@ public final class Protocol {
     private final int index;
     private final int value;
 
-    private Status(int index, int value) {
+    Status(int index, int value) {
       this.index = index;
       this.value = value;
     }
@@ -732,11 +732,7 @@ public final class Protocol {
           
           return false;
         }
-        if (!hasPassword()) {
-          
-          return false;
-        }
-        return true;
+        return hasPassword();
       }
 
       public Builder mergeFrom(
@@ -1110,7 +1106,7 @@ public final class Protocol {
       private final int index;
       private final int value;
 
-      private Result(int index, int value) {
+      Result(int index, int value) {
         this.index = index;
         this.value = value;
       }
@@ -1345,11 +1341,7 @@ public final class Protocol {
       }
 
       public final boolean isInitialized() {
-        if (!hasResult()) {
-          
-          return false;
-        }
-        return true;
+        return hasResult();
       }
 
       public Builder mergeFrom(
@@ -2170,11 +2162,7 @@ public final class Protocol {
           
           return false;
         }
-        if (!hasExpiresIn()) {
-          
-          return false;
-        }
-        return true;
+        return hasExpiresIn();
       }
 
       public Builder mergeFrom(
