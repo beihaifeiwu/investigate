@@ -56,6 +56,10 @@ public class DbUtils {
     }
   }
 
+  public static DbUtils getCurrent(){
+    return INSTANCE;
+  }
+
   public Connection getConnection() {
 
     return (Connection) Proxy.newProxyInstance(

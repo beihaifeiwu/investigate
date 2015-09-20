@@ -29,6 +29,16 @@
       <groupId>co.paralleluniverse</groupId>
       <artifactId>quasar-kotlin</artifactId>
       <version>${quasar.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.jetbrains.kotlin</groupId>
+          <artifactId>kotlin-stdlib</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.jetbrains.kotlin</groupId>
+          <artifactId>kotlin-reflect</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>co.paralleluniverse</groupId>
