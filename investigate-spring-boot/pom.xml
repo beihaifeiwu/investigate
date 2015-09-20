@@ -54,7 +54,7 @@
     <dependency>
       <groupId>org.springframework.integration</groupId>
       <artifactId>spring-integration-java-dsl</artifactId>
-      <version>1.0.2.RELEASE</version>
+      <version>1.1.0.M1</version>
     </dependency>
 
     <dependency>
@@ -65,7 +65,7 @@
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
-      <version>18.0</version>
+      <version>19.0.20150826</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>

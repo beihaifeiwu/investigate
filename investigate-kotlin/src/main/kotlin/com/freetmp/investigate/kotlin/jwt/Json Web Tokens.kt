@@ -24,15 +24,18 @@ fun main(args: Array<String>) {
 
   val signer = RSASSASigner(privateKey)
 
-  val claimsSet = JWTClaimsSet()
-  claimsSet.setSubject("alice")
-  claimsSet.setIssuer("https://c2id.com")
-  claimsSet.setExpirationTime(Date(Date().getTime() + 60 * 1000))
+  val claimsSet = JWTClaimsSet
+      .Builder()
+      .subject("alice")
+      .issuer("https://c2id.com")
+      .expirationTime(Date(Date().getTime() + 60 * 1000))
+      .build()
 
   var singedJWT = SignedJWT(JWSHeader(JWSAlgorithm.RS256), claimsSet)
   singedJWT.sign(signer)
 
   val s = singedJWT.serialize()
+
   println(s)
 
   singedJWT = SignedJWT.parse(s)

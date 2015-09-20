@@ -19,7 +19,7 @@ public class BaseAop {  //被AOP的类,必须是public的非abstract类!
         return false;
     }
 
-    private static ClassDefiner cd = new DefaultClassDefiner(BaseAop.class.getClassLoader());
+    private static ClassDefiner cd = new DefaultClassDefiner();
 
     public static void main(String ... args) throws Throwable{
         //无AOP的时候

@@ -10,7 +10,6 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>investigate-vaadin</artifactId>
-  <packaging>war</packaging>
 
   <properties>
     <vaadin.version>7.6.0.alpha1</vaadin.version>
