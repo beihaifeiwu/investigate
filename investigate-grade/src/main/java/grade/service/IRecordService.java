@@ -2,6 +2,7 @@ package grade.service;
 
 import grade.entity.GradeRecord;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -9,16 +10,16 @@ import java.util.List;
  */
 public interface IRecordService {
 
-  List<GradeRecord> list();
+  List<GradeRecord> list() throws SQLException;
 
-  List<GradeRecord> queryByNameLike(String name);
+  List<GradeRecord> queryByNameLike(String name) throws SQLException;
 
-  Integer save(GradeRecord gradeRecord);
+  Integer save(GradeRecord gradeRecord) throws SQLException;
 
-  GradeRecord load(Integer id);
+  GradeRecord load(Integer id) throws SQLException;
 
-  void update(GradeRecord gradeRecord);
+  void update(GradeRecord gradeRecord) throws SQLException;
 
-  void delete(Integer id);
+  void delete(Integer id) throws SQLException;
 
 }

@@ -47,6 +47,9 @@ public class GradeRecord implements Serializable {
     this.createTime = createTime;
   }
 
+  public GradeRecord() {
+  }
+
   @Override
   public String toString() {
     return "GradeRecord{" +

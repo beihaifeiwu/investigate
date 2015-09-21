@@ -21,7 +21,7 @@ public class ConsoleApplication {
     System.setProperty(DbUtils.JDBC_PASSWORD, "root");
     System.setProperty(DbUtils.JDBC_POOL_SIZE, "10");
 
-    //DbUtils.init();
+    DbUtils.init();
 
     // main application loop
     boolean exit = false;
@@ -118,6 +118,7 @@ public class ConsoleApplication {
   }
 
   static void exit(){
+    DbUtils.getCurrent().destroy();
     System.out.println("** bye");
   }
 

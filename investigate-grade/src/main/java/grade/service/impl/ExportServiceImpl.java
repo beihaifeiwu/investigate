@@ -34,6 +34,9 @@ public class ExportServiceImpl implements IExportService {
     try {
       JAXBContext jbc = JAXBContext.newInstance(GradeRecords.class);
       Marshaller mar = jbc.createMarshaller();
+      mar.setProperty(Marshaller.JAXB_ENCODING,"utf-8");
+      mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+      mar.setProperty(Marshaller.JAXB_FRAGMENT, false);
 
       if(!file.exists()) file.mkdirs();
       mar.marshal(new GradeRecords(list), new File(file, "records.xml"));

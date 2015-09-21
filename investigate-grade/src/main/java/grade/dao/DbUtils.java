@@ -6,9 +6,9 @@ import javax.sql.DataSource;
 import java.lang.reflect.Proxy;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+@SuppressWarnings("unchecked")
 public class DbUtils {
 
   public static final String JDBC_URL = "grade.jdbc.url";
@@ -56,7 +56,7 @@ public class DbUtils {
     }
   }
 
-  public static DbUtils getCurrent(){
+  public static DbUtils getCurrent() {
     return INSTANCE;
   }
 
@@ -82,10 +82,9 @@ public class DbUtils {
 
   public void destroy() {
     System.out.println("** destroy connection pool");
-    Iterator<Connection> iterator = pool.iterator();
-    while (iterator.hasNext()) {
+    for (Connection aPool : (Iterable<Connection>) pool) {
       try {
-        iterator.next().close();
+        aPool.close();
       } catch (SQLException e) {
         throw new RuntimeException(e);
       }
