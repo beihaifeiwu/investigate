@@ -50,6 +50,7 @@
     <module>investigate-spring-batch</module>
     <module>investigate-dependency-manager</module>
     <module>investigate-error-coder</module>
+    <module>investigate-statemachine</module>
   </modules>
 
   <dependencies>
