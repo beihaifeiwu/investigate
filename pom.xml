@@ -51,6 +51,7 @@
     <module>investigate-dependency-manager</module>
     <module>investigate-error-coder</module>
     <module>investigate-statemachine</module>
+    <module>investigate-geotools</module>
   </modules>
 
   <dependencies>
