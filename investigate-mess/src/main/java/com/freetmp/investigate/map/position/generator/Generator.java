@@ -113,11 +113,11 @@ public class Generator {
   }
   
   private void setDefaultPushTarget(){
-    this.ip.setText("localhost");
-    this.port.setText("61111");
-    this.mapId.setText("1108");
+    this.ip.setText("172.16.10.26");
+    this.port.setText("28084");
+    this.mapId.setText("1752");
     this.frequency.setText("4");
-    this.floor.setText("17_3_0");
+    this.floor.setText("1752");
     this.mac.setText("00:50:56:C0:00:08");
     this.equipageNum.setText("5");
   }
@@ -561,14 +561,23 @@ public class Generator {
     }
     
     byte[] buildBuf(Point point){
-      StringBuilder sb = new StringBuilder();
+
+      Phone.Result.Builder builder = Phone.Result.newBuilder();
+      builder.setFloorId(Integer.parseInt(target.getFloor()));
+      builder.setPhoneMac(target.getMac());
+      builder.setPositionX((float)(point.x / 10 + 13526590.33017226));
+      builder.setPositionY((float)(-point.y / 10 + 3663422.983396762));
+      builder.setScene(191);
+      builder.setStamp(new Long(System.currentTimeMillis()).intValue());
+
+/*      StringBuilder sb = new StringBuilder();
       String mac = target.getMac();
       if(mac != null) mac = mac.replaceAll(":", "");
       sb.append(mac).append(",");
       sb.append(point.x * 4).append(",");
       sb.append(-point.y * 4).append(",");
-      sb.append(target.getFloor());
-      return sb.toString().getBytes();
+      sb.append(target.getFloor());*/
+      return builder.build().toByteArray();
     }
     
     public void checkToRunOrStop(){

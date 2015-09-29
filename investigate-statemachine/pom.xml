@@ -12,6 +12,7 @@
   <artifactId>investigate-statemachine</artifactId>
 
   <dependencies>
+
     <dependency>
       <groupId>org.springframework.statemachine</groupId>
       <artifactId>spring-statemachine-core</artifactId>
@@ -24,9 +25,21 @@
     </dependency>
 
     <dependency>
+      <groupId>org.springframework.shell</groupId>
+      <artifactId>spring-shell</artifactId>
+      <version>1.1.0.RELEASE</version>
+    </dependency>
+
+    <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
     </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-logging</artifactId>
+    </dependency>
+
 
     <dependency>
       <groupId>org.springframework.statemachine</groupId>
