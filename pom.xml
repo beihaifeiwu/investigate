@@ -52,6 +52,7 @@
     <module>investigate-error-coder</module>
     <module>investigate-statemachine</module>
     <module>investigate-geotools</module>
+    <module>investigate-wx-shake-lottery</module>
   </modules>
 
   <dependencies>

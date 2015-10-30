@@ -12,10 +12,16 @@
   <artifactId>investigate-geotools</artifactId>
 
   <properties>
-    <geotools.version>15-SNAPSHOT</geotools.version>
+    <geotools.version>14.0</geotools.version>
   </properties>
 
   <dependencies>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+
     <!-- Geotools -->
     <dependency>
       <groupId>org.geotools</groupId>
@@ -50,6 +56,12 @@
       <artifactId>protobuf-java-format</artifactId>
       <version>1.2</version>
     </dependency>
+    <dependency>
+      <groupId>org.glassfish</groupId>
+      <artifactId>javax.json</artifactId>
+      <version>1.0.4</version>
+    </dependency>
+
   </dependencies>
 
   <repositories>
