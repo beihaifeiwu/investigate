@@ -1,5 +1,6 @@
-package com.palmap;
+package com.palmap.service;
 
+import com.palmap.LotteryResult;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 

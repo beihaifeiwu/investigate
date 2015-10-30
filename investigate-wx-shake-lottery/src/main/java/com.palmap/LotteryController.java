@@ -1,5 +1,6 @@
 package com.palmap;
 
+import com.palmap.service.LotteryService;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -47,7 +48,6 @@ public class LotteryController {
     Objects.requireNonNull(openID);
     return service.lottery(openID);
   }
-
 
   @RequestMapping(path = "/go", method = RequestMethod.GET)
   public void go(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {
