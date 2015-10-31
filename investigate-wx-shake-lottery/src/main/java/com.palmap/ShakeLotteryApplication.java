@@ -9,12 +9,14 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.guava.GuavaCache;
 import org.springframework.cache.support.SimpleCacheManager;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
+@EnableScheduling
 @EnableCaching(proxyTargetClass = true)
 @SpringBootApplication
 public class ShakeLotteryApplication extends WebMvcConfigurerAdapter{
