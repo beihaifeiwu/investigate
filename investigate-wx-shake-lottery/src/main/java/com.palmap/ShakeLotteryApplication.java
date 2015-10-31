@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.guava.GuavaCache;
 import org.springframework.cache.support.SimpleCacheManager;
 import org.springframework.context.annotation.Bean;
@@ -14,6 +15,7 @@ import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
+@EnableCaching(proxyTargetClass = true)
 @SpringBootApplication
 public class ShakeLotteryApplication extends WebMvcConfigurerAdapter{
 
@@ -22,8 +24,8 @@ public class ShakeLotteryApplication extends WebMvcConfigurerAdapter{
     log.info("initializing guava cache manager");
     SimpleCacheManager cacheManager = new SimpleCacheManager();
     GuavaCache agent = new GuavaCache(
-        "agent",
-        CacheBuilder.newBuilder().expireAfterWrite(5, TimeUnit.MINUTES).maximumSize(20000L).build()
+        "wechat",
+        CacheBuilder.newBuilder().expireAfterWrite(30, TimeUnit.MINUTES).maximumSize(20000L).build()
     );
     cacheManager.setCaches(Arrays.asList(agent));
     return cacheManager;

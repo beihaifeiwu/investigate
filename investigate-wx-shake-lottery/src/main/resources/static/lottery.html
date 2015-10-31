@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-<head lang="zh-cmn-Hans" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="zh-cmn-Hans">
   <meta charset="UTF-8">
   <title>图聚</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0 user-scalable=no">
@@ -8,7 +8,7 @@
   <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
 <head>
 <body>
-<script>
+<script th:inline="javascript">
 
   $(document).ready(function()
   {
@@ -46,7 +46,7 @@
       document.getElementById("background_div").style.display = "block";
       $.ajax({
         type: "GET",
-        url: "lottery/draw",
+        url: /*[[@{/lottery/draw(OpenID=${OpenID})}]]*/ "test.json",
         dataType: "json",
         success: function(data){
           window.clearInterval(inter);
@@ -85,7 +85,7 @@
       document.getElementById("background_div").style.display = "block";
       $.ajax({
         type: "GET",
-        url: "lottery/draw",
+        url: /*[[@{/lottery/draw(OpenID=${OpenID})}]]*/ "test.json",
         dataType: "json",
         success: function(data){
           window.clearInterval(inter);
@@ -160,8 +160,8 @@
 </div>
 <div class="notification" id="notif3">
   <h2>未抽中</h2>
-    <h4>很遗憾，您本次没有中奖，<br/>半个小时后可以再抽一次哦~</h4>
-    <a href="#lottery" id="goBack">返回</a>
+  <h4>很遗憾，您本次没有中奖，<br/>半个小时后可以再抽一次哦~</h4>
+  <a href="#lottery" id="goBack">返回</a>
 </div>
 <div class="notification" id="notif4">
   <h2>小礼品</h2>

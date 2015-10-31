@@ -1,6 +1,8 @@
 package com.palmap.service;
 
+import com.google.common.base.Strings;
 import com.palmap.LotteryResult;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +14,7 @@ import java.util.concurrent.ConcurrentMap;
 /**
  * Created by LiuPin on 2015/10/30.
  */
-@Service
+@Service @Slf4j
 public class LotteryService {
 
   ConcurrentMap<String, LotteryResult> resultMap = new ConcurrentHashMap<>();
@@ -30,8 +32,13 @@ public class LotteryService {
   ValueRange morning = ValueRange.of(LocalTime.of(9, 30).toNanoOfDay(), LocalTime.of(12, 0).toNanoOfDay());
 
 
-  public LotteryResult lottery(String username){
-    LotteryResult result = resultMap.computeIfAbsent(username, u -> new LotteryResult());
+  public LotteryResult lottery(String openId){
+    // 非合法用户
+    if(Strings.isNullOrEmpty(openId) || openId.equalsIgnoreCase("doubi")){
+      return LotteryResult.builder().inLotteryTime(false).awards(-1).remainTime(Long.MAX_VALUE).build();
+    }
+
+    LotteryResult result = resultMap.computeIfAbsent(openId, u -> new LotteryResult());
 
     // 不在抽奖时间
     long now = LocalTime.now().toNanoOfDay();
@@ -41,8 +48,9 @@ public class LotteryService {
     }
 
     // 判断是否处在冷却时间
-    if(result.getLastLotteryTime() != 0 && System.currentTimeMillis() > (result.getLastLotteryTime() + delayTime * 60 * 1000)){
+    if(result.getLastLotteryTime() != 0 && System.currentTimeMillis() < (result.getLastLotteryTime() + delayTime * 60 * 1000)){
       result.setInLotteryTime(false);
+      result.setAwards(-1);
       result.setRemainTime(System.currentTimeMillis() - result.getLastLotteryTime());
       return result;
     }
@@ -66,8 +74,7 @@ public class LotteryService {
         }
         result.setAwards(1);
         firstConsumedNum += 1;
-
-
+        log.info("OpenID[{}] win the first prize", openId);
       }
 
       // 判断是否中了二等奖
@@ -76,15 +83,14 @@ public class LotteryService {
         if(secondConsumedNum >= secondNumToday / 2 && morning.isValidValue(now)){
           result.setAwards(0);
         }
-
         result.setAwards(2);
         secondConsumedNum += 1;
-
+        log.info("OpenID[{}] win the second prize", openId);
       }
     }
 
-    // 设置上次中奖时间
-    if(result.getAwards() != 0 && result.getAwards() != -1) result.setLastLotteryTime(System.currentTimeMillis());
+    // 设置本次抽奖时间
+    result.setLastLotteryTime(System.currentTimeMillis());
 
     return result;
   }
