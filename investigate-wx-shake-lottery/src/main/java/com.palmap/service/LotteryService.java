@@ -4,6 +4,7 @@ import com.google.common.base.Strings;
 import com.palmap.LotteryResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
@@ -31,6 +32,12 @@ public class LotteryService {
   ValueRange afternoon = ValueRange.of(LocalTime.of(9, 30).toNanoOfDay(), LocalTime.of(17, 0).toNanoOfDay());
   ValueRange morning = ValueRange.of(LocalTime.of(9, 30).toNanoOfDay(), LocalTime.of(12, 0).toNanoOfDay());
 
+  @Scheduled(cron = "0 0 0 * * ?")
+  public synchronized void resetPrizePool(){
+    this.firstNumToday += this.firstConsumedNum;
+    this.secondNumToday += this.secondConsumedNum;
+    log.info("Reset the prize pool first -> {}, second -> {}", firstNumToday, secondNumToday);
+  }
 
   public LotteryResult lottery(String openId){
     // 非合法用户
