@@ -51,7 +51,7 @@ public class LotteryService {
     if(result.getLastLotteryTime() != 0 && System.currentTimeMillis() < (result.getLastLotteryTime() + delayTime * 60 * 1000)){
       result.setInLotteryTime(false);
       result.setAwards(-1);
-      result.setRemainTime(System.currentTimeMillis() - result.getLastLotteryTime());
+      result.setRemainTime(result.getLastLotteryTime() + delayTime * 60 * 1000 - System.currentTimeMillis());
       return result;
     }
 
