@@ -34,17 +34,16 @@ public class LotteryService {
 
   @Scheduled(cron = "0 0 0 * * ?")
   public synchronized void resetPrizePool(){
-    this.firstNumToday += this.firstConsumedNum;
-    this.secondNumToday += this.secondConsumedNum;
     this.firstConsumedNum = 0;
     this.secondConsumedNum = 0;
+    this.resultMap.clear();
     log.info("Reset the prize pool first -> {}, second -> {}", firstNumToday, secondNumToday);
   }
 
   public LotteryResult lottery(String openId){
     // 非合法用户
     if(Strings.isNullOrEmpty(openId) || openId.equalsIgnoreCase("doubi")){
-      return LotteryResult.builder().inLotteryTime(false).awards(-1).remainTime(Long.MAX_VALUE).build();
+      return LotteryResult.builder().inLotteryTime(false).awards(-1).remainTime(delayTime * 60 * 1000).build();
     }
 
     LotteryResult result = resultMap.computeIfAbsent(openId, u -> new LotteryResult());
