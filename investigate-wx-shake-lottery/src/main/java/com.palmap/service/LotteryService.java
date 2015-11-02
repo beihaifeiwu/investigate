@@ -29,7 +29,7 @@ public class LotteryService {
   int firstConsumedNum = 0;
   int secondConsumedNum = 0;
 
-  ValueRange afternoon = ValueRange.of(LocalTime.of(9, 30).toNanoOfDay(), LocalTime.of(17, 0).toNanoOfDay());
+  ValueRange afternoon = ValueRange.of(LocalTime.of(12, 0).toNanoOfDay(), LocalTime.of(17, 0).toNanoOfDay());
   ValueRange morning = ValueRange.of(LocalTime.of(9, 30).toNanoOfDay(), LocalTime.of(12, 0).toNanoOfDay());
 
   @Scheduled(cron = "0 0 0 * * ?")
@@ -38,6 +38,13 @@ public class LotteryService {
     this.secondConsumedNum = 0;
     this.resultMap.clear();
     log.info("Reset the prize pool first -> {}, second -> {}", firstNumToday, secondNumToday);
+  }
+
+  public LotteryResult getCachedResult(String openId){
+    if(Strings.isNullOrEmpty(openId) || !resultMap.containsKey(openId)){
+      return null;
+    }
+    return resultMap.get(openId);
   }
 
   public LotteryResult lottery(String openId){
@@ -52,16 +59,12 @@ public class LotteryService {
     long now = LocalTime.now().toNanoOfDay();
     if(!afternoon.isValidValue(now) && !morning.isValidValue(now)){
       result.setInLotteryTime(false);
+      result.setAwards(-1);
       return result;
     }
 
     // 判断是否处在冷却时间
-    if(result.getLastLotteryTime() != 0 && System.currentTimeMillis() < (result.getLastLotteryTime() + delayTime * 60 * 1000)){
-      result.setInLotteryTime(false);
-      result.setAwards(-1);
-      result.setRemainTime(result.getLastLotteryTime() + delayTime * 60 * 1000 - System.currentTimeMillis());
-      return result;
-    }
+    if (judgeAndResetRemainTime(result)) return result;
 
     // 奖池已发光
     if(firstConsumedNum >= firstNumToday || secondConsumedNum >= secondNumToday){
@@ -74,26 +77,33 @@ public class LotteryService {
 
       int rand = (int) (Math.random() * 10000);
 
+      int firstLimit = (int) (first * 10000);
+      int secondLimit = (int) ((first + second) * 10000);
+
+      log.info("OpenID[{}] lottery: first [0 ~ {}], second [{} ~ {}], rand = {}", openId, firstLimit, firstLimit, secondLimit, rand);
+
       // 判断是否中了一等奖
-      if (rand > 0 && rand < first * 10000 && firstConsumedNum < firstNumToday) {
+      if (rand > 0 && rand < firstLimit && firstConsumedNum <= firstNumToday) {
 
         if(firstConsumedNum >= firstNumToday / 2 && morning.isValidValue(now)){
           result.setAwards(0);
+        } else {
+          result.setAwards(1);
+          firstConsumedNum += 1;
+          log.info("OpenID[{}] win the first prize", openId);
         }
-        result.setAwards(1);
-        firstConsumedNum += 1;
-        log.info("OpenID[{}] win the first prize", openId);
       }
 
       // 判断是否中了二等奖
-      if (rand >= first * 10000 && rand < (first + second) * 10000 && secondConsumedNum < secondNumToday) {
+      if (rand >= firstLimit && rand < secondLimit && secondConsumedNum <= secondNumToday) {
 
         if(secondConsumedNum >= secondNumToday / 2 && morning.isValidValue(now)){
           result.setAwards(0);
+        }else {
+          result.setAwards(2);
+          secondConsumedNum += 1;
+          log.info("OpenID[{}] win the second prize", openId);
         }
-        result.setAwards(2);
-        secondConsumedNum += 1;
-        log.info("OpenID[{}] win the second prize", openId);
       }
     }
 
@@ -101,5 +111,15 @@ public class LotteryService {
     result.setLastLotteryTime(System.currentTimeMillis());
 
     return result;
+  }
+
+  public boolean judgeAndResetRemainTime(LotteryResult result) {
+    if(result.getLastLotteryTime() != 0 && System.currentTimeMillis() < (result.getLastLotteryTime() + delayTime * 60 * 1000)){
+      result.setInLotteryTime(false);
+      result.setAwards(-1);
+      result.setRemainTime(result.getLastLotteryTime() + delayTime * 60 * 1000 - System.currentTimeMillis());
+      return true;
+    }
+    return false;
   }
 }

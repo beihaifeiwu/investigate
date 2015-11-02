@@ -52,6 +52,10 @@ public class LotteryController {
     String openId = wechatService.getOpenId(ticket);
     log.info("request: ticket={}, openId={}", ticket, openId);
     request.setAttribute("OpenID", openId == null ? "doubi" : openId);
+    LotteryResult result = lotteryService.getCachedResult(openId);
+    if(result != null && lotteryService.judgeAndResetRemainTime(result)){
+      request.setAttribute("RemainTime", result.getRemainTime());
+    }
     response.setContentType("text/html");
     response.setHeader("Cache-Control", "no-cache");
     return "lottery";

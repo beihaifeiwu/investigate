@@ -40,6 +40,20 @@
       },1000);
     }
 
+
+    var remainTime = /*[[${RemainTime}]]*/ 0;
+    if(remainTime){
+      count_min=Math.floor(remainTime/60000);
+      count_sec=Math.floor(remainTime/1000)-60*count_min;
+      document.getElementById("gift").style.display = "none";
+      document.getElementById("background_div").style.display = "none";
+      document.getElementById("notif2").style.display = "none";
+      document.getElementById("chou").style.display = "none";
+      document.getElementById("result2").style.display = "block";
+      restTime();
+    }
+
+
     var info;
 
     document.getElementById("chou").addEventListener("click",function(){
