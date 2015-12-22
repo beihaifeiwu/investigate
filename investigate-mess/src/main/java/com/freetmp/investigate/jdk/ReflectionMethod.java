@@ -15,10 +15,14 @@ public class ReflectionMethod {
 
   interface Say {
     String say();
+
+    default String laugh() {
+      return "O(∩_∩)O哈哈~";
+    }
   }
 
   static class Parent implements Say {
-    public String say(){
+    public String say() {
       return "I am father";
     }
   }
@@ -42,7 +46,12 @@ public class ReflectionMethod {
     Object object = Proxy.newProxyInstance(
         ReflectionMethod.class.getClassLoader(),
         new Class[]{Say.class},
-        (p, m, a) -> m.invoke(new Son(),a));
+        (p, m, a) -> {
+          System.out.println("begin---JDK dynamic proxy");
+          Object result = m.invoke(new Son(), a);
+          System.out.println("end---JDK dynamic proxy");
+          return result;
+        });
 
     System.out.println(method.invoke(object));
 
@@ -52,10 +61,22 @@ public class ReflectionMethod {
     enhancer.setCallback(new MethodInterceptor() {
       @Override
       public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
-        return proxy.invokeSuper(obj, args);
+
+        switch (method.getName()){
+          case "say":
+            System.out.println("begin---Cglib dynamic proxy");
+            Object result = proxy.invokeSuper(obj, args);
+            System.out.println("end---Cglib dynamic proxy");
+            return result;
+          case  "laugh":
+            return "\\(^o^)/~";
+        }
+        return null;
       }
     });
     object = enhancer.create();
+
+    System.out.println(((Say)object).laugh());
 
     System.out.println(method.invoke(object));
 

@@ -89,11 +89,11 @@ public class Generator {
   }
   
   private void setDefaultPushTarget(){
-    this.ip.setText("172.16.10.45");
-    this.port.setText("28085");
-    this.mapId.setText("1752");
-    this.frequency.setText("4");
-    this.floor.setText("1752");
+    this.ip.setText("172.16.10.26");
+    this.port.setText("28084");
+    this.mapId.setText("1672");
+    this.frequency.setText("1");
+    this.floor.setText("1672");
     this.mac.setText("00:50:56:C0:00:08");
     this.equipageNum.setText("5");
   }
@@ -564,9 +564,9 @@ public class Generator {
       Phone.Result.Builder builder = Phone.Result.newBuilder();
       builder.setFloorId(Integer.parseInt(target.getFloor()));
       builder.setPhoneMac(target.getMac());
-      builder.setPositionX((float)(point.x / 10 + 13523475.819851782));
-      builder.setPositionY((float)(-point.y / 10 + 3663528.8307660082));
-      builder.setScene(191);
+      builder.setPositionX((float)(point.x / 10 + 13526590.554108866));
+      builder.setPositionY((float)(-point.y / 10 + 3663423.9911114876));
+      builder.setScene(16);
       builder.setStamp(new Long(System.currentTimeMillis()).intValue());
 
       StringBuilder sb = new StringBuilder();
