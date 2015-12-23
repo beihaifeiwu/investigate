@@ -12,7 +12,6 @@
   <artifactId>investigate-kotlin</artifactId>
 
   <properties>
-    <quasar.version>0.7.2</quasar.version>
     <guava.version>18.0</guava.version>
   </properties>
 
@@ -24,26 +23,6 @@
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
       <artifactId>kotlin-reflect</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>co.paralleluniverse</groupId>
-      <artifactId>quasar-kotlin</artifactId>
-      <version>${quasar.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.jetbrains.kotlin</groupId>
-          <artifactId>kotlin-stdlib</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.jetbrains.kotlin</groupId>
-          <artifactId>kotlin-reflect</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>co.paralleluniverse</groupId>
-      <artifactId>quasar-core</artifactId>
-      <version>${quasar.version}</version>
     </dependency>
     <dependency>
       <groupId>com.google.guava</groupId>
@@ -72,7 +51,7 @@
         <!-- Import dependency management from Spring Boot -->
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-dependencies</artifactId>
-        <version>1.2.3.RELEASE</version>
+        <version>1.3.0.RELEASE</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -92,46 +71,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-      </plugin>
-<!--      <plugin>
-        <groupId>com.vlkan</groupId>
-        <artifactId>quasar-maven-plugin</artifactId>
-        <version>0.7.2</version>
-        <configuration>
-          <check>true</check>
-          <debug>true</debug>
-          <verbose>true</verbose>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>instrument</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>-->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId> <!-- Run with "mvn compile exec:exec" -->
-        <version>1.3.2</version>
-        <configuration>
-          <mainClass>testgrp.QuasarHelloWorld</mainClass>
-          <workingDirectory>target/classes</workingDirectory>
-          <executable>java</executable>
-          <arguments>
-            <!-- Turn off before production -->
-            <argument>-Dco.paralleluniverse.fibers.verifyInstrumentation=true</argument>
-
-            <!-- Quasar Agent -->
-            <argument>-javaagent:${settings.localRepository}/co/paralleluniverse/quasar-core/${quasar.version}/quasar-core-${quasar.version}.jar</argument>
-
-            <!-- Classpath -->
-            <argument>-classpath</argument> <classpath/>
-
-            <!-- Main class -->
-            <argument>com.freetmp.investigate.kotlin.actor.ActorPackage</argument>
-          </arguments>
-        </configuration>
       </plugin>
     </plugins>
   </build>
