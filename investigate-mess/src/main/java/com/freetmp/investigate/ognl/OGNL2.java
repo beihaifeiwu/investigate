@@ -1,8 +1,11 @@
 package com.freetmp.investigate.ognl;
 
+import com.google.common.collect.Maps;
 import ognl.Ognl;
 import ognl.OgnlContext;
 import ognl.OgnlException;
+
+import java.util.Map;
 
 public class OGNL2  
 {  
@@ -53,7 +56,19 @@ public class OGNL2
         catch (OgnlException e)  
         {  
             e.printStackTrace();  
-        }  
+        }
+
+      OgnlContext ognlContext = new OgnlContext();
+      Map map = Maps.newHashMap();
+      //noinspection unchecked
+      map.put("header", "hello");
+      ognlContext.put("values", map);
+      ognlContext.setRoot(map);
+      try {
+        System.out.println(Ognl.getValue("header", ognlContext, ognlContext.getRoot()));
+      } catch (OgnlException e) {
+        e.printStackTrace();
+      }
     }  
 }  
  
