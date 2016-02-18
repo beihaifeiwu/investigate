@@ -1,6 +1,8 @@
 package com.freetmp.investigate.kotlin.delegate
 
 import kotlin.properties.Delegates
+import kotlin.properties.getValue
+import kotlin.reflect.KProperty
 
 /**
  * Created by LiuPin on 2015/6/4.
@@ -32,37 +34,23 @@ fun main(args: Array<String>) {
 
 }
 
-/**
- * There's some new syntax: you can say `val 'property name': 'Type' by 'expression'`.
- * The expression after by is the delegate, because get() and set() methods
- * corresponding to the property will be delegated to it.
- * Property delegates don't have to implement any interface, but they have
- * to provide methods named get() and set() to be called.</p>
- */
 class Example {
   var p: String by Delegate()
   override fun toString() = "Example Class"
 }
 
 class Delegate() {
-  fun get(thisRef: Any?, prop: PropertyMetadata): String {
+  operator fun getValue(thisRef: Any?, prop: KProperty<*>): String {
     return "$thisRef, thank you for delegating '${prop.name}' to me!"
   }
 
-  fun set(thisRef: Any?, prop: PropertyMetadata, value: String) {
+  operator fun setValue(thisRef: Any?, prop: KProperty<*>, value: String) {
     println("$value has been assigned to ${prop.name} in $thisRef")
   }
 }
 
-/**
- * Delegates.lazy() is a function that returns a delegate that implements a lazy property:
- * the first call to get() executes the lambda expression passed to lazy() as an argument
- * and remembers the result, subsequent calls to get() simply return the remembered result.
- * If you want thread safety, use blockingLazy() instead: it guarantees that the values will
- * be computed only in one thread, and that all threads will see the same value.
- */
 class LazyExample {
-  val lazy: String by Delegates.lazy { println("computed");"my lazy" }
+  val lazy: String by lazy { println("computed");"my lazy" }
 }
 
 /**
@@ -100,6 +88,6 @@ class Human {
  * that will modify the map upon assignment (note that you'd need MutableMap instead of read-only Map).
  */
 class Female(val map: Map<String, Any?>) {
-  val name: String by Delegates.mapVal(map)
-  val age: Int by Delegates.mapVal(map)
+  val name: String by map
+  val age: Int by map
 }
