@@ -5,13 +5,14 @@ import grade.entity.GradeRecord;
 import grade.service.ServiceFactory;
 
 import java.io.File;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleApplication {
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws SQLException {
     System.out.println("** Starting Grade Manager...");
     Scanner scanner = new Scanner(System.in);
 
@@ -42,12 +43,12 @@ public class ConsoleApplication {
     }
   }
 
-  static void list(Scanner scanner){
+  static void list(Scanner scanner) throws SQLException {
     List<GradeRecord> records = ServiceFactory.getRecordService().list();
     printResult(records);
   }
 
-  static void save(Scanner scanner){
+  static void save(Scanner scanner) throws SQLException {
     System.out.print(" name: ");
     String name = scanner.next();
     System.out.print(" grade: ");
@@ -61,7 +62,7 @@ public class ConsoleApplication {
     System.out.println("save grade " + gradeRecord);
   }
 
-  static void update(Scanner scanner){
+  static void update(Scanner scanner) throws SQLException {
     System.out.print(" input grade id: ");
     Integer id = scanner.nextInt();
     GradeRecord record = ServiceFactory.getRecordService().load(id);
@@ -89,7 +90,7 @@ public class ConsoleApplication {
     System.out.println("update grade " + record);
   }
 
-  static void delete(Scanner scanner){
+  static void delete(Scanner scanner) throws SQLException {
     System.out.print(" input grade id: ");
     Integer id = scanner.nextInt();
     GradeRecord record = ServiceFactory.getRecordService().load(id);
@@ -101,14 +102,14 @@ public class ConsoleApplication {
     System.out.println("delete grade " + record);
   }
 
-  static void query(Scanner scanner){
+  static void query(Scanner scanner) throws SQLException {
     System.out.print("  input name literal: ");
     String name = scanner.next();
     List<GradeRecord> records = ServiceFactory.getRecordService().queryByNameLike(name);
     printResult(records);
   }
 
-  static void export(Scanner scanner){
+  static void export(Scanner scanner) throws SQLException {
     System.out.print(" input stored path: ");
     String path = scanner.next();
     File file = new File(path);

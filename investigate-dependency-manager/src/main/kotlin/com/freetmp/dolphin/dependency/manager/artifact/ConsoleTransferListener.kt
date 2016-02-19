@@ -1,9 +1,6 @@
 package com.freetmp.dolphin.dependency.manager.artifact
 
-import org.eclipse.aether.transfer.AbstractTransferListener
-import org.eclipse.aether.transfer.MetadataNotFoundException
-import org.eclipse.aether.transfer.TransferEvent
-import org.eclipse.aether.transfer.TransferResource
+import org.eclipse.aether.transfer.*
 import java.io.PrintStream
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
@@ -13,24 +10,24 @@ import java.util.concurrent.ConcurrentHashMap
 /**
  * Created by LiuPin on 2015/6/9.
  */
-public class ConsoleTransferListener(var out: PrintStream = System.out) : AbstractTransferListener() {
+class ConsoleTransferListener(var out: PrintStream = System.out) : AbstractTransferListener() {
 
   val downloads = ConcurrentHashMap<TransferResource, Long>()
   var lastLength: Int = 0
 
   override fun transferInitiated(event: TransferEvent?) {
-    val message = if (event!!.getRequestType() == TransferEvent.RequestType.PUT) "Uploading" else "Downloading"
-    out.println("$message: ${event.getResource()?.getRepositoryUrl()}${event.getResource()?.getResourceName()}")
+    val message = if (event!!.requestType == TransferEvent.RequestType.PUT) "Uploading" else "Downloading"
+    out.println("$message: ${event.resource?.repositoryUrl}${event.resource?.resourceName}")
   }
 
   override fun transferProgressed(event: TransferEvent?) {
-    val resource = event!!.getResource()
-    downloads.put(resource, event.getTransferredBytes())
-    val sb = StringBuilder {
+    val resource = event!!.resource
+    downloads.put(resource, event.transferredBytes)
+    val sb = buildString {
       for ((key, value) in downloads)
-        append("${getStatus(key.getContentLength(), value)}  ")
+        append("${getStatus(key.contentLength, value)}  ")
 
-      pad(lastLength - length())
+      pad(lastLength - length)
       append('\r')
     }
     out.print(sb)
@@ -42,34 +39,34 @@ public class ConsoleTransferListener(var out: PrintStream = System.out) : Abstra
 
   override fun transferFailed(event: TransferEvent?) {
     transferCompleted(event!!)
-    if ( event.getException() is MetadataNotFoundException)
-      event.getException().printStackTrace(out)
+    if ( event.exception is MetadataNotFoundException)
+      event.exception.printStackTrace(out)
   }
 
   override fun transferCorrupted(event: TransferEvent?) {
-    event?.getException()?.printStackTrace()
+    event?.exception?.printStackTrace()
   }
 
   override fun transferSucceeded(event: TransferEvent?) {
     transferCompleted(event!!)
-    val resource = event.getResource()
-    val contentLength = event.getTransferredBytes()
+    val resource = event.resource
+    val contentLength = event.transferredBytes
     if (contentLength >= 0) {
-      val type = if (event.getRequestType() == TransferEvent.RequestType.PUT) "Uploaded" else "Downloaded"
+      val type = if (event.requestType == TransferEvent.RequestType.PUT) "Uploaded" else "Downloaded"
       val len = if (contentLength >= 1024) "${toKB(contentLength)} KB" else "$contentLength B}"
       var throughput = ""
-      val duration = System.currentTimeMillis() - resource.getTransferStartTime()
+      val duration = System.currentTimeMillis() - resource.transferStartTime
       if (duration > 0) {
-        val kbPerSec = ((contentLength - resource.getResumeOffset()) / 1024.0) / (duration / 1000.0)
+        val kbPerSec = ((contentLength - resource.resumeOffset) / 1024.0) / (duration / 1000.0)
         throughput = " at ${DecimalFormat("0.0", DecimalFormatSymbols(Locale.ENGLISH)).format(kbPerSec)} KB/sec"
       }
-      out.println("$type: ${resource.getRepositoryUrl()}${resource.getResourceName()} ($len$throughput)")
+      out.println("$type: ${resource.repositoryUrl}${resource.resourceName} ($len$throughput)")
     }
   }
 
   fun transferCompleted(event: TransferEvent) {
-    downloads.remove(event.getResource())
-    out.print(StringBuilder {
+    downloads.remove(event.resource)
+    out.print(buildString {
       pad(lastLength)
       append('\r')
     })
@@ -79,7 +76,7 @@ public class ConsoleTransferListener(var out: PrintStream = System.out) : Abstra
     var block = "                                        "
     var mutable = spaces
     while ( mutable > 0) {
-      val n = Math.min(spaces, block.length())
+      val n = Math.min(spaces, block.length)
       append(block, 0, n)
       mutable -= n
     }

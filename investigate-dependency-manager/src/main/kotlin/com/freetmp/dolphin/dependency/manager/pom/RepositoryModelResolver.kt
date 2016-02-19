@@ -15,7 +15,7 @@ import java.net.URL
 /**
  * Created by LiuPin on 2015/6/8.
  */
-public class RepositoryModelResolver(val config: Configuration) : ModelResolver {
+class RepositoryModelResolver(val config: Configuration) : ModelResolver {
 
   val repositories = arrayListOf<Repository>()
   val localRepo = File(config.localRepo)
@@ -33,17 +33,17 @@ public class RepositoryModelResolver(val config: Configuration) : ModelResolver 
 
   fun download(pom: File) {
     for (repository in repositories) {
-      var urlStr = repository.getUrl()
-      urlStr = if (urlStr.endsWith("/")) urlStr.substring(0, urlStr.length() - 1) else urlStr
-      val url = URL(urlStr + pom.getAbsolutePath().substring(this.localRepo.getAbsolutePath().length()).replace("\\", "/"))
+      var urlStr = repository.url
+      urlStr = if (urlStr.endsWith("/")) urlStr.substring(0, urlStr.length - 1) else urlStr
+      val url = URL(urlStr + pom.absolutePath.substring(this.localRepo.absolutePath.length).replace("\\", "/"))
 
       println("Downloading $url")
 
       try {
         val conn = url.openConnection() as HttpURLConnection
-        conn.setInstanceFollowRedirects(true)
-        pom.getParentFile().mkdirs()
-        conn.getInputStream().use { input -> pom.outputStream().use { output -> input.copyTo(output) } }
+        conn.instanceFollowRedirects = true
+        pom.parentFile.mkdirs()
+        conn.inputStream.use { input -> pom.outputStream().use { output -> input.copyTo(output) } }
         return
       } catch(e: Exception) {
         println("Failed to download $url")
@@ -62,21 +62,21 @@ public class RepositoryModelResolver(val config: Configuration) : ModelResolver 
   }
 
   override fun resolveModel(parent: Parent?): ModelSource2? {
-    return resolveModel(parent!!.getGroupId(), parent.getArtifactId(), parent.getVersion())
+    return resolveModel(parent!!.groupId, parent.artifactId, parent.version)
   }
 
-  override fun addRepository(repository: Repository?) {
-    if (repositories.any { it.getId() == repository!!.getId() }) else repositories.add(repository)
+  override fun addRepository(repository: Repository) {
+    if (repositories.any { it.id == repository.id }) else repositories.add(repository)
   }
 
-  override fun addRepository(repository: Repository?, replace: Boolean) {
+  override fun addRepository(repository: Repository, replace: Boolean) {
 
-    var index = repositories.indexOfFirst { it.getId() == repository!!.getId() }
+    var index = repositories.indexOfFirst { it.id == repository.id }
     if (index == -1) {
-      repositories.add(repository)
+      repositories += repository
     } else {
-      repositories.remove(index)
-      if (index == repositories.size()) repositories.add(repository) else repositories.add(index, repository)
+      repositories.removeAt(index)
+      if (index == repositories.size) repositories.add(repository) else repositories.add(index, repository)
     }
 
   }

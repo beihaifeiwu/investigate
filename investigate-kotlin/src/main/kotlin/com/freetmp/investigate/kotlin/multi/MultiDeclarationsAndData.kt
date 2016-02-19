@@ -46,11 +46,11 @@ fun main(args: Array<String>) {
  * See http://kotlinlang.org/docs/reference/multi-declarations.html#multi-declarations
  */
 class Pair<K, V>(val first: K, val second: V) {
-  fun component1(): K {
+  operator fun component1(): K {
     return first
   }
 
-  fun component2(): V {
+  operator fun component2(): V {
     return second
   }
 }

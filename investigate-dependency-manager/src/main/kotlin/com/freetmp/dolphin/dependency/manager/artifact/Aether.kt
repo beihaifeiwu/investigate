@@ -1,12 +1,8 @@
 package com.freetmp.dolphin.dependency.manager.artifact
 
-import com.freetmp.dolphin.dependency.manager.config.Configuration
-import com.freetmp.dolphin.dependency.manager.config.fillDeployRepoTo
-import com.freetmp.dolphin.dependency.manager.config.fillReposTo
+import com.freetmp.dolphin.dependency.manager.config.*
 import org.apache.maven.repository.internal.MavenRepositorySystemUtils
-import org.eclipse.aether.DefaultRepositorySystemSession
-import org.eclipse.aether.RepositorySystem
-import org.eclipse.aether.RepositorySystemSession
+import org.eclipse.aether.*
 import org.eclipse.aether.artifact.Artifact
 import org.eclipse.aether.artifact.DefaultArtifact
 import org.eclipse.aether.collection.CollectRequest
@@ -16,9 +12,7 @@ import org.eclipse.aether.graph.Dependency
 import org.eclipse.aether.graph.DependencyNode
 import org.eclipse.aether.impl.DefaultServiceLocator
 import org.eclipse.aether.installation.InstallRequest
-import org.eclipse.aether.repository.Authentication
 import org.eclipse.aether.repository.LocalRepository
-import org.eclipse.aether.repository.RemoteRepository
 import org.eclipse.aether.resolution.*
 import org.eclipse.aether.spi.connector.RepositoryConnectorFactory
 import org.eclipse.aether.spi.connector.transport.TransporterFactory
@@ -29,20 +23,16 @@ import org.eclipse.aether.util.filter.DependencyFilterUtils
 import org.eclipse.aether.util.graph.manager.DependencyManagerUtils
 import org.eclipse.aether.util.graph.transformer.ConflictResolver
 import org.eclipse.aether.util.graph.visitor.PreorderNodeListGenerator
-import org.eclipse.aether.util.repository.AuthenticationBuilder
-import org.eclipse.aether.version.Version
-import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.PrintStream
+import java.io.*
 
 /**
  * Created by LiuPin on 2015/6/9.
  */
 fun newRepositorySystem(): RepositorySystem {
   val locator: DefaultServiceLocator = MavenRepositorySystemUtils.newServiceLocator()
-  locator.addService(javaClass<RepositoryConnectorFactory>(), javaClass<BasicRepositoryConnectorFactory>())
-  locator.addService(javaClass<TransporterFactory>(), javaClass<FileTransporterFactory>())
-  locator.addService(javaClass<TransporterFactory>(), javaClass<HttpTransporterFactory>())
+  locator.addService(RepositoryConnectorFactory::class.java, BasicRepositoryConnectorFactory::class.java)
+  locator.addService(TransporterFactory::class.java, FileTransporterFactory::class.java)
+  locator.addService(TransporterFactory::class.java, HttpTransporterFactory::class.java)
 
   locator.setErrorHandler(object : DefaultServiceLocator.ErrorHandler() {
     override fun serviceCreationFailed(type: Class<*>?, impl: Class<*>?, exception: Throwable?) {
@@ -50,16 +40,16 @@ fun newRepositorySystem(): RepositorySystem {
     }
   })
 
-  return locator.getService(javaClass<RepositorySystem>())
+  return locator.getService(RepositorySystem::class.java)
 }
 
 fun newRepositorySystemSession(system: RepositorySystem, config: Configuration): DefaultRepositorySystemSession {
   val session = MavenRepositorySystemUtils.newSession()
   val localRepo = LocalRepository(config.localRepo)
-  session.setLocalRepositoryManager(system.newLocalRepositoryManager(session, localRepo))
+  session.localRepositoryManager = system.newLocalRepositoryManager(session, localRepo)
 
-  session.setTransferListener(ConsoleTransferListener())
-  session.setRepositoryListener(ConsoleRepositoryListener())
+  session.transferListener = ConsoleTransferListener()
+  session.repositoryListener = ConsoleRepositoryListener()
   return session
 }
 
@@ -86,27 +76,27 @@ fun resolve(full: String, config: Configuration): ResolveResult {
     val dependency = Dependency(artifact, JavaScopes.RUNTIME)
 
     val collectRequest = CollectRequest()
-    collectRequest.setRoot(dependency)
+    collectRequest.root = dependency
     config.fillReposTo { collectRequest.addRepository(it) }
 
     val dependencyRequest = DependencyRequest()
-    dependencyRequest.setCollectRequest(collectRequest)
-    val rootNode = system.resolveDependencies(session, dependencyRequest).getRoot()
+    dependencyRequest.collectRequest = collectRequest
+    val rootNode = system.resolveDependencies(session, dependencyRequest).root
     val nlg = PreorderNodeListGenerator()
     rootNode.accept(nlg)
 
-    return ResolveResult(rootNode, nlg.getFiles(), nlg.getClassPath())
+    return ResolveResult(rootNode, nlg.files, nlg.classPath)
   }
 }
 
 fun resolveArtifact(full: String, config: Configuration): Artifact {
   return template(full, config) { system, session, artifact ->
     val request = ArtifactRequest()
-    request.setArtifact(artifact)
+    request.artifact = artifact
     config.fillReposTo { request.addRepository(it) }
 
     val artifactResult = system.resolveArtifact(session, request)
-    artifactResult.getArtifact()
+    artifactResult.artifact
   }
 
 }
@@ -115,10 +105,10 @@ fun resolveTransitiveDependencies(full: String, config: Configuration): List<Art
   return template(full, config) { system, session, artifact ->
     val filter = DependencyFilterUtils.classpathFilter(JavaScopes.COMPILE)
     val collectRequest = CollectRequest()
-    collectRequest.setRoot(Dependency(artifact, JavaScopes.COMPILE))
+    collectRequest.root = Dependency(artifact, JavaScopes.COMPILE)
     config.fillReposTo { collectRequest.addRepository(it) }
     val dependencyRequest = DependencyRequest(collectRequest, filter)
-    system.resolveDependencies(session, dependencyRequest).getArtifactResults().map { it.getArtifact() }
+    system.resolveDependencies(session, dependencyRequest).artifactResults.map { it.artifact }
   }
 }
 
@@ -128,19 +118,18 @@ fun getDependencyHierarchy(full: String, config: Configuration): String {
     session.setConfigProperty(DependencyManagerUtils.CONFIG_PROP_VERBOSE, true)
 
     val adr = ArtifactDescriptorRequest()
-    adr.setArtifact(artifact)
+    adr.artifact = artifact
     config.fillReposTo { adr.addRepository(it) }
     val adResult = system.readArtifactDescriptor(session, adr)
 
     val collectRequest = CollectRequest()
-    collectRequest.setRootArtifact(adResult.getArtifact()).setDependencies(adResult.getDependencies())
-        .setManagedDependencies(adResult.getManagedDependencies())
-        .setRepositories(adResult.getRepositories())
+    collectRequest.setRootArtifact(adResult.artifact).setDependencies(adResult.dependencies)
+        .setManagedDependencies(adResult.managedDependencies).repositories = adResult.repositories
 
     val collectResult = system.collectDependencies(session, collectRequest)
 
     val out = ByteArrayOutputStream()
-    collectResult.getRoot().accept(ConsoleDependencyGraphDumper(PrintStream(out)))
+    collectResult.root.accept(ConsoleDependencyGraphDumper(PrintStream(out)))
     out.toString()
   }
 }
@@ -148,11 +137,11 @@ fun getDependencyHierarchy(full: String, config: Configuration): String {
 fun getDependencyTree(full: String, config: Configuration): String {
   return template(full,config){ system, session, artifact ->
     val collectRequest = CollectRequest()
-    collectRequest.setRoot(Dependency(artifact,""))
+    collectRequest.root = Dependency(artifact,"")
     config.fillReposTo { collectRequest.addRepository(it) }
     val collectResult = system.collectDependencies(session, collectRequest)
     val out = ByteArrayOutputStream()
-    collectResult.getRoot().accept(ConsoleDependencyGraphDumper(PrintStream(out)))
+    collectResult.root.accept(ConsoleDependencyGraphDumper(PrintStream(out)))
     out.toString()
   }
 }
@@ -170,7 +159,7 @@ fun deploy(artifact: Artifact, pom: Artifact, config: Configuration) {
   template(config) { system, session ->
     val deployRequest = DeployRequest()
     deployRequest.addArtifact(artifact).addArtifact(pom)
-    config.fillDeployRepoTo { deployRequest.setRepository(it) }
+    config.fillDeployRepoTo { deployRequest.repository = it }
     system.deploy(session, deployRequest)
   }
 }
@@ -178,7 +167,7 @@ fun deploy(artifact: Artifact, pom: Artifact, config: Configuration) {
 fun availableVersions(groupId: String, artifactId: String, config: Configuration): VersionRangeResult {
   return template("$groupId:$artifactId:[0,)", config) { system, session, artifact ->
     val vrr = VersionRangeRequest()
-    vrr.setArtifact(artifact)
+    vrr.artifact = artifact
     config.fillReposTo { vrr.addRepository(it) }
     system.resolveVersionRange(session, vrr)
   }

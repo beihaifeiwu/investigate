@@ -21,29 +21,29 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 @Path("/login")
 public class AuthenticationResource {
 
-    @Autowired
-    QueryDSL dsl;
+  @Autowired
+  QueryDSL dsl;
 
-    @GET
-    @Transactional(readOnly = true)
-    @Produces(APPLICATION_JSON)
-    public UradioPlanarGraph login(@QueryParam("username") String username,
-                         @QueryParam("password") String password){
+  @GET
+  @Transactional(readOnly = true)
+  @Produces(APPLICATION_JSON)
+  public UradioPlanarGraph login(@QueryParam("username") String username,
+                                 @QueryParam("password") String password) {
 
-        if(!StringUtils.isEmpty(username) && !StringUtils.isEmpty(password)){
-            QUradioPlanarGraph uradioPlanarGraph = QUradioPlanarGraph.uradioPlanarGraph;
-            UradioPlanarGraph found;
-            try {
-                found = dsl.query().from(uradioPlanarGraph)
-                        .where(uradioPlanarGraph.id.eq(username.toUpperCase()+password))
-                        .uniqueResult(uradioPlanarGraph);
-            } finally {
-                dsl.release();
-            }
+    if (!StringUtils.isEmpty(username) && !StringUtils.isEmpty(password)) {
+      QUradioPlanarGraph uradioPlanarGraph = QUradioPlanarGraph.uradioPlanarGraph;
+      UradioPlanarGraph found;
+      try {
+        found = dsl.query().from(uradioPlanarGraph)
+            .where(uradioPlanarGraph.id.eq(username.toUpperCase() + password))
+            .uniqueResult(uradioPlanarGraph);
+      } finally {
+        dsl.release();
+      }
 
-            if(found != null) return found;
-        }
-
-        return null;
+      if (found != null) return found;
     }
+
+    return null;
+  }
 }
