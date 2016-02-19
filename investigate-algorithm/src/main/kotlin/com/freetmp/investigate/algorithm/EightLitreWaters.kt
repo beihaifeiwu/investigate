@@ -1,12 +1,11 @@
 package com.freetmp.investigate.algorithm
 
 import java.util.*
-import kotlin.platform.platformStatic
 
 /**
  * Created by pin on 2015/6/27.
  */
-public class EightLitreWaters {
+class EightLitreWaters {
   data class BucketState(val buckets: Array<Int> = arrayOf(8, 0, 0), val lastAction: Action? = null)
   data class Action(val from: Int, val to: Int, val water: Int)
 
@@ -24,7 +23,7 @@ public class EightLitreWaters {
     if (curState.buckets[0] == 4 && curState.buckets[1] == 4 && curState.buckets[2] == 0) {
       val solution = stack.toStringPresentation()
       if (!solutions.contains(solution)) {
-        println("${++count}. ${solution}")
+        println("${++count}. $solution")
         solutions.add(solution)
       }
       return
@@ -57,19 +56,21 @@ public class EightLitreWaters {
     stack.pop()
   }
 
-  fun Array<Int>.equalsEachElement(other: Array<Int>): Boolean {
+  infix fun Array<Int>.equalsEachElement(other: Array<Int>): Boolean {
     forEachIndexed { index, value ->
       if (value != other[index]) return@equalsEachElement false
     }
     return true
   }
 
-  fun Stack<BucketState>.toStringPresentation(): String = StringBuilder {
-      forEach { if (it.lastAction != null) append("(${capacities[it.lastAction.from - 1]},${capacities[it.lastAction.to - 1]},${it.lastAction.water})") }
-    }.toString()
+  fun Stack<BucketState>.toStringPresentation(): String = buildString {
+    this@toStringPresentation.forEach {
+      if (it.lastAction != null) append("(${capacities[it.lastAction.from - 1]},${capacities[it.lastAction.to - 1]},${it.lastAction.water})")
+    }
+  }
 
   companion object {
-    platformStatic fun main(args: Array<String>) {
+    @JvmStatic fun main(args: Array<String>) {
       EightLitreWaters().searchOnState()
     }
   }

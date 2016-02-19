@@ -13,6 +13,7 @@
 
   <properties>
     <guava.version>18.0</guava.version>
+    <quasar.version>0.7.4</quasar.version>
   </properties>
 
   <dependencies>

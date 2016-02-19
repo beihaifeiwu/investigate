@@ -1,12 +1,11 @@
 package com.freetmp.investigate.algorithm
 
 import java.util.*
-import kotlin.platform.platformStatic
 
 /**
  * Created by pin on 2015/6/28.
  */
-public class MonksAndMonsters {
+class MonksAndMonsters {
   enum class BoatPos { LOCAL, REMOTE }
   data class ItemState(val localMonk: Int = 3, val localMonster: Int = 3,
                        val remoteMonk: Int = 0, val remoteMonster: Int = 0,
@@ -28,18 +27,18 @@ public class MonksAndMonsters {
   var count = 0
 
   init {
-    actions add Action(ActionName.ONE_MONSTER_GO, BoatPos.REMOTE, 0, 1)
-    actions add Action(ActionName.TWO_MONSTER_GO, BoatPos.REMOTE, 0, 2)
-    actions add Action(ActionName.ONE_MONK_GO, BoatPos.REMOTE, 1, 0)
-    actions add Action(ActionName.TWO_MONK_GO, BoatPos.REMOTE, 2, 0)
-    actions add Action(ActionName.ONE_MONSTER_ONE_MONK_GO, BoatPos.REMOTE, 1, 1)
-    actions add Action(ActionName.ONE_MONSTER_BACK, BoatPos.LOCAL, 0, -1)
-    actions add Action(ActionName.TWO_MONSTER_BACK, BoatPos.LOCAL, 0, -2)
-    actions add Action(ActionName.ONE_MONK_BACK, BoatPos.LOCAL, -1, 0)
-    actions add Action(ActionName.TWO_MONK_BACK, BoatPos.LOCAL, -2, 0)
-    actions add Action(ActionName.ONE_MONSTER_ONE_MONK_BACK, BoatPos.LOCAL, -1, -1)
+    actions += Action(ActionName.ONE_MONSTER_GO, BoatPos.REMOTE, 0, 1)
+    actions += Action(ActionName.TWO_MONSTER_GO, BoatPos.REMOTE, 0, 2)
+    actions += Action(ActionName.ONE_MONK_GO, BoatPos.REMOTE, 1, 0)
+    actions += Action(ActionName.TWO_MONK_GO, BoatPos.REMOTE, 2, 0)
+    actions += Action(ActionName.ONE_MONSTER_ONE_MONK_GO, BoatPos.REMOTE, 1, 1)
+    actions += Action(ActionName.ONE_MONSTER_BACK, BoatPos.LOCAL, 0, -1)
+    actions += Action(ActionName.TWO_MONSTER_BACK, BoatPos.LOCAL, 0, -2)
+    actions += Action(ActionName.ONE_MONK_BACK, BoatPos.LOCAL, -1, 0)
+    actions += Action(ActionName.TWO_MONK_BACK, BoatPos.LOCAL, -2, 0)
+    actions += Action(ActionName.ONE_MONSTER_ONE_MONK_BACK, BoatPos.LOCAL, -1, -1)
 
-    stack push ItemState()
+    stack.push(ItemState())
   }
 
   fun ItemState.canTake(action: Action): Boolean {
@@ -84,7 +83,7 @@ public class MonksAndMonsters {
   }
 
   companion object {
-    platformStatic fun main(args: Array<String>) {
+    @JvmStatic fun main(args: Array<String>) {
       MonksAndMonsters().searchState()
     }
   }
