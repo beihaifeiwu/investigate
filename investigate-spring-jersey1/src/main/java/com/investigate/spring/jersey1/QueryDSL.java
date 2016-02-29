@@ -20,27 +20,27 @@ import java.sql.SQLException;
 @Component
 public class QueryDSL {
 
-    private static final Logger LOG = LoggerFactory.getLogger(QueryDSL.class);
+  private static final Logger LOG = LoggerFactory.getLogger(QueryDSL.class);
 
-    @Autowired
-    DataSource dataSource;
+  @Autowired
+  DataSource dataSource;
 
-    ConnectionHolder connectionHolder;
+  ConnectionHolder connectionHolder;
 
-    public SQLQuery query() {
-        Connection connection = DataSourceUtils.getConnection(dataSource);
-        connectionHolder = new ConnectionHolder(connection);
-        SQLTemplates templates = new MySQLTemplates();
-        return new SQLQuery(connection,templates);
+  public SQLQuery query() {
+    Connection connection = DataSourceUtils.getConnection(dataSource);
+    connectionHolder = new ConnectionHolder(connection);
+    SQLTemplates templates = new MySQLTemplates();
+    return new SQLQuery(connection, templates);
+  }
+
+  public void release() {
+    if (connectionHolder == null) return;
+    Connection connection = connectionHolder.getConnection();
+    try {
+      DataSourceUtils.doReleaseConnection(connection, dataSource);
+    } catch (SQLException e) {
+      LOG.warn("cannot release connection", e);
     }
-
-    public void release(){
-        if(connectionHolder == null) return;
-        Connection connection = connectionHolder.getConnection();
-        try {
-            DataSourceUtils.doReleaseConnection(connection, dataSource);
-        } catch (SQLException e) {
-            LOG.warn("cannot release connection",e);
-        }
-    }
+  }
 }

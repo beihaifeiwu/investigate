@@ -7,80 +7,80 @@ import java.io.PrintStream
 /**
  * Created by LiuPin on 2015/6/10.
  */
-public class ConsoleRepositoryListener(val out: PrintStream = System.out) : AbstractRepositoryListener() {
+class ConsoleRepositoryListener(val out: PrintStream = System.out) : AbstractRepositoryListener() {
   override fun artifactDeployed(event: RepositoryEvent?) {
-    out.println("Deployed ${event!!.getArtifact()} to ${event.getRepository()}")
+    out.println("Deployed ${event!!.artifact} to ${event.repository}")
   }
 
   override fun artifactDeploying(event: RepositoryEvent?) {
-    out.println("Deploying ${event!!.getArtifact()} to ${event.getRepository()}")
+    out.println("Deploying ${event!!.artifact} to ${event.repository}")
   }
 
   override fun artifactDescriptorInvalid(event: RepositoryEvent?) {
-    out.println("Invalid artifact descriptor for ${event!!.getArtifact()}: ${event.getException().getMessage()}")
+    out.println("Invalid artifact descriptor for ${event!!.artifact}: ${event.exception.message}")
   }
 
   override fun artifactDescriptorMissing(event: RepositoryEvent?) {
-    out.println("Missing artifact descriptor for ${event!!.getArtifact()}")
+    out.println("Missing artifact descriptor for ${event!!.artifact}")
   }
 
   override fun artifactInstalled(event: RepositoryEvent?) {
-    out.println("Installed ${event!!.getArtifact()} to ${event.getFile()}")
+    out.println("Installed ${event!!.artifact} to ${event.file}")
   }
 
   override fun artifactInstalling(event: RepositoryEvent?) {
-    out.println("Installing ${event!!.getArtifact()} to ${event.getFile()}")
+    out.println("Installing ${event!!.artifact} to ${event.file}")
   }
 
   override fun artifactDownloading(event: RepositoryEvent?) {
-    out.println("Downloading artifact ${event!!.getArtifact()} from ${event.getRepository()}")
+    out.println("Downloading artifact ${event!!.artifact} from ${event.repository}")
   }
 
   override fun artifactResolved(event: RepositoryEvent?) {
-    out.println("Resolved artifact ${event!!.getArtifact()} from ${event.getRepository()}")
+    out.println("Resolved artifact ${event!!.artifact} from ${event.repository}")
   }
 
   override fun artifactDownloaded(event: RepositoryEvent?) {
-    out.println("Downloaded artifact ${event!!.getArtifact()} from ${event.getRepository()}")
+    out.println("Downloaded artifact ${event!!.artifact} from ${event.repository}")
   }
 
   override fun artifactResolving(event: RepositoryEvent?) {
-    out.println("Resolving artifact ${event!!.getArtifact()}")
+    out.println("Resolving artifact ${event!!.artifact}")
   }
 
   override fun metadataResolving(event: RepositoryEvent?) {
-    out.println("Resolving metadata ${event!!.getMetadata()}")
+    out.println("Resolving metadata ${event!!.metadata}")
   }
 
   override fun metadataInstalled(event: RepositoryEvent?) {
-    out.println("Installed metadata ${event!!.getMetadata()} to ${event.getFile()}")
+    out.println("Installed metadata ${event!!.metadata} to ${event.file}")
   }
 
   override fun metadataDownloaded(event: RepositoryEvent?) {
-    out.println("Downloaded metadata ${event!!.getMetadata()} from ${event.getRepository()}")
+    out.println("Downloaded metadata ${event!!.metadata} from ${event.repository}")
   }
 
   override fun metadataDownloading(event: RepositoryEvent?) {
-    out.println("Downloading metadata ${event!!.getMetadata()} from ${event.getRepository()}")
+    out.println("Downloading metadata ${event!!.metadata} from ${event.repository}")
   }
 
   override fun metadataInstalling(event: RepositoryEvent?) {
-    out.println("Installing metadata ${event!!.getMetadata()} to ${event.getFile()}")
+    out.println("Installing metadata ${event!!.metadata} to ${event.file}")
   }
 
   override fun metadataInvalid(event: RepositoryEvent?) {
-    out.println("Invalid metadata ${event!!.getMetadata()}")
+    out.println("Invalid metadata ${event!!.metadata}")
   }
 
   override fun metadataDeployed(event: RepositoryEvent?) {
-    out.println("Deployed metadata ${event!!.getMetadata()} to ${event.getRepository()}")
+    out.println("Deployed metadata ${event!!.metadata} to ${event.repository}")
   }
 
   override fun metadataResolved(event: RepositoryEvent?) {
-    out.println("Resolved metadata ${event!!.getMetadata()} from ${event.getRepository()}")
+    out.println("Resolved metadata ${event!!.metadata} from ${event.repository}")
   }
 
   override fun metadataDeploying(event: RepositoryEvent?) {
-    out.println("Resolving metadata ${event!!.getMetadata()} from ${event.getRepository()}")
+    out.println("Resolving metadata ${event!!.metadata} from ${event.repository}")
   }
 }

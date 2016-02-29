@@ -1,7 +1,6 @@
 package com.freetmp.investigate.kotlin.delegate
 
 import kotlin.properties.Delegates
-import kotlin.properties.getValue
 import kotlin.reflect.KProperty
 
 /**

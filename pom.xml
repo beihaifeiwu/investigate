@@ -21,7 +21,7 @@
     <postgresql.version>9.3-1102-jdbc41</postgresql.version>
 
     <assertj-core.version>3.0.0</assertj-core.version>
-    <kotlin.version> 1.0.0-beta-3595</kotlin.version>
+    <kotlin.version>1.0.0</kotlin.version>
   </properties>
 
   <modules>
@@ -53,6 +53,7 @@
     <module>investigate-statemachine</module>
     <module>investigate-geotools</module>
     <module>investigate-wx-shake-lottery</module>
+    <module>investigate-jython</module>
   </modules>
 
   <dependencies>

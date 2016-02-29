@@ -19,8 +19,8 @@ fun main(args: Array<String>) {
   keyGenerator.initialize(1024)
 
   val kp = keyGenerator.genKeyPair()
-  val publicKey = kp.getPublic() as RSAPublicKey
-  val privateKey = kp.getPrivate() as RSAPrivateKey
+  val publicKey = kp.public as RSAPublicKey
+  val privateKey = kp.private as RSAPrivateKey
 
   val signer = RSASSASigner(privateKey)
 
@@ -28,7 +28,7 @@ fun main(args: Array<String>) {
       .Builder()
       .subject("alice")
       .issuer("https://c2id.com")
-      .expirationTime(Date(Date().getTime() + 60 * 1000))
+      .expirationTime(Date(Date().time + 60 * 1000))
       .build()
 
   var singedJWT = SignedJWT(JWSHeader(JWSAlgorithm.RS256), claimsSet)
@@ -43,7 +43,7 @@ fun main(args: Array<String>) {
   val verifier = RSASSAVerifier(publicKey)
   assert(singedJWT.verify(verifier))
 
-  assert("alice" == singedJWT.getJWTClaimsSet().getSubject())
-  assert("https://c2id.com" == singedJWT.getJWTClaimsSet().getIssuer())
-  assert(Date().before(singedJWT.getJWTClaimsSet().getExpirationTime()))
+  assert("alice" == singedJWT.jwtClaimsSet.subject)
+  assert("https://c2id.com" == singedJWT.jwtClaimsSet.issuer)
+  assert(Date().before(singedJWT.jwtClaimsSet.expirationTime))
 }

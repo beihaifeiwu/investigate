@@ -1,15 +1,13 @@
 package com.freetmp.dolphin.dependency.manager.config
 
-import org.apache.maven.artifact.repository.Authentication
 import org.apache.maven.model.Repository
 import org.eclipse.aether.repository.RemoteRepository
 import org.eclipse.aether.util.repository.AuthenticationBuilder
-import kotlin.platform.platformName
 
 /**
  * Created by LiuPin on 2015/6/9.
  */
-public class Configuration(var localRepo: String = Configuration.localRepo,
+class Configuration(var localRepo: String = Configuration.localRepo,
                            var remoteRepos: MutableList<String> = arrayListOf(Configuration.remoteOSC, Configuration.remoteCentral),
                            var deployRepos: String = Configuration.remoteCentral,
                            var username: String = "admin",
@@ -38,8 +36,8 @@ inline fun Configuration.fillReposTo(add: (RemoteRepository) -> Unit) {
 inline fun Configuration.fillMavenModelReposTo(add: (Repository) -> Unit) {
   remoteRepos.forEachIndexed { i, s ->
     val mainRepo = Repository()
-    mainRepo.setUrl(s)
-    mainRepo.setId("id_$i")
+    mainRepo.url = s
+    mainRepo.id = "id_$i"
     add(mainRepo)
   }
 }

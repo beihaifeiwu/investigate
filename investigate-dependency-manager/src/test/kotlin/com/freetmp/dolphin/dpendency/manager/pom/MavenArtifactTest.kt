@@ -2,17 +2,17 @@ package com.freetmp.dolphin.dpendency.manager.pom
 
 import com.freetmp.dolphin.dependency.manager.artifact.*
 import com.freetmp.dolphin.dependency.manager.config.Configuration
-import org.assertj.core.api.Assertions.*
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test as test
 
 /**
  * Created by LiuPin on 2015/6/10.
  */
-public class MavenArtifactTest {
+class MavenArtifactTest {
 
   fun String.normalize(): String = trim().replace("\\s+".toRegex(), " ")
 
-  test fun testResolve() {
+  @test fun testResolve() {
     val result = resolve("org.eclipse.aether:aether-util:1.0.0.v20140518", Configuration {
       localRepo = "target/lib"
     })
@@ -22,19 +22,19 @@ public class MavenArtifactTest {
     result.resolvedFiles.forEachIndexed { i, file -> assertThat(file).hasName(names[i]) }
   }
 
-  test fun testResolveArtifact(){
+  @test fun testResolveArtifact(){
     val result = resolveArtifact("org.eclipse.aether:aether-util:1.0.0.v20140518", Configuration { localRepo = "target/lib" })
-    assertThat(result.getFile()).hasName("aether-util-1.0.0.v20140518.jar")
+    assertThat(result.file).hasName("aether-util-1.0.0.v20140518.jar")
   }
 
-  test fun testResolveTransitiveDependencies(){
+  @test fun testResolveTransitiveDependencies(){
     val result = resolveTransitiveDependencies("org.eclipse.aether:aether-util:1.0.0.v20140518",Configuration { localRepo = "target/lib" })
     assertThat(result).hasSize(2);
     val names = arrayListOf("aether-util-1.0.0.v20140518.jar", "aether-api-1.0.0.v20140518.jar")
-    result.forEachIndexed { i, artifact -> assertThat(artifact.getFile()).hasName(names[i]) }
+    result.forEachIndexed { i, artifact -> assertThat(artifact.file).hasName(names[i]) }
   }
 
-  test fun testGetDependencyHierarchy(){
+  @test fun testGetDependencyHierarchy(){
     val result = getDependencyHierarchy("org.apache.maven:maven-aether-provider:3.1.0",Configuration { localRepo = "target/lib" })
     assertThat(result.normalize()).isEqualTo(
 """
@@ -86,7 +86,7 @@ org.apache.maven:maven-aether-provider:jar:3.1.0
 """.normalize())
   }
 
-  test fun testGetDependencyTree(){
+  @test fun testGetDependencyTree(){
     val result = getDependencyTree("org.apache.maven:maven-aether-provider:3.1.0",Configuration { localRepo = "target/lib" })
     assertThat(result.normalize()).isEqualTo("""
 org.apache.maven:maven-aether-provider:jar:3.1.0
@@ -113,8 +113,8 @@ org.apache.maven:maven-aether-provider:jar:3.1.0
     """.normalize())
   }
 
-  test fun testAvailableVersions(){
+  @test fun testAvailableVersions(){
     val result = availableVersions("org.eclipse.aether","aether-api", Configuration { localRepo = "target/lib" })
-    assertThat(result.getLowestVersion().toString()).isEqualToIgnoringCase("0.9.0.M1")
+    assertThat(result.lowestVersion.toString()).isEqualToIgnoringCase("0.9.0.M1")
   }
 }

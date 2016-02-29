@@ -25,48 +25,48 @@ import java.util.concurrent.Executors;
 @Service
 public class RestService {
 
-    private static final Logger LOG = LoggerFactory.getLogger(RestService.class);
+  private static final Logger LOG = LoggerFactory.getLogger(RestService.class);
 
-    private ExecutorService executor = Executors.newSingleThreadExecutor();
+  private ExecutorService executor = Executors.newSingleThreadExecutor();
 
-    private HttpServer server;
+  private HttpServer server;
 
-    @Autowired
-    private ApplicationContext context;
+  @Autowired
+  private ApplicationContext context;
 
-    @PostConstruct
-    public void start(){
-        server = new HttpServer();
-        final NetworkListener listener = new NetworkListener("grizzly", NetworkListener.DEFAULT_NETWORK_HOST, 9998);
-        listener.setSecure(false);
-        server.addListener(listener);
-        ResourceConfig rc = new ClassNamesResourceConfig(AuthenticationResource.class,AuthorizationResource.class);
+  @PostConstruct
+  public void start() {
+    server = new HttpServer();
+    final NetworkListener listener = new NetworkListener("grizzly", NetworkListener.DEFAULT_NETWORK_HOST, 9998);
+    listener.setSecure(false);
+    server.addListener(listener);
+    ResourceConfig rc = new ClassNamesResourceConfig(AuthenticationResource.class, AuthorizationResource.class);
 
-        // Let Jersey know about our existing context
-        SpringComponentProviderFactory handler = new SpringComponentProviderFactory(rc, (ConfigurableApplicationContext) context);
-        HttpHandler processor = ContainerFactory.createContainer(HttpHandler.class, rc, handler);
-        server.getServerConfiguration().addHttpHandler(processor, "/rest");
+    // Let Jersey know about our existing context
+    SpringComponentProviderFactory handler = new SpringComponentProviderFactory(rc, (ConfigurableApplicationContext) context);
+    HttpHandler processor = ContainerFactory.createContainer(HttpHandler.class, rc, handler);
+    server.getServerConfiguration().addHttpHandler(processor, "/rest");
 
-        executor.execute(() -> {
-            while(true) {
-                try {
-                    server.start();
-                } catch (Exception e) {
-                    LOG.warn("Authorize Rest Service went error, will be restart again", e);
-                    server.stop();
-                    try {
-                        Thread.sleep(10000);
-                    } catch (InterruptedException e1) {
-                        LOG.warn("server waiting was interrupted",e1);
-                    }
-                }
-            }
-        });
-    }
+    executor.execute(() -> {
+      while (true) {
+        try {
+          server.start();
+        } catch (Exception e) {
+          LOG.warn("Authorize Rest Service went error, will be restart again", e);
+          server.stop();
+          try {
+            Thread.sleep(10000);
+          } catch (InterruptedException e1) {
+            LOG.warn("server waiting was interrupted", e1);
+          }
+        }
+      }
+    });
+  }
 
-    @PreDestroy
-    public void stop(){
-        if(server != null) server.stop();
-        executor.shutdown();
-    }
+  @PreDestroy
+  public void stop() {
+    if (server != null) server.stop();
+    executor.shutdown();
+  }
 }

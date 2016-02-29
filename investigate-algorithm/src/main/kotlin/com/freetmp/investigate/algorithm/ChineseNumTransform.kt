@@ -1,17 +1,14 @@
 package com.freetmp.investigate.algorithm
 
 import org.openjdk.jmh.annotations.*
-import org.openjdk.jmh.runner.Runner
-import org.openjdk.jmh.runner.options.OptionsBuilder
 import java.util.*
 import java.util.concurrent.TimeUnit
-import kotlin.platform.platformStatic
 
 /**
  * Created by pin on 2015/6/25.
  */
-State(Scope.Thread) OutputTimeUnit(TimeUnit.MICROSECONDS) Fork(1)
-public class ChineseNumTransform {
+@State(Scope.Thread) @OutputTimeUnit(TimeUnit.MICROSECONDS) @Fork(1)
+class ChineseNumTransform {
 
   val zhNumChar = charArrayOf('零', '一', '二', '三', '四', '五', '六', '七', '八', '九')
   val zhUnitChar = arrayOf("", "十", "百", "千")
@@ -19,7 +16,7 @@ public class ChineseNumTransform {
 
   fun numToZh(number: Long): String {
     if (number == 0L) return zhNumChar[0].toString()
-    return StringBuilder {
+    return buildString {
       var unitPos = 0
       var needZero = false
       var num = number
@@ -36,11 +33,11 @@ public class ChineseNumTransform {
         num /= 10000
         unitPos++
       }
-    }.toString()
+    }
   }
 
   fun secToZh(sec: Long): String {
-    return StringBuilder {
+    return buildString {
       var section = sec
       var zero = true
       var unitPos = 0
@@ -59,19 +56,19 @@ public class ChineseNumTransform {
         section /= 10
         unitPos++
       }
-    }.toString()
+    }
   }
 
   fun zhToNum(zh: String): Long {
     var num = 0L
     var section = 0
     var temp = 0
-    zh.toArrayList().forEach {
+    zh.toCharArray().forEach {
       val index = zhNumChar.indexOf(it)
-      if(index != -1){
+      if (index != -1) {
         temp = index
-      }else{
-        when(it) {
+      } else {
+        when (it) {
           '十' -> section += temp * 10
           '百' -> section += temp * 100
           '千' -> section += temp * 1000
@@ -135,24 +132,24 @@ public class ChineseNumTransform {
     return map
   }
 
-  Benchmark fun testNumToZh() {
+  @Benchmark fun testNumToZh() {
     testDatas().forEach({ entry ->
       val str = numToZh(entry.key)
-      assert(entry.value == str, "Error: cannot transform ${entry.key} correctly")
-      println("Transform ${entry.key} to Chinese: expected ${entry.value} actually ${str}")
+      assert(entry.value == str) { "Error: cannot transform ${entry.key} correctly" }
+      println("Transform ${entry.key} to Chinese: expected ${entry.value} actually $str")
     })
   }
 
-  Benchmark fun testZhToNum(){
+  @Benchmark fun testZhToNum() {
     testDatas().forEach { entry ->
       val num = zhToNum(entry.value)
-      assert(entry.key == num,"Error: cannot transform ${entry.value} correctly")
-      println("Transform ${entry.value} to number: expected ${entry.key} actually ${num}")
+      assert(entry.key == num) { "Error: cannot transform ${entry.value} correctly" }
+      println("Transform ${entry.value} to number: expected ${entry.key} actually $num")
     }
   }
 
   companion object {
-    platformStatic fun main(args: Array<String>) {
+    @JvmStatic fun main(args: Array<String>) {
       /*      val opt = OptionsBuilder().include(javaClass.getSimpleName()).build()
             Runner(opt).run()*/
       ChineseNumTransform().testNumToZh()

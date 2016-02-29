@@ -43,7 +43,7 @@ fun parseInt(str: String): Int? {
 }
 
 fun getStringLength(obj: Any): Int? {
-  if(obj is String) return obj.length() // no cast to String is needed
+  if(obj is String) return obj.length // no cast to String is needed
   return null
 }
 
@@ -77,8 +77,8 @@ fun usingRanges(x: Int){
   array.add("bbb")
   array.add("ccc")
 
-  if(x !in 0..array.size() - 1)
-    println("Out: array has only ${array.size()} elements. x = ${x}")
+  if(x !in 0..array.size - 1)
+    println("Out: array has only ${array.size} elements. x = $x")
 
   //Check if a collection contains an object:
   if("aaa" in array) println("Yes: array contains aaa")
