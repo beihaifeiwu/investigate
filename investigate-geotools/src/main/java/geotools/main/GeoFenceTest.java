@@ -1,23 +1,40 @@
 package geotools.main;
 
+import com.vividsolutions.jts.geom.Coordinate;
+import com.vividsolutions.jts.geom.Envelope;
+import com.vividsolutions.jts.geom.GeometryFactory;
+import com.vividsolutions.jts.geom.Polygon;
+import com.vividsolutions.jts.index.quadtree.Quadtree;
+import org.geotools.data.Query;
+import org.geotools.data.memory.MemoryDataStore;
+import org.geotools.data.memory.MemoryFeatureSource;
+import org.geotools.data.store.ContentEntry;
 import org.geotools.feature.FeatureCollection;
 import org.geotools.feature.FeatureIterator;
+import org.geotools.feature.NameImpl;
 import org.geotools.geojson.feature.FeatureJSON;
+import org.geotools.geometry.jts.JTS;
+import org.geotools.map.FeatureLayer;
+import org.geotools.map.Layer;
+import org.geotools.map.MapContent;
+import org.geotools.styling.SLD;
+import org.geotools.styling.Style;
+import org.geotools.swing.JMapFrame;
 import org.opengis.feature.Feature;
 
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.StringReader;
+import java.awt.*;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 
 /**
  * Created by LiuPin on 2016/2/29.
  */
+@SuppressWarnings("unchecked")
 public class GeoFenceTest {
 
   public static String getGeoJson() throws Exception {
@@ -41,21 +58,86 @@ public class GeoFenceTest {
     return sb.toString();
   }
 
+  public static void showMap(FeatureCollection... collections) throws IOException {
+    if(collections == null || collections.length < 1) return;
+    MemoryDataStore dataStore = new MemoryDataStore(collections[0]);
+    for(int i = 1; i < collections.length; i++)
+      dataStore.addFeatures(collections[i]);
+
+    ContentEntry entry = new ContentEntry(dataStore, new NameImpl("feature"));
+    MemoryFeatureSource featureSource = new MemoryFeatureSource(entry, Query.ALL);
+
+    MapContent map = new MapContent();
+    map.setTitle("Palmap");
+    Style style = SLD.createPolygonStyle(Color.BLUE, Color.MAGENTA, 0.3F);
+    Layer layer = new FeatureLayer(featureSource, style);
+    map.addLayer(layer);
+
+    // Now display the map
+    JMapFrame.showMap(map);
+  }
+
   public static void main(String[] args) throws Exception {
 
     String json = getGeoJson();
     JsonReader reader = Json.createReader(new StringReader(json));
-    JsonObject object = reader.readObject().getJsonObject("Area");
+    JsonObject object = reader.readObject();
+
+    JsonObject area = object.getJsonObject("Area");
+    JsonObject frame = object.getJsonObject("Frame");
+    JsonObject facility = object.getJsonObject("Facility");
+
+    Quadtree quadtree = new Quadtree();
+
+    GeometryFactory factory = new GeometryFactory();
 
     FeatureJSON featureJSON = new FeatureJSON();
-    FeatureCollection featureCollection = featureJSON.readFeatureCollection(object.toString());
-    FeatureIterator iterator = featureCollection.features();
+    FeatureCollection featureCollection = featureJSON.readFeatureCollection(area.toString());
 
+    showMap(featureCollection, featureJSON.readFeatureCollection(frame.toString()), featureJSON.readFeatureCollection(facility.toString()));
+
+    double x = 13526579.652400002;
+    double y = 3663436.222300001;
+
+    Envelope envelope = new Envelope(x - 2,  x + 2, y - 2, y + 2);
+
+    Polygon polygon1 = factory.createPolygon(new Coordinate[]{
+        new Coordinate(x - 0.1, y + 0.1),
+        new Coordinate(x + 0.1, y + 0.1),
+        new Coordinate(x - 0.1, y - 0.1),
+        new Coordinate(x + 0.1, y - 0.1),
+        new Coordinate(x - 0.1, y + 0.1)
+
+    });
+
+    FeatureIterator iterator = featureCollection.features();
     Feature feature;
-    while (iterator.hasNext()){
+    while (iterator.hasNext()) {
       feature = iterator.next();
-      System.out.println(feature.getBounds());
+      Polygon polygon = JTS.toGeometry(feature.getBounds(), factory);
+      if(feature.getIdentifier().getID().equals("1675")) {
+        Envelope envelopeInternal = polygon.getEnvelopeInternal();
+        System.out.println("1675 " + envelopeInternal.intersects(envelope));
+        quadtree.insert(envelopeInternal, feature);
+      }
+      if(feature.getIdentifier().getID().equals("1674")){
+        Envelope envelopeInternal = polygon.getEnvelopeInternal();
+        System.out.println("1674 " + envelopeInternal.intersects(envelope));
+
+        quadtree.insert(envelopeInternal, feature);
+      }
+      if(feature.getIdentifier().getID().equals("1689")){
+        Envelope envelopeInternal = polygon.getEnvelopeInternal();
+        System.out.println("1689 " + envelopeInternal.intersects(envelope));
+
+        quadtree.insert(envelopeInternal, feature);
+      }
     }
+
+
+
+    List<Feature> list = quadtree.query(polygon1.getEnvelopeInternal());
+    list.stream().map((f) -> f.getProperty("id").getValue()).forEach(System.out::println);
   }
 
 }
