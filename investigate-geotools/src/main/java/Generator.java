@@ -1,8 +1,6 @@
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.io.IOException;
@@ -17,6 +15,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
+
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class Generator {
 
@@ -42,23 +42,15 @@ public class Generator {
    * Launch the application.
    */
   public static void main(String[] args) {
-    EventQueue.invokeLater(new Runnable() {
-      public void run() {
-        try {
-          Generator window = new Generator();
-          window.frame.setVisible(true);
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
+    EventQueue.invokeLater(() -> {
+      try {
+        Generator window = new Generator();
+        window.frame.setVisible(true);
+      } catch (Exception e) {
+        e.printStackTrace();
       }
     });
-    executor.execute(new Runnable() {
-      
-      @Override
-      public void run() {
-        testTheUDP();
-      }
-    });
+    executor.execute(Generator::testTheUDP);
   }
   
   public static void testTheUDP(){
@@ -73,8 +65,6 @@ public class Generator {
         System.out.println(" Data is:"
             + new String(packet.getData(), 0, packet.getLength()));
       }
-    } catch (SocketException e) {
-      e.printStackTrace();
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -105,7 +95,7 @@ public class Generator {
     frame = new JFrame();
     frame.setTitle("位置生成器");
     frame.setBounds(100, 100, 800, 538);
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     frame.getContentPane().setLayout(null);
     
     JPanel target = new JPanel();
@@ -197,105 +187,97 @@ public class Generator {
     control.setLayout(null);
     
     JToggleButton startOrPause = new JToggleButton("开始\\暂停");
-    startOrPause.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        if(pushTask == null || !pushTask.isRunning()){
-          if(pushTask == null){
-            try {
-              pushTask = new PushTaskAggregator(getPushTarget(), getModel().getPoints(),getCloneNum());
-            } catch (SocketException | CloneNotSupportedException e1) {
-              e1.printStackTrace();
-            }
+    startOrPause.addActionListener(e -> {
+      if(pushTask == null || !pushTask.isRunning()){
+        if(pushTask == null){
+          try {
+            pushTask = new PushTaskAggregator(getPushTarget(), getModel().getPoints(),getCloneNum());
+          } catch (SocketException | CloneNotSupportedException e1) {
+            e1.printStackTrace();
           }
-          pushTask.run();
-        }else{
-          pushTask.pause();
         }
+        pushTask.run();
+      }else{
+        pushTask.pause();
       }
     });
     startOrPause.setBounds(35, 154, 151, 23);
     control.add(startOrPause);
     
     JToggleButton recordOrPause = new JToggleButton("录制\\暂停");
-    recordOrPause.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        boolean recording = getModel().isRecording();
-        //System.out.println("recording: " + recording);
-        getModel().setRecording(!recording);
-      }
+    recordOrPause.addActionListener(e -> {
+      boolean recording = getModel().isRecording();
+      //System.out.println("recording: " + recording);
+      getModel().setRecording(!recording);
     });
     recordOrPause.setBounds(35, 96, 151, 23);
     control.add(recordOrPause);
     
     JButton clear = new JButton("清空坐标");
-    clear.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        getModel().clear();
-        pushTask = null;
-      }
+    clear.addActionListener(e -> {
+      getModel().clear();
+      pushTask = null;
     });
     clear.setBounds(35, 63, 151, 23);
     control.add(clear);
     
     JToggleButton lockOrReleasePushTarget = new JToggleButton("锁定\\释放推送对象");
-    lockOrReleasePushTarget.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        if(getPushTarget() == null){
-          PushTarget pushTarget = new PushTarget();
-          // collect ip address
-          String ipstr = ip.getText();
-          if(ipstr != null && !ipstr.trim().equals("")){
-            pushTarget.setIp(ipstr);
-          }else{
-            JOptionPane.showMessageDialog(null, "请输入目标IP地址","警告",JOptionPane.WARNING_MESSAGE);
-            return;
-          }
-          // collect port number
-          String portStr = port.getText();
-          if(portStr != null && !portStr.trim().equals("")){
-            pushTarget.setPort(Integer.parseInt(portStr));
-          }else{
-            JOptionPane.showMessageDialog(null, "请输入目标端口","警告",JOptionPane.WARNING_MESSAGE);
-            return;
-          }
-          // collect map identify
-          String idStr = mapId.getText();
-          if(idStr != null && !idStr.trim().equals("")){
-            pushTarget.setMapId(Long.parseLong(idStr));
-          }else{
-          }
-          // collect floor
-          String floorStr = floor.getText();
-          if(floorStr != null && !floorStr.trim().equals("")){
-            pushTarget.setFloor(floorStr);
-          }else{
-            if(pushTarget.getMapId() == null){
-              JOptionPane.showMessageDialog(null, "请输入地图ID或者楼层代码","警告",JOptionPane.WARNING_MESSAGE);
-              return;
-            }
-          }
-          // collect frequency
-          String freStr = frequency.getText();
-          if(freStr != null && !freStr.trim().equals("")){
-            pushTarget.setFrequency(Integer.parseInt(freStr));
-          }
-          // collect mac
-          String macStr = mac.getText();
-          if(macStr != null && !macStr.trim().equals("")){
-            pushTarget.setMac(macStr);
-          }else{
-            JOptionPane.showMessageDialog(null, "请输入设备mac地址","警告",JOptionPane.WARNING_MESSAGE);
-            return;
-            
-          }
-          setPushTarget(pushTarget);
-          // disable all the push input fields
-          enablePushInputFields(false);
+    lockOrReleasePushTarget.addActionListener(e -> {
+      if(getPushTarget() == null){
+        PushTarget pushTarget1 = new PushTarget();
+        // collect ip address
+        String ipstr = ip.getText();
+        if(ipstr != null && !ipstr.trim().equals("")){
+          pushTarget1.setIp(ipstr);
         }else{
-          setPushTarget(null);
-          // enable all the push input fields
-          enablePushInputFields(true);
+          JOptionPane.showMessageDialog(null, "请输入目标IP地址","警告",JOptionPane.WARNING_MESSAGE);
+          return;
         }
+        // collect port number
+        String portStr = port.getText();
+        if(portStr != null && !portStr.trim().equals("")){
+          pushTarget1.setPort(Integer.parseInt(portStr));
+        }else{
+          JOptionPane.showMessageDialog(null, "请输入目标端口","警告",JOptionPane.WARNING_MESSAGE);
+          return;
+        }
+        // collect map identify
+        String idStr = mapId.getText();
+        if(idStr != null && !idStr.trim().equals("")){
+          pushTarget1.setMapId(Long.parseLong(idStr));
+        }else{
+        }
+        // collect floor
+        String floorStr = floor.getText();
+        if(floorStr != null && !floorStr.trim().equals("")){
+          pushTarget1.setFloor(floorStr);
+        }else{
+          if(pushTarget1.getMapId() == null){
+            JOptionPane.showMessageDialog(null, "请输入地图ID或者楼层代码","警告",JOptionPane.WARNING_MESSAGE);
+            return;
+          }
+        }
+        // collect frequency
+        String freStr = frequency.getText();
+        if(freStr != null && !freStr.trim().equals("")){
+          pushTarget1.setFrequency(Integer.parseInt(freStr));
+        }
+        // collect mac
+        String macStr = mac.getText();
+        if(macStr != null && !macStr.trim().equals("")){
+          pushTarget1.setMac(macStr);
+        }else{
+          JOptionPane.showMessageDialog(null, "请输入设备mac地址","警告",JOptionPane.WARNING_MESSAGE);
+          return;
+
+        }
+        setPushTarget(pushTarget1);
+        // disable all the push input fields
+        enablePushInputFields(false);
+      }else{
+        setPushTarget(null);
+        // enable all the push input fields
+        enablePushInputFields(true);
       }
     });
     lockOrReleasePushTarget.setBounds(35, 30, 151, 23);
@@ -503,9 +485,7 @@ public class Generator {
 
     @Override
     public void run() {
-      executor.execute(()->{
-        timeShedule();        
-      });
+      executor.execute(this::timeShedule);
     }
 
     protected void timeShedule() {
@@ -659,17 +639,17 @@ public class Generator {
     
     @Override
     public void run() {
-      tasks.stream().forEach(task -> task.run());
+      tasks.stream().forEach(Runnable::run);
     }
 
     @Override
     public boolean isRunning() {
-      return tasks.stream().anyMatch(task -> task.isRunning());
+      return tasks.stream().anyMatch(PushTask::isRunning);
     }
 
     @Override
     public void pause() {
-      tasks.stream().forEach(task -> task.pause());
+      tasks.stream().forEach(PushTask::pause);
     }
     
   }
