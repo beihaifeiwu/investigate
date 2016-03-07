@@ -77,25 +77,7 @@ public class GeoFenceTest {
     JMapFrame.showMap(map);
   }
 
-  public static void main(String[] args) throws Exception {
-
-    String json = getGeoJson();
-    JsonReader reader = Json.createReader(new StringReader(json));
-    JsonObject object = reader.readObject();
-
-    JsonObject area = object.getJsonObject("Area");
-    JsonObject frame = object.getJsonObject("Frame");
-    JsonObject facility = object.getJsonObject("Facility");
-
-    Quadtree quadtree = new Quadtree();
-
-    GeometryFactory factory = new GeometryFactory();
-
-    FeatureJSON featureJSON = new FeatureJSON();
-    FeatureCollection featureCollection = featureJSON.readFeatureCollection(area.toString());
-
-    showMap(featureCollection, featureJSON.readFeatureCollection(frame.toString()), featureJSON.readFeatureCollection(facility.toString()));
-
+  private static void checkGeoFence(Quadtree quadtree, GeometryFactory factory, FeatureCollection featureCollection) {
     double x = 13526579.652400002;
     double y = 3663436.222300001;
 
@@ -134,10 +116,30 @@ public class GeoFenceTest {
       }
     }
 
-
-
     List<Feature> list = quadtree.query(polygon1.getEnvelopeInternal());
     list.stream().map((f) -> f.getProperty("id").getValue()).forEach(System.out::println);
+  }
+
+  public static void main(String[] args) throws Exception {
+
+    String json = getGeoJson();
+    JsonReader reader = Json.createReader(new StringReader(json));
+    JsonObject object = reader.readObject();
+
+    JsonObject area = object.getJsonObject("Area");
+    JsonObject frame = object.getJsonObject("Frame");
+    JsonObject facility = object.getJsonObject("Facility");
+
+    Quadtree quadtree = new Quadtree();
+
+    GeometryFactory factory = new GeometryFactory();
+
+    FeatureJSON featureJSON = new FeatureJSON();
+    FeatureCollection featureCollection = featureJSON.readFeatureCollection(area.toString());
+
+    showMap(featureCollection, featureJSON.readFeatureCollection(frame.toString()), featureJSON.readFeatureCollection(facility.toString()));
+
+    checkGeoFence(quadtree, factory, featureCollection);
   }
 
 }
