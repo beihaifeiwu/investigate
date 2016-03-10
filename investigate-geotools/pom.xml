@@ -22,13 +22,6 @@
       <artifactId>junit</artifactId>
     </dependency>
 
-    <!-- Json -->
-    <dependency>
-      <groupId>org.glassfish</groupId>
-      <artifactId>javax.json</artifactId>
-      <version>1.0.4</version>
-    </dependency>
-
     <!-- Geotools -->
     <dependency>
       <groupId>org.geotools</groupId>
@@ -49,6 +42,23 @@
       <groupId>org.geotools</groupId>
       <artifactId>gt-opengis</artifactId>
       <version>${geotools.version}</version>
+    </dependency>
+
+    <!-- H2Gis -->
+    <dependency>
+      <groupId>org.orbisgis</groupId>
+      <artifactId>h2spatial</artifactId>
+      <version>1.2.3</version>
+    </dependency>
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>1.4.191</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-jdbc</artifactId>
+      <version>8.0.32</version>
     </dependency>
 
     <dependency>
