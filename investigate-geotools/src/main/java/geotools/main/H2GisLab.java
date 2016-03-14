@@ -14,7 +14,7 @@ import java.util.Properties;
 /**
  * Created by LiuPin on 2016/3/10.
  */
-public class H2GisTest {
+public class H2GisLab {
   public static DataSource createDataSource() throws Exception {
     Properties properties = new Properties();
     properties.put("driverClassName", "org.h2.Driver");

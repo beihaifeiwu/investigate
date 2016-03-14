@@ -35,7 +35,7 @@ import java.util.List;
  * Created by LiuPin on 2016/2/29.
  */
 @SuppressWarnings("unchecked")
-public class GeoFenceTest {
+public class GeoFenceLab {
 
   public static String getGeoJson() throws Exception {
     URL url = new URL("http://api.ipalmap.com/planar_graph/1672");
