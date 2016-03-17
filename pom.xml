@@ -54,7 +54,7 @@
     <module>investigate-geotools</module>
     <module>investigate-wx-shake-lottery</module>
     <module>investigate-jython</module>
-    <module>investige-griffon</module>
+    <module>investigate-griffon</module>
   </modules>
 
   <dependencies>
