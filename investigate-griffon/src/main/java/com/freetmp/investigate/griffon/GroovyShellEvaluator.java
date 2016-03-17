@@ -10,6 +10,6 @@ public class GroovyShellEvaluator implements Evaluator {
   private GroovyShell shell = new GroovyShell();
 
   @Override public Object evaluate(String input) {
-    return null;
+    return shell.evaluate(input);
   }
 }
