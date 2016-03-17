@@ -183,7 +183,6 @@
         <groupId>org.codehaus.groovy</groupId>
         <artifactId>groovy-all</artifactId>
         <version>${groovy.version}</version>
-        <scope>test</scope>
       </dependency>
       <dependency>
         <groupId>org.spockframework</groupId>
@@ -830,6 +829,7 @@
     <dependency>
       <groupId>org.codehaus.groovy</groupId>
       <artifactId>groovy-all</artifactId>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.spockframework</groupId>
