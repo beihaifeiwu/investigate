@@ -137,6 +137,8 @@ public class GeoFenceLab {
     FeatureJSON featureJSON = new FeatureJSON();
     FeatureCollection featureCollection = featureJSON.readFeatureCollection(area.toString());
 
+    System.out.println(featureCollection.getSchema());
+
     showMap(featureCollection, featureJSON.readFeatureCollection(frame.toString()), featureJSON.readFeatureCollection(facility.toString()));
 
     checkGeoFence(quadtree, factory, featureCollection);
