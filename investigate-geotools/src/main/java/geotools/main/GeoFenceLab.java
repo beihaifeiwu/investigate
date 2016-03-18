@@ -1,5 +1,6 @@
 package geotools.main;
 
+import com.google.common.io.ByteStreams;
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.Envelope;
 import com.vividsolutions.jts.geom.GeometryFactory;
@@ -25,11 +26,16 @@ import org.opengis.feature.Feature;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
+import javax.servlet.MultipartConfigElement;
+import javax.servlet.http.Part;
 import java.awt.*;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
+
+import static spark.Spark.get;
+import static spark.Spark.post;
 
 /**
  * Created by LiuPin on 2016/2/29.
@@ -120,6 +126,23 @@ public class GeoFenceLab {
     list.stream().map((f) -> f.getProperty("id").getValue()).forEach(System.out::println);
   }
 
+  private static void exportAsRestService(JsonObject area, JsonObject frame, JsonObject facility) {
+    get("/area", (req, res) -> area.toString());
+    get("/frame", (req, res) -> frame.toString());
+    get("/facility", (req, res) -> facility.toString());
+
+    post("/test",(req, res) ->{
+      if (req.raw().getAttribute("org.eclipse.jetty.multipartConfig") == null) {
+        MultipartConfigElement multipartConfigElement = new MultipartConfigElement(System.getProperty("java.io.tmpdir"));
+        req.raw().setAttribute("org.eclipse.jetty.multipartConfig", multipartConfigElement);
+      }
+
+      Part part = req.raw().getPart("uploaded_file");
+      ByteStreams.copy(part.getInputStream(), System.out);
+      return "{\"code\":1}";
+    });
+  }
+
   public static void main(String[] args) throws Exception {
 
     String json = getGeoJson();
@@ -129,6 +152,8 @@ public class GeoFenceLab {
     JsonObject area = object.getJsonObject("Area");
     JsonObject frame = object.getJsonObject("Frame");
     JsonObject facility = object.getJsonObject("Facility");
+
+    exportAsRestService(area, frame, facility);
 
     Quadtree quadtree = new Quadtree();
 

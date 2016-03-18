@@ -104,6 +104,19 @@
       <version>1.0.4</version>
     </dependency>
 
+    <!-- Spark Java -->
+    <dependency>
+      <groupId>com.sparkjava</groupId>
+      <artifactId>spark-core</artifactId>
+      <version>2.3</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-simple</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
     <!-- coding happily -->
     <dependency>
       <groupId>org.projectlombok</groupId>
