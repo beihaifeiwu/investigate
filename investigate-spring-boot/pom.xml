@@ -43,7 +43,7 @@
     <dependency>
       <groupId>io.projectreactor</groupId>
       <artifactId>reactor-core</artifactId>
-      <version>2.0.5.RELEASE</version>
+      <version>2.5.0.M2</version>
     </dependency>
 
     <!-- Spring Integration -->
@@ -54,7 +54,7 @@
     <dependency>
       <groupId>org.springframework.integration</groupId>
       <artifactId>spring-integration-java-dsl</artifactId>
-      <version>1.1.0.M1</version>
+      <version>1.1.2.RELEASE</version>
     </dependency>
 
     <dependency>

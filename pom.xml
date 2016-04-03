@@ -21,7 +21,7 @@
     <postgresql.version>9.3-1102-jdbc41</postgresql.version>
 
     <assertj-core.version>3.0.0</assertj-core.version>
-    <kotlin.version>1.0.0</kotlin.version>
+    <kotlin.version>1.0.1-2</kotlin.version>
   </properties>
 
   <modules>
@@ -44,7 +44,6 @@
     <module>investigate-vaadin</module>
     <module>investigate-quasar</module>
     <module>investigate-scala</module>
-    <module>investigate-grade</module>
     <module>investigate-web-login</module>
     <module>investigate-spring-boot-monitor</module>
     <module>investigate-spring-batch</module>
@@ -104,7 +103,7 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.16.6</version>
+      <version>1.16.8</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
@@ -174,6 +173,28 @@
       <!-- Test End -->
     </dependencies>
   </dependencyManagement>
+
+  <repositories>
+    <repository>
+      <id>central</id>
+      <name>Maven Repository Switchboard</name>
+      <layout>default</layout>
+      <url>http://repo1.maven.org/maven2</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>jboss</id>
+      <name>Jboss.com repository</name>
+      <url>http://repository.jboss.com/maven2/</url>
+    </repository>
+    <repository>
+      <id>maven2-repository.dev.java.net</id>
+      <name>Java.net repository</name>
+      <url>http://download.java.net/maven/2</url>
+    </repository>
+  </repositories>
 
   <build>
     <plugins>
