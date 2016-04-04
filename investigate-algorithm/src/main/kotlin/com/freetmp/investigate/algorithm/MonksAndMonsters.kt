@@ -66,7 +66,7 @@ class MonksAndMonsters {
       println("*************Found ${++count}th Solution*************")
       stack.forEachIndexed { index, itemState ->
         if (itemState.curAct != null)
-          println("${index}. ${itemState.curAct.name.toString().toLowerCase().replace('_', ' ')}.")
+          println("$index. ${itemState.curAct.name.toString().toLowerCase().replace('_', ' ')}.")
       }
       println("*************End of ${count}th Solution*************")
     }
