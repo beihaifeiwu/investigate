@@ -27,8 +27,6 @@ public class MyFilterUI extends JPanel implements ActionListener {
 
       Graphics2D graphics2D = (Graphics2D) g;
 
-
-
       graphics2D.drawImage(srcImage, 2, 2,
           srcImage.getWidth() <= getWidth() / 2 - 2 ? srcImage.getWidth() : getWidth() / 2 - 2,
           srcImage.getHeight() <= getHeight() - 2 ? srcImage.getHeight() : getHeight() - 2,
