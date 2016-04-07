@@ -1,6 +1,7 @@
 body {
 	margin:0;
 	padding:0;
+	background: #795548;
 }
 #background_div {
   display: none;
@@ -96,6 +97,7 @@ header img{
 
 #palmapTitle {  
   position: absolute;
+  font-size: 90%;
   left: 20%;
   right: 50px;
   height: 48px;
@@ -119,7 +121,7 @@ header div span{
 
 .sectionMap {
 	padding-top: 10px;
-  	width:100%;
+  width:100%;
 	position: absolute;
 	height: 230px;
 	top: 70px;
@@ -130,7 +132,7 @@ header div span{
 
 .palmapMap {
 	margin:auto;
-	padding-left:5%;
+	padding-left: 5%;
 	padding-right: 5%;
 }
 
@@ -138,13 +140,13 @@ header div span{
 	position: absolute;
 	margin:auto;
 	width: 90%;
-	height: 90%;
+	height: 100%;
 }
 
 #lottery {
 	width:100%;
 	position:absolute;
-	height: 710px;
+	height: 680px;
 	top: 320px;
 	bottom:0;
 	background: #795548;
@@ -266,7 +268,7 @@ ol {
 	color: white;
 	font-size: 15px;
     position:absolute;
-	top: 1020px;
+	top: 1000px;
 	right: -15px;
 }
 

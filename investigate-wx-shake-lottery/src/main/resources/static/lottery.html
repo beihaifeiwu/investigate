@@ -12,6 +12,7 @@
 
   $(document).ready(function()
   {
+/*
     var inter;
     var count_min;
     var count_sec;
@@ -41,7 +42,7 @@
     }
 
 
-    var remainTime = /*[[${RemainTime}]]*/ 0;
+    var remainTime = /*[[${RemainTime}]]*/ /* 0;
     if(remainTime){
       count_min=Math.floor(remainTime/60000);
       count_sec=Math.floor(remainTime/1000)-60*count_min;
@@ -52,7 +53,7 @@
       document.getElementById("result2").style.display = "block";
       restTime();
     }
-
+    */
 
     var info;
 
@@ -63,31 +64,31 @@
         url: /*[[@{/lottery/draw(OpenID=${OpenID})}]]*/ "test.json",
         dataType: "json",
         success: function(data){
-          window.clearInterval(inter);
+//          window.clearInterval(inter);
           if(data.awards===1){
             info=1;
-            count_min=30;
-            count_sec=0;
+//            count_min=30;
+//            count_sec=0;
           }
-          else if(data.awards===2){
-            info=4;
-            count_min=30;
-            count_sec=0;
-          }
+//          else if(data.awards===2){
+//            info=4;
+//            count_min=30;
+//            count_sec=0;
+//          }
           else if(data.awards===0){
             info=3;
-            count_min=30;
-            count_sec=0;
+//            count_min=30;
+//            count_sec=0;
           }
           else if(data.awards===-1){
             info=2;
-            count_min=Math.floor(data.remainTime/60000);
-            count_sec=Math.floor(data.remainTime/1000)-60*count_min;
+//            count_min=Math.floor(data.remainTime/60000);
+//            count_sec=Math.floor(data.remainTime/1000)-60*count_min;
           }
           document.getElementById("gift").style.display = "none";
           document.getElementById("notif"+info).style.display = "block";
 
-          restTime();
+//          restTime();
         },
         error: function(){
           alert("出错啦！请检查您的网络！");
@@ -102,31 +103,31 @@
         url: /*[[@{/lottery/draw(OpenID=${OpenID})}]]*/ "test.json",
         dataType: "json",
         success: function(data){
-          window.clearInterval(inter);
+//          window.clearInterval(inter);
           if(data.awards===1){
             info=1;
-            count_min=30;
-            count_sec=0;
+//            count_min=30;
+//            count_sec=0;
           }
-          else if(data.awards===2){
-            info=4;
-            count_min=30;
-            count_sec=0;
-          }
+//          else if(data.awards===2){
+//            info=4;
+//            count_min=30;
+//            count_sec=0;
+//          }
           else if(data.awards===0){
             info=3;
-            count_min=30;
-            count_sec=0;
+//            count_min=30;
+//            count_sec=0;
           }
           else if(data.awards===-1){
             info=2;
-            count_min=Math.floor(data.remainTime/60000);
-            count_sec=Math.floor(data.remainTime/1000)-60*count_min;
+//            count_min=Math.floor(data.remainTime/60000);
+//            count_sec=Math.floor(data.remainTime/1000)-60*count_min;
           }
           document.getElementById("gift").style.display = "none";
           document.getElementById("notif"+info).style.display = "block";
 
-          restTime();
+//          restTime();
         },
         error: function(){
           alert("出错啦！请检查您的网络！");
@@ -142,87 +143,87 @@
     })
     document.getElementById("goBack").addEventListener("click",function(){
       document.getElementById("background_div").style.display = "none";
-      document.getElementById("notif3").style.display = "none";
-      document.getElementById("chou").style.display = "none";
-      document.getElementById("result2").style.display = "block";
-    })
-    document.getElementById("bingo2").addEventListener("click",function(){
-      document.getElementById("background_div").style.display = "none";
-      document.getElementById("notif4").style.display = "none";
-      document.getElementById("chou").style.display = "none";
-      document.getElementById("result3").style.display = "block";
-    })
-    document.getElementById("wait").addEventListener("click",function(){
-      document.getElementById("background_div").style.display = "none";
       document.getElementById("notif2").style.display = "none";
       document.getElementById("chou").style.display = "none";
       document.getElementById("result2").style.display = "block";
     })
+    document.getElementById("goBack2").addEventListener("click",function(){
+      document.getElementById("background_div").style.display = "none";
+      document.getElementById("notif3").style.display = "none";
+      document.getElementById("chou").style.display = "none";
+      document.getElementById("result2").style.display = "block";
+    })
+//    document.getElementById("bingo2").addEventListener("click",function(){
+//      document.getElementById("background_div").style.display = "none";
+//      document.getElementById("notif4").style.display = "none";
+//      document.getElementById("chou").style.display = "none";
+//      document.getElementById("result3").style.display = "block";
+//    })
+//    document.getElementById("wait").addEventListener("click",function(){
+//      document.getElementById("background_div").style.display = "none";
+//      document.getElementById("notif2").style.display = "none";
+//      document.getElementById("chou").style.display = "none";
+//      document.getElementById("result2").style.display = "block";
+//    })
   })
 </script>
 <div id="background_div"></div>
 
 <div class="notification" id="notif1">
   <h2>精美小礼品</h2>
-  <h4>请找现场工作人员领取奖品。<br/>半个小时后可以再抽一次哦~</h4>
+  <h4>恭喜您获得图聚精美小礼品一份</h4>
   <a href="#lottery" id="bingo">去领奖</a>
 </div>
 <div class="notification" id="notif2">
-  <h2>等待中</h2>
-  <h4>再稍微等一下吧~</h4>
-  <a href="#lottery" id="wait">返回</a>
+  <h2>未抽中</h2>
+    <h4>很遗憾，您本次没有中奖</h4>
+    <a href="#lottery" id="goBack">返回</a>
 </div>
 <div class="notification" id="notif3">
   <h2>未抽中</h2>
-  <h4>很遗憾，您本次没有中奖，<br/>半个小时后可以再抽一次哦~</h4>
-  <a href="#lottery" id="goBack">返回</a>
-</div>
-<div class="notification" id="notif4">
-  <h2>小礼品</h2>
-  <h4>请找现场工作人员领取奖品。<br/>半个小时后可以再抽一次哦~</h4>
-  <a href="#lottery" id="bingo2">去领奖</a>
+    <h4>很遗憾，只有一次抽奖机会</h4>
+    <a href="#lottery" id="goBack2">返回</a>
 </div>
 
 <header>
   <div id="palmapHeader">
     <img src="logo.png" id="palmapLogo" alt="上海图聚">
     <div id="palmapTitle">
-      <span id="mainTitle">上海图聚信息技术有限公司</span>
+      <span id="mainTitle">上海图聚智能科技股份有限公司</span>
       <span id="subTitle">全国最大的室内位置服务商</span>
     </div>
   </div>
 </header>
 <section class="sectionMap">
   <div class="palmapMap">
-    <a href="http://weixin.qq.com/r/uUTA2lzERNE7rci79xGr" target="_blank"><img id="locMap" src="test.png" alt="现场地图"></a>
+    <a href="http://weixin.qq.com/r/uUTA2lzERNE7rci79xGr" target="_blank"><img id="locMap" src="test.jpg" alt="现场地图"></a>
   </div>
 </section>
 <section id="lottery">
   <img src="present.svg" id="gift" width="180px" alt="抽礼品">
   <div id="chou"><h1>抽礼品</h1></div>
-  <div id="result1"><h2>精美小礼品</h2><span>请凭此页面领取礼品</span><br><span>距下次可抽时间还有<span id="RT2"></span></span></div>
-  <div id="result3"><h2>小礼品</h2><span>请凭此页面领取礼品</span><br><span>距下次可抽时间还有<span id="RT4"></span></span></div>
-  <div id="result2"><h2>等待中</h2><span>距下次可抽时间还有<span id="RT3"></span></span></div>
+  <div id="result1"><h2>精美小礼品</h2><span>请凭此页面向现场工作人员领取礼品</span></div>
+  <div id="result2"><h2>未中奖</h2><span>请关注接下来的交流活动</span></div>
   <div id="space"></div>
   <div id="outerPart">
 
     <div id="innerPart">
-      <div id="welcome">欢迎来到兵器北斗展区<br>您现在所处于北斗导航技术应用展览会的兵器北斗展位区，该区域已覆盖由上海图聚信息技术有限公司提供的室内位置服务。</div>
+      <div id="welcome">欢迎来到图聚”室内地图服务专题”交流会现场</div>
       <h2 id="actiTitle">图聚宣讲</h2>
       <ol id="activities">
-        <li class="activity"><div>室内外一体化导航趋势介绍</div><div>11月3日  14：00 - 15：00</div></li>
+        <li class="activity"><div>解密室内地图数据</div><div>14：05 - 14：20&nbsp&nbsp&nbsp&nbsp&nbsp胥冲</div></li>
         <div style="margin:0;padding:0; width:80%;height:1px;background-color:lightgrey;overflow:hidden;"></div>
-        <li class="activity"><div>室内位置服务开放平台介绍</div><div>11月4日  14：00 - 15：00</div></li>
+        <li class="activity"><div>室内地图的应用场景</div><div>14：20 - 14：35&nbsp&nbsp&nbsp&nbsp&nbsp赵云阳</div></li>
         <div style="margin:0;padding:0; width:80%;height:1px;background-color:lightgrey;overflow:hidden;"></div>
-        <li class="activity"><div>智慧商业解决方案</div><div>11月5日  14：00 - 15：00</div></li>
+        <li class="activity"><div>室内地图渲染引擎功能展示</div><div>14：35 - 14：50&nbsp&nbsp&nbsp&nbsp&nbsp冯建</div></li>
         <div style="margin:0;padding:0; width:80%;height:1px;background-color:lightgrey;overflow:hidden;"></div>
-        <li class="activity"><div>医疗行业解决方案</div><div>11月6日  14：00 - 15：00</div></li>
+        <li class="activity"><div>购物中心及品牌商的C2B精细化运行</div><div>15：00 - 15：15&nbsp&nbsp&nbsp&nbsp&nbsp范晨光</div></li>
         <div style="margin:0;padding:0; width:80%;height:1px;background-color:lightgrey;overflow:hidden;"></div>
-        <li class="activity"><div>智慧展馆解决方案</div><div>11月7日  14：00 - 15：00</div></li>
+        <li class="activity"><div>云景智维关于地图SDK之经验分享</div><div>15：15 - 15：30&nbsp&nbsp&nbsp&nbsp&nbsp唐皓晨</div></li>
       </ol>
     </div>
   </div>
 </section>
-<div id="foot">@ 2015 Palmap+</div>
+<div id="foot">@ 2016 Palmap</div>
 </body>
 </html>
