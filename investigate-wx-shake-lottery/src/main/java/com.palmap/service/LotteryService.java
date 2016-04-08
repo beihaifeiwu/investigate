@@ -49,9 +49,9 @@ public class LotteryService {
 
   public LotteryResult lottery(String openId){
     // 非合法用户
-//    if(Strings.isNullOrEmpty(openId) || openId.equalsIgnoreCase("doubi")){
-//      return LotteryResult.builder().inLotteryTime(false).awards(0).remainTime(delayTime * 60 * 1000).build();
-//    }
+    if(Strings.isNullOrEmpty(openId) || openId.equalsIgnoreCase("doubi")){
+      return LotteryResult.builder().inLotteryTime(false).awards(0).remainTime(delayTime * 60 * 1000).build();
+    }
 
     LotteryResult result = resultMap.computeIfAbsent(openId, u -> new LotteryResult());
 
@@ -117,11 +117,15 @@ public class LotteryService {
   }
 
   public boolean judgeAndResetRemainTime(LotteryResult result) {
-    log.info("last lottery time is {}, delay time is {}, remain time is {}", result.getLastLotteryTime(), delayTime * 60 * 1000, result.getLastLotteryTime() + delayTime * 60 * 1000 - System.currentTimeMillis());
-    if(result.getLastLotteryTime() != 0 && System.currentTimeMillis() < (result.getLastLotteryTime() + delayTime * 60 * 1000)){
+    int delayTimeInMis = delayTime * 60 * 1000;
+    long remainTime = result.getLastLotteryTime() + delayTimeInMis - System.currentTimeMillis();
+
+    log.info("last lottery time is {}, delay time is {}, remain time is {}", result.getLastLotteryTime(), delayTimeInMis, remainTime);
+
+    if(result.getLastLotteryTime() != 0 && remainTime > 0){
       result.setInLotteryTime(false);
       result.setAwards(-1);
-      result.setRemainTime(result.getLastLotteryTime() + delayTime * 60 * 1000 - System.currentTimeMillis());
+      result.setRemainTime(remainTime);
       return true;
     }
     return false;
