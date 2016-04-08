@@ -45,7 +45,6 @@
     <module>investigate-quasar</module>
     <module>investigate-scala</module>
     <module>investigate-web-login</module>
-    <module>investigate-spring-boot-monitor</module>
     <module>investigate-spring-batch</module>
     <module>investigate-dependency-manager</module>
     <module>investigate-error-coder</module>

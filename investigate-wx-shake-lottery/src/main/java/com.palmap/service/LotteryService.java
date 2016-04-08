@@ -49,9 +49,9 @@ public class LotteryService {
 
   public LotteryResult lottery(String openId){
     // 非合法用户
-    if(Strings.isNullOrEmpty(openId) || openId.equalsIgnoreCase("doubi")){
-      return LotteryResult.builder().inLotteryTime(false).awards(-1).remainTime(delayTime * 60 * 1000).build();
-    }
+//    if(Strings.isNullOrEmpty(openId) || openId.equalsIgnoreCase("doubi")){
+//      return LotteryResult.builder().inLotteryTime(false).awards(0).remainTime(delayTime * 60 * 1000).build();
+//    }
 
     LotteryResult result = resultMap.computeIfAbsent(openId, u -> new LotteryResult());
 
@@ -59,7 +59,7 @@ public class LotteryService {
     long now = LocalTime.now().toNanoOfDay();
     if(!afternoon.isValidValue(now) && !morning.isValidValue(now)){
       result.setInLotteryTime(false);
-      result.setAwards(-1);
+      result.setAwards(0);
       return result;
     }
 
@@ -71,6 +71,9 @@ public class LotteryService {
       result.setAwards(0);
       return result;
     }
+
+    // 重置奖项
+    if(result.getAwards() == 1) result.setAwards(-1);
 
     // 计算是否中奖
     synchronized (this) {
@@ -114,6 +117,7 @@ public class LotteryService {
   }
 
   public boolean judgeAndResetRemainTime(LotteryResult result) {
+    log.info("last lottery time is {}, delay time is {}, remain time is {}", result.getLastLotteryTime(), delayTime * 60 * 1000, result.getLastLotteryTime() + delayTime * 60 * 1000 - System.currentTimeMillis());
     if(result.getLastLotteryTime() != 0 && System.currentTimeMillis() < (result.getLastLotteryTime() + delayTime * 60 * 1000)){
       result.setInLotteryTime(false);
       result.setAwards(-1);
