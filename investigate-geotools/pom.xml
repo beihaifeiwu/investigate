@@ -63,6 +63,17 @@
       <artifactId>gt-wms</artifactId>
       <version>${geotools.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.geotools</groupId>
+      <artifactId>gt-swt</artifactId>
+      <version>${geotools.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.eclipse</groupId>
+          <artifactId>swt.gtk.linux.x86</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
 
     <!-- H2Gis -->
     <dependency>
