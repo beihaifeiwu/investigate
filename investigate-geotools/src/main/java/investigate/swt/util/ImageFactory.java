@@ -11,7 +11,7 @@ public class ImageFactory {
 	//将构造方法设置为private，禁止创建该类的实例
 	private ImageFactory() {}
     //图片保存的ClassPath路径
-	public static final String CLASS_PATH_PATH = "icons/dtool16/";
+	public static final String CLASS_PATH_PATH = "icons/etool16/";
     //一些图片名称的常量
 	public static final String DELETE_EDIT = "delete_edit.gif";
 
