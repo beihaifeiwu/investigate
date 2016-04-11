@@ -12,7 +12,7 @@
   <artifactId>investigate-geotools</artifactId>
 
   <properties>
-    <geotools.version>14.2</geotools.version>
+    <geotools.version>14.3</geotools.version>
   </properties>
 
   <dependencies>
@@ -73,6 +73,11 @@
           <artifactId>swt.gtk.linux.x86</artifactId>
         </exclusion>
       </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.geotools.jdbc</groupId>
+      <artifactId>gt-jdbc-spatialite</artifactId>
+      <version>${geotools.version}</version>
     </dependency>
 
     <!-- H2Gis -->

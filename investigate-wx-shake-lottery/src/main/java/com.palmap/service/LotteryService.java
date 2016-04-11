@@ -117,6 +117,9 @@ public class LotteryService {
   }
 
   public boolean judgeAndResetRemainTime(LotteryResult result) {
+    // 为中奖者可重复参与抽奖
+    if(result.getAwards() != 1) return false;
+
     int delayTimeInMis = delayTime * 60 * 1000;
     long remainTime = result.getLastLotteryTime() + delayTimeInMis - System.currentTimeMillis();
 
