@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop 
+						http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+						http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/tx 
+						http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<!-- 定义Hibernate的SessionFactory -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation">
+			<value>classpath:hibernate.cfg.xml</value>
+		</property>
+	</bean>
+	<!-- 配置Hibernate的局部事务管理器，使用HibernateTransactionManager类 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!-- 配置事务切面Bean，指定事务管理器 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<!-- 用于配置详细的事务语义 -->
+		<tx:attributes>
+			<!-- 所有以'search','look'开头的方法是read-only的 -->
+			<tx:method name="search*" read-only="true"/>
+			<tx:method name="look*" read-only="true"/>
+			<tx:method name="*"/>
+		</tx:attributes>
+	</tx:advice>
+	<aop:config>
+		<!-- 配置一个切入点，匹配指定包下所有以Impl结尾的类执行的所有方法 -->
+		<aop:pointcut expression="execution(* com.course.selection.service.impl.*Impl.*(..))" id="daoPointcut"/>
+		<!-- 指定在daoPointcut切入点应用txAdvice事务切面 -->
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="daoPointcut"/>
+	</aop:config>
+	<!-- 配置DAO组件模板 -->
+	<bean id="daoTemplate" abstract="true" lazy-init="true">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="classRoomDao"
+		class="com.course.selection.dao.impl.ClassRoomDAOImpl"
+		parent="daoTemplate">
+	</bean>
+	<bean id="courseDao"
+		class="com.course.selection.dao.impl.CourseDAOImpl"
+		parent="daoTemplate">
+	</bean>
+	<bean id="roleDao" class="com.course.selection.dao.impl.RoleDAOImpl"
+		parent="daoTemplate">
+	</bean>
+	<bean id="studentDao"
+		class="com.course.selection.dao.impl.StudentDAOImpl"
+		parent="daoTemplate">
+	</bean>
+	<bean id="teacherDao"
+		class="com.course.selection.dao.impl.TeacherDAOImpl"
+		parent="daoTemplate">
+	</bean>
+	<bean id="userDao" class="com.course.selection.dao.impl.UserDAOImpl"
+		parent="daoTemplate">
+	</bean>
+	<!-- 定义业务逻辑组件模板 -->
+	<bean id="serviceTemplate" abstract="true" lazy-init="true">
+		<!-- 为业务逻辑组件注入DAO组件 -->
+		<property name="studentDAO" ref="studentDao"></property>
+		<property name="courseDAO" ref="courseDao"></property>
+		<property name="teacherDAO" ref="teacherDao"></property>			
+		<property name="classRoomDAO" ref="classRoomDao"></property>			
+		<property name="userDAO" ref="userDao"></property>			
+		<property name="roleDAO" ref="roleDao"></property>			
+	</bean>
+	<bean id="adminService" 
+		  class="com.course.selection.service.impl.AdminServiceImpl"
+		  parent="serviceTemplate">
+	</bean>
+	<bean id="classRoomService" 
+		  class="com.course.selection.service.impl.ClassRoomServiceImpl"
+		  parent="serviceTemplate">
+	</bean>
+	<bean id="studentService" 
+		  class="com.course.selection.service.impl.StudentServiceImpl"
+		  parent="serviceTemplate">
+	</bean>
+	<bean id="teacherService" 
+		  class="com.course.selection.service.impl.TeacherServiceImpl"
+		  parent="serviceTemplate">
+	</bean>
+	<bean id="courseService" 
+		  class="com.course.selection.service.impl.CourseServiceImpl"
+		  parent="serviceTemplate">
+	</bean>
+	<bean id="userService" 
+		  class="com.course.selection.service.impl.UserServiceImpl"
+		  parent="serviceTemplate">
+	</bean>
+		
+</beans>

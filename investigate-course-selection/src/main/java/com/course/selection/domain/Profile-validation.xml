@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+  		"-//Apache Struts//XWork Validator 1.0.2//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+<field name="name">
+	<field-validator type="requiredstring">
+		<param name="trim">true</param>
+		<message key="profile.form.name.require"></message>
+	</field-validator>
+</field>
+<field name="department">
+	<field-validator type="requiredstring">
+		<param name="trim">true</param>
+		<message key="profile.form.department.require"></message>
+	</field-validator>
+</field>
+<field name="PhoneNumber">
+	<field-validator type="regex">
+		<param name="regex"><![CDATA[([1-9][0-9]{10})]]></param>
+		<message key="profile.form.phonenumber.illegal"></message>
+	</field-validator>
+</field>
+<field name="Email">
+	<field-validator type="email">
+		<message key="profile.form.email.illegal"></message>	
+	</field-validator>
+</field>
+<field name="BirthTime">
+	<field-validator type="date">
+		<param name="min">1900-01-01</param>
+		<message key="profile.form.birthtime.illegal"></message>
+	</field-validator>
+</field>
+</validators>

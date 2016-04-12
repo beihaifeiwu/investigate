@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+  		"-//Apache Struts//XWork Validator 1.0.2//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+<field name="student">
+	<field-validator type="visitor">
+		<param name="appendPrefix">true</param>
+		<message>学生的：</message>
+	</field-validator>
+</field>
+<field name="newPassword">
+	<field-validator type="regex">
+		<param name="regex"><![CDATA[(\w{3,16})]]></param>
+		<message key="teacher.form.password.illegal"></message>
+	</field-validator>
+</field>
+<field name="reNewPassword">
+	<field-validator type="fieldexpression">
+		<param name="expression"><![CDATA[reNewPassword.equals(newPassword)]]></param>
+		<message key="teacher.form.password.notequal"></message>
+	</field-validator>
+</field>
+</validators>

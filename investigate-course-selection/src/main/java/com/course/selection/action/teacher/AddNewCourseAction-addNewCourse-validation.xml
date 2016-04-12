@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE validators PUBLIC 
+  		"-//Apache Struts//XWork Validator 1.0.2//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<!-- 校验Action的courseNumber属性 -->
+	<field name="courseNumber">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="course.form.coursenumber.error"></message>
+		</field-validator>
+	</field>
+	<!-- 校验Action的classNumber属性 -->
+	<field name="classNumber">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="course.form.classnumber.error"></message>
+		</field-validator>
+	</field>	
+	<!-- 校验Action的courseName属性 -->
+	<field name="courseName">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="course.form.coursename.error"></message>
+		</field-validator>
+	</field>
+	<!-- 校验Action的credit属性 -->
+	<field name="credit">
+		<field-validator type="required">
+			<message key="course.form.credit.error"></message>
+		</field-validator>
+		<field-validator type="double">
+			<message key="course.form.credit.error"></message>			
+		</field-validator>
+	</field>
+	<!-- 校验Action的teacherAccount属性 -->
+
+	<!-- 校验Action的attribute属性 -->
+	<field name="attribute">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="course.form.attribute.error"></message>			
+		</field-validator>
+	</field>
+	<!-- 校验Action的capacity属性 -->
+	<field name="capacity">
+		<field-validator type="required">
+			<message key="course.form.capacity.error"></message>
+		</field-validator>
+		<field-validator type="int">
+			<param name="min">20</param>
+            <param name="max">200</param>
+			<message>课程容量要在${min}到${max}之间</message>			
+		</field-validator>
+	</field>
+	<!-- 校验Action的roomName属性
+	<field name="roomName">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="classroom.form.roomname.error"></message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="regex"><![CDATA[([A-Z][1-9]{3,4})]]></param>
+			<message key="classroom.form.roomname.illegal"></message>
+		</field-validator>
+	</field>
+	<field name="timePeriod">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="course.form.timePeriod.error"></message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="regex"><![CDATA[([1-7],[1,11](-[1-7],[1,11])*)]]></param>
+			<message key="course.form.timePeriod.illegal"></message>
+		</field-validator>
+	</field>
+	 -->	
+</validators>

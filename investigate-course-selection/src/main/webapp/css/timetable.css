@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* CSS Document */
+.time_table_td_empty{
+	background-color:#FFF;
+	cursor:pointer;
+}
+.time_table_td_empty_selected {
+	background-color:#03C;
+	cursor:pointer;
+}
+.time_table_td_empty_used{
+	background-color:#F00;
+}
+#time_table_container {
+	display:none;
+	font-size:12px;
+	background-color:#eafcd5;
+	border:solid #0C3 thin;
+	padding:5px;
+	width:548px;
+	height:320px;
+}
+#time_table_head {
+	height:30px;
+	width:538px;
+	overflow:hidden;
+	padding:0px;
+	padding-left:30px;
+}
+#time_table_title{
+	height:30px;
+	width:300px;
+	display:inline-block;
+	margin:0px;
+	float:left;
+}
+#time_table_room {
+	height:30px;
+	width:100px;
+	margin:0px;
+	float:right;
+	display:inline-block;
+}
+#time_tale_content {
+	width:538px;
+	margin-bottom:5px;
+	height:255px;
+	overflow:hidden;
+}
+#time_table_tail {
+	padding-left:370px;
+	height:40px;	
+}
+

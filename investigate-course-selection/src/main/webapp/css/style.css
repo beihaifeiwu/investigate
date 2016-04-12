@@ -1,0 +1,109 @@
+/*=================================*/
+/* Nivo Slider Demo
+/* November 2010
+/* By: Gilbert Pellegrom
+/* http://dev7studios.com
+/*=================================*/
+
+/*====================*/
+/*=== Reset Styles ===*/
+/*====================*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin:0;
+	padding:0;
+	border:0;
+	outline:0;
+	font-weight:inherit;
+	font-style:inherit;
+	font-size:100%;
+	font-family:inherit;
+	vertical-align:baseline;
+}
+
+/* HTML elements */
+body{background:url(../images/index_bg.jpg);color:#666;font-family:'Droid Sans',Tahoma,Arial,sans-serif;font-size:13px;line-height:1.6em;}
+a{color:#a54569;text-decoration:none;}
+a:hover{color:#333;text-decoration:none;}
+a img{border:none;}
+h1,h2,h3,h4{clear:left;color:#5c5a5a;font-weight:400;margin:0.7em 0;font-family:'Yanone Kaffeesatz';}
+h1{font-size:2.6em;}
+h2{font-size:2.4em;}
+h3{font-size:1.9em;}
+p,ul{margin:0 0 20px 0;}
+i,em {font-style:italic;}
+b,strong {font-weight:700;}
+
+table {
+	border-collapse:separate;
+	border-spacing:0;
+}
+caption, th, td {
+	text-align:left;
+	font-weight:normal;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content:"";
+}
+blockquote, q {
+	quotes:"" "";
+}
+/* HTML5 tags */
+header, section, footer,
+aside, nav, article, figure {
+	display: block;
+}
+
+/*===================*/
+/*=== Main Styles ===*/
+/*===================*/
+
+a, a:visited {
+	color:blue;
+	text-decoration:none;
+}
+
+#loginlink {
+    position:absolute;
+    top:0;
+    left:50px;
+    background:url(../images/login_logo.png) no-repeat;
+    width:100px;
+    height:60px;
+    border:0;
+    display:block;
+    text-indent:-9999px;
+}
+
+.slider-wrapper { 
+	width: 80%; 
+	margin: 100px auto;
+}
+
+/*====================*/
+/*=== Other Styles ===*/
+/*====================*/
+.clear {
+	clear:both;
+}
+
+.shadow{background:url(../images/shadow.png) top center no-repeat;}
+#content{padding:15px 30px;}
+
+/* Clearing fix */
+.clearfix:after{clear:both;content:".";display:block;height:0;visibility:hidden;}
+* html .clearfix{height:1%;}
+*:first-child+html .clearfix{min-height:1%;}
+
+/* Footer */
+#footer{clear:both;}
+#footer p{color:#777;font-size:12px;margin:0;padding:15px 30px;text-align:center;}
+#footer a{color:#777;}
+#footer a:hover{color:#333;}

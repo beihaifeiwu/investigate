@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013-7-2 8:33:19 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+ <class name="com.course.selection.domain.ClassRoom" table="CLASSROOM">
+  <id name="ID" type="int">
+   <column name="ID"/>
+   <generator class="native"/>
+  </id>
+  <property generated="never" lazy="false" name="RoomName" unique="true" type="java.lang.String">
+   <column name="ROOMNAME"/>
+  </property>
+  <property generated="never" lazy="false" name="Capacity" type="int">
+   <column name="CAPACITY"/>
+  </property>
+ </class>
+</hibernate-mapping>

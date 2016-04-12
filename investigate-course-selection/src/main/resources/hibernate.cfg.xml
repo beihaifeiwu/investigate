@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory name="">
+  <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+  <!--<property name="hibernate.connection.password">root</property>-->
+  <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/course_select</property>
+  <property name="hibernate.connection.username">root</property>
+  <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+  <property name="hibernate.hbm2ddl.auto">update</property>
+  <property name="hibernate.show_sql">true</property>
+  <property name="hibernate.format_sql">false</property>
+  <mapping resource="com/course/selection/domain/ClassRoom.hbm.xml"/>
+  <mapping resource="com/course/selection/domain/Course.hbm.xml"/>
+  <mapping resource="com/course/selection/domain/Profile.hbm.xml"/>
+  <mapping resource="com/course/selection/domain/Role.hbm.xml"/>
+  <mapping resource="com/course/selection/domain/Student.hbm.xml"/>
+  <mapping resource="com/course/selection/domain/Teacher.hbm.xml"/>
+  <mapping resource="com/course/selection/domain/TimePoint.hbm.xml"/>
+  <mapping resource="com/course/selection/domain/User.hbm.xml"/>
+  <mapping resource="com/course/selection/domain/CourseState.hbm.xml"/>
+ </session-factory>
+</hibernate-configuration>

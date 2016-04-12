@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013-7-2 8:33:19 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <joined-subclass name="com.course.selection.domain.Teacher" extends="com.course.selection.domain.User" table="TEACHER" lazy="false">
+        <key>
+            <column name="ID" />
+        </key>
+        <property name="Title" type="java.lang.String">
+            <column name="TITLE" />
+        </property>
+    </joined-subclass>
+</hibernate-mapping>

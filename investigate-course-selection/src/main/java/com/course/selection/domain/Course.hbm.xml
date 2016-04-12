@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013-7-2 8:33:19 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+ <class name="com.course.selection.domain.Course" table="COURSE">
+  <id name="ID" type="int">
+   <column name="ID"/>
+   <generator class="native"/>
+  </id>
+  <property generated="never" lazy="false" name="CourseName" type="java.lang.String">
+   <column name="COURSENAME"/>
+  </property>
+  <property generated="never" lazy="false" name="CourseNumber" type="java.lang.String">
+   <column name="COURSENUMBER"/>
+  </property>
+  <property generated="never" lazy="false" name="ClassNumber" type="java.lang.String">
+   <column name="CLASSNUMBER"/>
+  </property>
+  <property generated="never" lazy="false" name="attribute" type="java.lang.String">
+  	<column name="ATTRIBUTE"></column>
+  </property>
+  <property generated="never" lazy="false" name="Capacity" type="int">
+   <column name="CAPACITY"/>
+  </property>
+  <property generated="never" lazy="false" name="Credit" type="double">
+   <column name="CREDIT"/>
+  </property>
+  <many-to-one class="com.course.selection.domain.Teacher" cascade="save-update" fetch="join" name="teacher" lazy="false">
+   <column name="TEACHER"/>
+  </many-to-one>
+  <many-to-one class="com.course.selection.domain.ClassRoom"
+   fetch="join" name="classroom" lazy="false">
+   <column name="CLASSROOM"/>
+  </many-to-one>
+  <many-to-one class="com.course.selection.domain.TimePoint"
+   fetch="join" name="timepoint" cascade="all" unique="true" lazy="false">
+   <column name="TIMEPOINT"/>
+  </many-to-one>
+  <many-to-one class="com.course.selection.domain.CourseState" 
+  			   name="courseState" cascade="all" unique="true" 
+  			   column="COURSESTATE" lazy="false"/>
+ </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013-7-1 9:48:33 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <joined-subclass name="com.course.selection.domain.Student" extends="com.course.selection.domain.User" table="STUDENT" lazy="false">
+        <key>
+            <column name="ID" />
+        </key>
+		<property name="clazz" type="java.lang.String"></property>
+        <set name="course" table="COURSE_STUDENT" inverse="false" lazy="true">
+            <key>
+                <column name="STUDENTID" />
+            </key>
+            <many-to-many column="COURSEID" class="com.course.selection.domain.Course"/>
+        </set>
+    </joined-subclass>
+</hibernate-mapping>

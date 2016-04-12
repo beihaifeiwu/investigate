@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+  		"-//Apache Struts//XWork Validator 1.0.2//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+<field name="profile">
+	<field-validator type="visitor">
+		<param name="appendPrefix">true</param>
+		<message>基本信息：</message>
+	</field-validator>
+</field>
+<field name="title">
+	<field-validator type="requiredstring">
+		<param name="trim">true</param>
+		<message key="teacher.form.title.require"></message>
+	</field-validator>
+</field>
+<field name="Account">
+	<field-validator type="requiredstring">
+		<param name="trim">true</param>
+		<message key="teacher.form.account.require"></message>
+	</field-validator>
+</field>
+</validators>

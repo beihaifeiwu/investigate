@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.i18n.encoding" value="UTF-8"></constant>
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.custom.i18n.resources" value="messageResource"></constant>
+    <constant name="struts.date.format" value="yyyy-MM-dd"></constant>
+
+    <package name="default" namespace="/" extends="json-default">
+		<!-- 定义自定义的返回结果类型 -->
+        <result-types>
+        	<result-type name="image" class="com.course.selection.action.result.ImageResult"></result-type>
+        </result-types>
+
+		<!-- 定义通用的拦截器 -->
+        <interceptors>
+        	<!-- 权限控制 -->
+        	<interceptor name="accessControl" 
+        				class="com.course.selection.action.interceptor.AccessControlInterceptor">
+            </interceptor>
+        </interceptors>
+        
+        <default-action-ref name="login" />
+        
+        <global-results>
+            <result name="error">/error.jsp</result>
+            <result name="login">/WEB-INF/pages/login.jsp</result>
+        </global-results>
+
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error"/>
+        </global-exception-mappings>
+		<!-- 返回组成框架页面的Action -->
+        <action name="top">
+        	<result name="success">/WEB-INF/pages/top.jsp</result>
+        </action>
+        <action name="center">
+        	<result name="success">/WEB-INF/pages/center.jsp</result>
+        </action>
+        <action name="down">
+        	<result name="success">/WEB-INF/pages/down.jsp</result>
+        </action>
+        <action name="left">
+        	<result name="success">/WEB-INF/pages/left.jsp</result>
+        </action>
+        <action name="welcome">
+        	<result name="success">/WEB-INF/pages/welcome.jsp</result>
+        </action>
+        <!-- LoginAction 的配置 -->
+        <action name="login" class="com.course.selection.action.LoginAction">
+        	<!-- 使用系统默认的拦截器栈 -->
+        	<interceptor-ref name="defaultStack"></interceptor-ref>
+        	<!-- 使用防刷新的token拦截器 -->
+        	<interceptor-ref name="token"></interceptor-ref>
+        	<result name="invalid.token">/WEB-INF/pages/login.jsp</result>
+        	<result name="input">/WEB-INF/pages/login.jsp</result>
+        	<result name="success">/WEB-INF/pages/main.jsp</result>
+        </action>
+        <!-- LogoutAction 的配置 -->
+        <action name="logout" class="com.course.selection.action.LogoutAction">
+        	<result name="success">/WEB-INF/pages/login.jsp</result>        	
+        </action>
+        <!-- ExtractImageAction 的配置 -->
+        <action name="image" class="com.course.selection.action.ExtractImageAction">
+        	<result name="success" type="image"></result>
+        </action>
+    </package>
+    
+    <package name="admin" namespace="/admin" extends="default">
+    	<!-- 定义admin包下的默认拦截器栈 -->
+    	<interceptors>
+    		<interceptor-stack name="adminDefault">
+    			<interceptor-ref name="defaultStack"></interceptor-ref>
+    			<interceptor-ref name="accessControl">
+    				<param name="role">Admin</param>
+    			</interceptor-ref>
+    		</interceptor-stack>
+    	</interceptors>
+    	<default-interceptor-ref name="adminDefault"></default-interceptor-ref>
+    	<default-action-ref name="error" />
+    	<global-results>
+    		<result name="error">/WEB-INF/pages/tab/admin/error.jsp</result>
+    	</global-results>
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error"/>
+        </global-exception-mappings>
+
+        <!-- FileUploadAction的配置 -->
+        <action name="fileUpload" class="com.course.selection.action.FileUploadAction">
+    		<interceptor-ref name="adminDefault"></interceptor-ref>
+    		
+    		<interceptor-ref name="fileUpload">
+    			<param name="allowedTypes">application/vnd.ms-excel,application/msexcel,application/kset,application/actet-stream,application/octet-stream</param>
+    		</interceptor-ref>
+
+    		<param name="savePath">upload</param>
+    		
+    		<result name="input">/WEB-INF/pages/tab/admin/message.jsp</result>
+    		
+    		<result name="success" type="redirectAction">
+    			<param name="actionName">${nextAction}</param>
+    			<param name="namespace">/admin</param>
+    			<param name="path">${realPath}</param>
+    		</result>
+        
+        </action>
+        
+    	<!-- 课程管理的Action -->
+    	<action name="loadCourse">
+    		<result name="success">/WEB-INF/pages/tab/admin/course_select_option.jsp</result>
+    	</action>
+    	<action name="loadCourseByExcel" class="com.course.selection.action.LoadCourseByExcelAction">
+    		<interceptor-ref name="adminDefault"></interceptor-ref>	 
+    		<interceptor-ref name="execAndWait"></interceptor-ref>
+    		<result name="wait">/WEB-INF/pages/tab/admin/wait.jsp</result>
+    		<result name="success">/WEB-INF/pages/tab/admin/message.jsp</result>
+    	</action>
+
+    	<action name="scanCourse" class="com.course.selection.action.ScanCourseListAction">
+			<result name="success">/WEB-INF/pages/tab/admin/scan_course_list.jsp</result>    	
+    	</action>
+    	<action name="scanDeletedCourse" class="com.course.selection.action.ScanDeletedCourseListAction">
+			<result name="success">/WEB-INF/pages/tab/admin/scan_deleted_course_list.jsp</result>    	
+    	</action>
+    	<action name="scanUnDeletedCourse" class="com.course.selection.action.ScanUnDeletedCourseListAction">
+			<result name="success">/WEB-INF/pages/tab/admin/scan_undeleted_course_list.jsp</result>    	
+    	</action>
+    	<action name="scanPickableCourse" class="com.course.selection.action.ScanPickableCourseListAction">
+			<result name="success">/WEB-INF/pages/tab/admin/scan_pickable_course_list.jsp</result>    	
+    	</action>
+		<action name="scanUnReadyCourse" class="com.course.selection.action.ScanUnReadyCourseListAction">
+			<result name="success">/WEB-INF/pages/tab/admin/scan_unready_course_list.jsp</result>  		
+		</action>
+		
+    	<action name="deleteCourse" class="com.course.selection.action.DeleteCourseAction">
+    		<interceptor-ref name="adminDefault"></interceptor-ref>	 
+    		<interceptor-ref name="execAndWait">
+    			<param name="delay">1000</param>
+    		</interceptor-ref>
+    		<result name="wait">/WEB-INF/pages/tab/admin/wait.jsp</result>
+			<result name="success">/WEB-INF/pages/tab/admin/message.jsp</result>    	
+    	</action>
+		<action name="addCourse">
+			<result name="success">/WEB-INF/pages/tab/admin/add_new_course.jsp</result>
+		</action>    	
+    	<action name="addNewCourse" class="com.course.selection.action.AddNewCourseAction">
+    		<interceptor-ref name="adminDefault"></interceptor-ref>	 
+    		<interceptor-ref name="token"></interceptor-ref>
+			<result name="success">/WEB-INF/pages/tab/admin/message.jsp</result>
+			<result name="input">/WEB-INF/pages/tab/admin/add_new_course.jsp</result>    	
+    	</action>
+    	<action name="jumpToModifyCourse" class="com.course.selection.action.JumpToCourseModifyAction">
+    		<result name="success">/WEB-INF/pages/tab/admin/modify_course.jsp</result>
+    	</action>
+    	<action name="modifyCourse" class="com.course.selection.action.ModifyCourseAction">
+    		<result name="success">/WEB-INF/pages/tab/admin/message.jsp</result>
+    	</action>
+    	<action name="searchCourse">
+    		<result name="success">/WEB-INF/pages/tab/admin/course_search_option.jsp</result>
+    	</action>
+    	<action name="searchCourseByMethod" class="com.course.selection.action.SearchCourseListAction">
+    		<param name="action">searchCourseByMethod</param>
+    		<result name="success">/WEB-INF/pages/tab/admin/scan_search_course_list.jsp</result>
+    	</action>
+    	<action name="selectCourse">
+    		<result name="success">/WEB-INF/pages/tab/admin/course_select_button.jsp</result>
+    	</action>
+    	<action name="openCourseSelect" class="com.course.selection.action.CourseSelectButtonAction" method="open">
+    		<result name="success">/WEB-INF/pages/tab/admin/message.jsp</result>
+    	</action>
+    	<action name="closeCourseSelect" class="com.course.selection.action.CourseSelectButtonAction" method="close">
+    		<result name="success">/WEB-INF/pages/tab/admin/message.jsp</result>
+    	</action>
+    	<action name="removeCourse" class="com.course.selection.action.CourseSelectButtonAction" method="remove">
+    		<interceptor-ref name="adminDefault"></interceptor-ref>	 
+    		<interceptor-ref name="execAndWait">
+    			<param name="delay">1000</param>
+    		</interceptor-ref>
+    		<result name="wait">/WEB-INF/pages/tab/admin/wait.jsp</result>
+    		<result name="success">/WEB-INF/pages/tab/admin/message.jsp</result>    	
+    	</action>
+    	
+    	<!-- 教室管理的Action -->
+    	<action name="loadClassRoom">
+    		<result name="success">/WEB-INF/pages/tab/admin/classroom_select_option.jsp</result>    	
+    	</action>
+    	<action name="loadClassRoomByExcel" class="com.course.selection.action.LoadClassRoomByExcelAction">
+    		<interceptor-ref name="adminDefault"></interceptor-ref>    		 
+    		<interceptor-ref name="execAndWait"></interceptor-ref>
+    		<result name="wait">/WEB-INF/pages/tab/admin/wait.jsp</result>
+    		<result name="success">/WEB-INF/pages/tab/admin/message.jsp</result>
+    	</action>
+    	<action name="scanClassRoom" class="com.course.selection.action.ScanClassRoomListAction">
+    		<param name="action">scanClassRoom</param>
+    		<result name="success">/WEB-INF/pages/tab/admin/scan_classroom_list.jsp</result>
+    	</action>
+    	<action name="deleteClassRoom" class="com.course.selection.action.DeleteClassRoomAction">
+    		<interceptor-ref name="adminDefault"></interceptor-ref>	 
+    		<interceptor-ref name="execAndWait">
+    			<param name="delay">1000</param>
+    		</interceptor-ref>
+    		<result name="wait">/WEB-INF/pages/tab/admin/wait.jsp</result>
+			<result name="success">/WEB-INF/pages/tab/admin/message.jsp</result>    		
+    	</action>
+    	<action name="modifyClassRoom" method="prepare" class="com.course.selection.action.ModifyClassRoomAction">
+    		<result name="success">/WEB-INF/pages/tab/admin/modify_classroom.jsp</result>
+    	</action>
+    	<action name="modifyClassRoomByManual" method="modify" class="com.course.selection.action.ModifyClassRoomAction">
+    		<result name="success">/WEB-INF/pages/tab/admin/message.jsp</result>
+    	</action>
+    	<action name="addClassRoom">
+    		<result name="success">/WEB-INF/pages/tab/admin/add_new_classroom.jsp</result>
+    	</action>
+    	<action name="addClassRoomByManual" class="com.course.selection.action.AddNewClassRoomAction">
+    		<result name="success">/WEB-INF/pages/tab/admin/message.jsp</result>
+    	</action>
+    	<action name="classRoomCourseTable" class="com.course.selection.action.ClassRoomCourseTableAction">
+    		<interceptor-ref name="adminDefault"></interceptor-ref>	 
+    		<interceptor-ref name="execAndWait">
+    			<param name="delay">1000</param>
+    		</interceptor-ref>
+    		<result name="wait">/WEB-INF/pages/tab/admin/wait.jsp</result>
+    		<result name="success">/WEB-INF/pages/tab/admin/coursetable_classroom.jsp</result>
+    	</action>
+    	
+    	<!-- 师生管理的Action -->
+    	<action name="loadTeacher">
+    		<result name="success">/WEB-INF/pages/tab/admin/teacher_select_option.jsp</result>    	
+    	</action>
+    	<action name="loadTeacherByExcel" class="com.course.selection.action.LoadTeacherByExcelAction">
+    		<interceptor-ref name="adminDefault"></interceptor-ref>    		 
+    		<interceptor-ref name="execAndWait"></interceptor-ref>
+    		<result name="wait">/WEB-INF/pages/tab/admin/wait.jsp</result>
+    		<result name="success">/WEB-INF/pages/tab/admin/message.jsp</result>
+    	</action>
+    	<action name="scanTeacher" class="com.course.selection.action.ScanTeacherListAction">
+    		<param name="action">scanTeacher</param>
+    		<result name="success">/WEB-INF/pages/tab/admin/scan_teacher_list.jsp</result>
+    	</action>
+    	<action name="deleteTeacher" class="com.course.selection.action.DeleteTeacherAction">
+    		<result name="success">/WEB-INF/pages/tab/admin/message.jsp</result>
+    	</action>
+    	<action name="prepareToModifyTeacher" class="com.course.selection.action.ModifyTeacherAction" method="prepare">
+    		<result name="success">/WEB-INF/pages/tab/admin/modify_teacher.jsp</result>
+    	</action>
+    	<action name="modifyTeacher" class="com.course.selection.action.ModifyTeacherAction" method="modify">
+    		<interceptor-ref name="adminDefault"></interceptor-ref>
+    		<interceptor-ref name="fileUpload">
+    			<param name="allowedTypes">image/jpeg,image/jpg</param>
+    		</interceptor-ref>
+        	<interceptor-ref name="token"></interceptor-ref>
+        	<param name="savePath">upload</param>
+			<result name="input">/WEB-INF/pages/tab/admin/modify_teacher.jsp</result>
+    		<result name="success">/WEB-INF/pages/tab/admin/message.jsp</result>
+    	</action>
+    	<action name="modifyTeacherPassword" class="com.course.selection.action.ModifyTeacherAction" method="modifyPassword">
+    		<interceptor-ref name="adminDefault"></interceptor-ref>
+        	<interceptor-ref name="token"></interceptor-ref>
+			<result name="input">/WEB-INF/pages/tab/admin/modify_teacher.jsp</result>
+    		<result name="success">/WEB-INF/pages/tab/admin/message.jsp</result>    		
+    	</action>
+    	<action name="addTeacher">
+    		<result name="success">/WEB-INF/pages/tab/admin/add_new_teacher.jsp</result>
+    	</action>    	
+    	<action name="addNewTeacher"  class="com.course.selection.action.AddNewTeacherAction" >
+    		<interceptor-ref name="adminDefault"></interceptor-ref>
+        	<interceptor-ref name="token"></interceptor-ref>
+    		<result name="success">/WEB-INF/pages/tab/admin/message.jsp</result>    	
+    	</action>
+    	<action name="showTeacherDetail" class="com.course.selection.action.ShowTeacherDetailAction">
+    		<result name="success">/WEB-INF/pages/tab/admin/show_teacher_detail.jsp</result>
+    	</action>
+    	<action name="showTeacherCourseTable" class="com.course.selection.action.TeacherCourseTableAction">
+    		<result name="success">/WEB-INF/pages/tab/admin/coursetable_teacher.jsp</result>
+    	</action>
+    	<action name="loadStudent">
+    		<result name="success">/WEB-INF/pages/tab/admin/student_select_option.jsp</result>    	
+    	</action>
+    	<action name="addStudent">
+    		<result name="success">/WEB-INF/pages/tab/admin/add_new_student.jsp</result>
+    	</action>
+    	<action name="addNewStudent" class="com.course.selection.action.AddNewStudentAction">
+    	    <interceptor-ref name="adminDefault"></interceptor-ref>
+    		<interceptor-ref name="fileUpload">
+    			<param name="allowedTypes">image/jpeg,image/jpg</param>
+    		</interceptor-ref>
+        	<interceptor-ref name="token"></interceptor-ref>
+        	<param name="savePath">upload</param>
+        	<result name="input">/WEB-INF/pages/tab/admin/add_new_student.jsp</result>
+    		<result name="success">/WEB-INF/pages/tab/admin/message.jsp</result>
+    	</action>
+    	<action name="scanStudent" class="com.course.selection.action.ScanStudentListAction">
+    		<param name="action">scanStudent</param>
+    		<result name="success">/WEB-INF/pages/tab/admin/scan_student_list.jsp</result>
+    	</action>
+    	<action name="deleteStudent" class="com.course.selection.action.DeleteStudentAction">
+     		<interceptor-ref name="adminDefault"></interceptor-ref>	 
+    		<interceptor-ref name="execAndWait">
+    			<param name="delay">1000</param>
+    		</interceptor-ref>
+    		<result name="wait">/WEB-INF/pages/tab/admin/wait.jsp</result>
+     		<result name="success">/WEB-INF/pages/tab/admin/message.jsp</result>
+    	</action>
+    	<action name="showStudentDetail" class="com.course.selection.action.ShowStudentDetailAction">
+    		<result name="success">/WEB-INF/pages/tab/admin/show_student_detail.jsp</result>
+    	</action>
+    	<action name="studentCourseTable" class="com.course.selection.action.StudentCourseTableAction">
+    		<result name="success">/WEB-INF/pages/tab/admin/coursetable_student.jsp</result>
+    	</action>
+    	<action name="prepareToModifyStudent" class="com.course.selection.action.ModifyStudentAction" method="prepare">
+    		<result name="success">/WEB-INF/pages/tab/admin/modify_student.jsp</result>
+    	</action>
+    	<action name="modifyStudent" class="com.course.selection.action.ModifyStudentAction" method="modify">
+    		<interceptor-ref name="adminDefault"></interceptor-ref>
+    		<interceptor-ref name="fileUpload">
+    			<param name="allowedTypes">image/jpeg,image/jpg</param>
+    		</interceptor-ref>
+        	<interceptor-ref name="token"></interceptor-ref>
+        	<param name="savePath">upload</param>
+			<result name="input">/WEB-INF/pages/tab/admin/modify_student.jsp</result>
+    		<result name="success">/WEB-INF/pages/tab/admin/message.jsp</result>
+    	</action>
+    	<action name="modifyStudentPassword" class="com.course.selection.action.ModifyStudentAction" method="modifyPassword">
+    		<interceptor-ref name="adminDefault"></interceptor-ref>
+        	<interceptor-ref name="token"></interceptor-ref>
+			<result name="input">/WEB-INF/pages/tab/admin/modify_student.jsp</result>
+    		<result name="success">/WEB-INF/pages/tab/admin/message.jsp</result>    		
+    	</action>
+    	
+    	<action name="prepareToModifyAdmin" class="com.course.selection.action.ModifyAdminAction" method="prepare">
+    		<result name="success">/WEB-INF/pages/tab/admin/modify_admin.jsp</result>
+    	</action>
+    	<action name="modifyAdminPassword" class="com.course.selection.action.ModifyAdminAction" method="modifyPassword">
+    		<result name="input">/WEB-INF/pages/tab/admin/modify_admin.jsp</result>
+     		<result name="success">/WEB-INF/pages/tab/admin/message.jsp</result>
+    	</action>
+    	
+    </package>
+
+	<package name="student" namespace="/student" extends="default">
+	    	<!-- 定义admin包下的默认拦截器栈 -->
+    	<interceptors>
+    		<interceptor-stack name="studentDefault">
+    			<interceptor-ref name="defaultStack"></interceptor-ref>
+    			<interceptor-ref name="accessControl">
+    				<param name="role">Student</param>
+    			</interceptor-ref>
+    		</interceptor-stack>
+    	</interceptors>
+    	<default-interceptor-ref name="studentDefault"></default-interceptor-ref>
+    	<default-action-ref name="error" />
+    	<global-results>
+    		<result name="error">/WEB-INF/pages/tab/student/error.jsp</result>
+    	</global-results>
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error"/>
+        </global-exception-mappings>
+	
+		<action name="showDetail" class="com.course.selection.action.student.ShowStudentDetailAction">
+			<result name="success">/WEB-INF/pages/tab/student/show_student_detail.jsp</result>
+		</action>
+    	<action name="prepareToModifyStudent" class="com.course.selection.action.student.ModifyStudentAction" method="prepare">
+    		<result name="success">/WEB-INF/pages/tab/student/modify_student.jsp</result>
+    	</action>
+    	<action name="modifyStudent" class="com.course.selection.action.student.ModifyStudentAction" method="modify">
+    		<interceptor-ref name="studentDefault"></interceptor-ref>
+    		<interceptor-ref name="fileUpload">
+    			<param name="allowedTypes">image/jpeg,image/jpg</param>
+    		</interceptor-ref>
+        	<interceptor-ref name="token"></interceptor-ref>
+        	<param name="savePath">upload</param>
+			<result name="input">/WEB-INF/pages/tab/student/modify_student.jsp</result>
+    		<result name="success">/WEB-INF/pages/tab/student/message.jsp</result>
+    	</action>
+    	<action name="modifyStudentPassword" class="com.course.selection.action.student.ModifyStudentAction" method="modifyPassword">
+    		<interceptor-ref name="studentDefault"></interceptor-ref>
+        	<interceptor-ref name="token"></interceptor-ref>
+			<result name="input">/WEB-INF/pages/tab/student/modify_student.jsp</result>
+    		<result name="success">/WEB-INF/pages/tab/student/message.jsp</result>    		
+    	</action>
+    	<action name="courseSelect" class="com.course.selection.action.student.CourseSelectAction">
+    		<result name="success">/WEB-INF/pages/tab/student/enter_course_select.jsp</result>
+    	</action>
+    	<action name="scanPickableCourse" class="com.course.selection.action.student.ScanPickableCourseListAction">
+    		<param name="action">scanPickableCourse</param>
+    		<result name="success">/WEB-INF/pages/tab/student/scan_pickable_course_list.jsp</result>    	
+    	</action>
+    	<action name="pickCourse" class="com.course.selection.action.student.PickCourseAction">
+    		<result name="success" type="json"></result>
+    	</action>
+    	<action name="studentCourseTable" class="com.course.selection.action.student.StudentCourseTableAction">
+    		<result name="success">/WEB-INF/pages/tab/student/coursetable_student.jsp</result>
+    	</action>
+    	<action name="scanSelectedCourse" class="com.course.selection.action.student.ScanSelectedCourseListAction">
+    		<result name="success">/WEB-INF/pages/tab/student/scan_course_list.jsp</result>
+    	</action>
+    	<action name="deleteStudentCourse" class="com.course.selection.action.student.DeleteCourseAction">
+    		<result name="success">/WEB-INF/pages/tab/student/message.jsp</result>
+    	</action>
+    	<action name="prepareToSearch">
+    		<result name="success">/WEB-INF/pages/tab/student/course_search_option.jsp</result>
+    	</action>
+    	<action name="searchCourseByMethod" class="com.course.selection.action.student.SearchCourseListAction">
+    		<param name="action">searchCourseByMethod</param>
+    		<result name="success">/WEB-INF/pages/tab/student/scan_search_course_list.jsp</result>
+    	</action>
+	</package>
+	
+	<package name="teacher" namespace="/teacher" extends="default">
+	    	<!-- 定义admin包下的默认拦截器栈 -->
+    	<interceptors>
+    		<interceptor-stack name="teacherDefault">
+    			<interceptor-ref name="defaultStack"></interceptor-ref>
+    			<interceptor-ref name="accessControl">
+    				<param name="role">Teacher</param>
+    			</interceptor-ref>
+    		</interceptor-stack>
+    	</interceptors>
+    	<default-interceptor-ref name="teacherDefault"></default-interceptor-ref>
+    	<default-action-ref name="error" />
+    	<global-results>
+    		<result name="error">/WEB-INF/pages/tab/teacher/error.jsp</result>
+    	</global-results>
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error"/>
+        </global-exception-mappings>
+		
+		<action name="showDetail" class="com.course.selection.action.teacher.ShowTeacherDetailAction">
+			<result name="success">/WEB-INF/pages/tab/teacher/show_teacher_detail.jsp</result>
+		</action>
+    	<action name="prepareToModifyTeacher" class="com.course.selection.action.teacher.ModifyTeacherAction" method="prepare">
+    		<result name="success">/WEB-INF/pages/tab/teacher/modify_teacher.jsp</result>
+    	</action>
+    	<action name="modifyTeacher" class="com.course.selection.action.teacher.ModifyTeacherAction" method="modify">
+    		<interceptor-ref name="teacherDefault"></interceptor-ref>
+    		<interceptor-ref name="fileUpload">
+    			<param name="allowedTypes">image/jpeg,image/jpg</param>
+    		</interceptor-ref>
+        	<interceptor-ref name="token"></interceptor-ref>
+        	<param name="savePath">upload</param>
+			<result name="input">/WEB-INF/pages/tab/teacher/modify_teacher.jsp</result>
+    		<result name="success">/WEB-INF/pages/tab/teacher/message.jsp</result>
+    	</action>
+    	<action name="modifyTeacherPassword" class="com.course.selection.action.teacher.ModifyTeacherAction" method="modifyPassword">
+    		<interceptor-ref name="teacherDefault"></interceptor-ref>
+        	<interceptor-ref name="token"></interceptor-ref>
+			<result name="input">/WEB-INF/pages/tab/teacher/modify_teacher.jsp</result>
+    		<result name="success">/WEB-INF/pages/tab/teacher/message.jsp</result>    		
+    	</action>
+    	<action name="showCourse"  class="com.course.selection.action.teacher.ScanCourseListAction">
+			<param name="action">showCourse</param>
+    		<result name="success">/WEB-INF/pages/tab/teacher/scan_course_list.jsp</result>
+    	</action>
+    	<action name="showCourseStudent" class="com.course.selection.action.teacher.ScanStudentListAction">
+    		<param name="action">showCourseStudent</param>
+    		<result name="success">/WEB-INF/pages/tab/teacher/scan_student_list.jsp</result>
+    	</action>
+    	<action name="showCourseTable" class="com.course.selection.action.teacher.TeacherCourseTableAction">
+    		<result name="success">/WEB-INF/pages/tab/teacher/coursetable_teacher.jsp</result>
+    	</action>
+    	<action name="prepareToAdd"  class="com.course.selection.action.teacher.AddNewCourseAction" method="prepare">
+    		<result name="success">/WEB-INF/pages/tab/teacher/add_new_course.jsp</result>
+    	</action>
+    	<action name="addNewCourse" class="com.course.selection.action.teacher.AddNewCourseAction">
+    		<result name="success">/WEB-INF/pages/tab/teacher/message.jsp</result>
+    	</action>
+    	<action name="getRoomNames" class="com.course.selection.action.teacher.ClassRoomNameAction">
+    		<result name="success" type="json"></result>
+    	</action>
+    	<action name="getRoomEmptyTime" class="com.course.selection.action.teacher.EmptyTimePeriodAction">
+    		<result name="success" type="json"></result>
+    	</action>
+	</package>
+	
+    <!-- Add packages here -->
+	
+</struts>

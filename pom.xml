@@ -52,6 +52,7 @@
     <module>investigate-geotools</module>
     <module>investigate-wx-shake-lottery</module>
     <module>investigate-kafka</module>
+    <module>investigate-course-selection</module>
   </modules>
 
   <dependencies>
@@ -175,13 +176,10 @@
 
   <repositories>
     <repository>
-      <id>central</id>
+      <id>maven central repo</id>
       <name>Maven Repository Switchboard</name>
       <layout>default</layout>
       <url>http://repo1.maven.org/maven2</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
     </repository>
     <repository>
       <id>jboss</id>
