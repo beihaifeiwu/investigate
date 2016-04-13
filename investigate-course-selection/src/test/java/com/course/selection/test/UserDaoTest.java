@@ -26,7 +26,7 @@ public class UserDaoTest {
 		user.setAccount("admin");
 		user.setPassword("123");
 		Role role = new Role();
-		role.setRoleNmae("Admin");
+		role.setRoleName("Admin");
 		user.setRole(role);
 		try {
 			us.createUser(user);

@@ -1,23 +1,28 @@
 package com.course.selection.test;
 
+import com.course.selection.dao.PageQuery;
+import com.course.selection.domain.Role;
+import com.course.selection.domain.Teacher;
+import com.course.selection.domain.User;
+import com.course.selection.exception.RoleExistException;
+import com.course.selection.exception.RoleNotExistException;
+import com.course.selection.exception.UserExistException;
+import com.course.selection.service.AdminService;
+import com.course.selection.service.UserService;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.course.selection.dao.PageQuery;
-import com.course.selection.domain.Role;
-import com.course.selection.domain.Teacher;
-import com.course.selection.exception.RoleExistException;
-import com.course.selection.service.AdminService;
-
 public class AdminServiceTest {
 
 	AdminService as = null;
+  UserService us = null;
 	
 	@Before
 	public void setUp() throws Exception {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		as = (AdminService) context.getBean("adminService");
+		us = (UserService) context.getBean("userService");
 	}
 
 	@Test
@@ -30,16 +35,24 @@ public class AdminServiceTest {
 		}
 	}
 
+  @Test
+  public void testCreateAdminAccount() throws RoleNotExistException, UserExistException {
+    User user = new User();
+    user.setAccount("admin");
+    user.setPassword("admin");
+    us.createUser(user);
+  }
+
 	@Test
 	public void testCreateRole() throws RoleExistException{
 		Role role = new Role();
-		role.setRoleNmae("Admin");
+		role.setRoleName("Admin");
 		as.createRole(role);
 		role = new Role();
-		role.setRoleNmae("Student");
+		role.setRoleName("Student");
 		as.createRole(role);		
 		role = new Role();
-		role.setRoleNmae("Teacher");
+		role.setRoleName("Teacher");
 		as.createRole(role);
 	}
 }

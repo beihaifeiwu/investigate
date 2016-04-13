@@ -20,13 +20,13 @@ public class RoleDaoTest {
 	@Test
 	public void test() {
 		Role role = new Role();
-		role.setRoleNmae("Admin");
+		role.setRoleName("Admin");
 		dao.save(role);
 		role = new Role();
-		role.setRoleNmae("Student");
+		role.setRoleName("Student");
 		dao.save(role);
 		role = new Role();
-		role.setRoleNmae("Teacher");
+		role.setRoleName("Teacher");
 		dao.save(role);
 	}
 

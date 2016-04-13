@@ -129,43 +129,7 @@ public class CourseServiceImpl implements CourseService {
 	}
 	@Override
 	public void createCourse(List<Course> courses) {
-		for(Course course : courses){
-			boolean isReady = true;
-			
-			//设置课程教室
-			if(course.getClassroom() != null){
-				String name = course.getClassroom().getRoomName();
-				ClassRoom room = this.classRoomDAO.findbyName(name);
-				if(room != null)
-					course.setClassroom(room);
-				else
-					isReady = false;
-			}else{
-				isReady = false;
-			}
-			//设置任课教师
-			if(course.getTeacher() != null){
-				String account = course.getTeacher().getAccount();
-				Teacher teacher = this.teacherDAO.findTeacherByAccount(account);
-				if(teacher != null)
-					course.setTeacher(teacher);
-				else
-					isReady = false;
-			}else{
-				isReady = false;
-			}
-			//设置课程状态
-			CourseState cs = course.getCourseState();
-			if(cs == null) cs = new CourseState();
-			if(isReady){
-				cs.setStateType(CourseStateType.INDATABASE);			
-			}else{
-				cs.setStateType(CourseStateType.CREATE);
-			}
-			cs.setStudentNumber(0);
-			course.setCourseState(cs);
-		}
-		this.courseDAO.save(courses);
+    courses.forEach(this::createCourse);
 	}
 	@Override
 	public PageQuery<Course> scanCourse() {

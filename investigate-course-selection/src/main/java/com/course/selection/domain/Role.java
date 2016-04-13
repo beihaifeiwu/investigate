@@ -27,7 +27,7 @@ public class Role implements Serializable {
 	public int getID(){
 		return ID;
 	}
-	public void setRoleNmae(String RoleName){
+	public void setRoleName(String RoleName){
 		this.RoleName=RoleName;
 	}
 	public String getRoleName(){

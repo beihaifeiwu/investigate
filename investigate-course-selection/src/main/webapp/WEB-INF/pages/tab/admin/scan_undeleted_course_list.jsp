@@ -265,7 +265,7 @@ function modify(){
 			   		  <th scope="col" height="18" background="../images/tab_14.gif" class="STYLE1">课程状态</th>
 			 	  </tr>
 			 	  <s:form id="deleteForm" action="deleteCourse" namespace="/admin" method="post" theme="simple">
-			 	  <s:iterator value="pageQuery.datas" id="entity">
+			 	  <s:iterator value="pageQuery.datas" var="entity">
 			      <tr>
 			      	  <td bgcolor="#FFFFFF" align="center" height="18" class="STYLE1"><s:checkbox name="tags" fieldValue="%{#entity.ID}" onchange="modify()"/></td>
 				      <td bgcolor="#FFFFFF" align="center" height="18" class="STYLE1"><s:property value="#entity.CourseNumber"/></td>
