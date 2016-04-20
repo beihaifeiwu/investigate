@@ -39,27 +39,9 @@ public class ImportExcel {
 				// 获取到Excel文件中的所有的列
 				int cells = row.getPhysicalNumberOfCells();
 				StringBuilder value = new StringBuilder();
-				// 遍历列
-				for (int j = 0; j < cells; j++) {
-					// 获取到列的值
-					HSSFCell cell = row.getCell(j);
-					if (cell != null) {
-						switch (cell.getCellType()) {
-						case HSSFCell.CELL_TYPE_FORMULA:
-							break;
-						case HSSFCell.CELL_TYPE_NUMERIC:
-							value.append(format.formatCellValue(cell)).append(",");
-							break;
-						case HSSFCell.CELL_TYPE_STRING:
-							value.append(cell.getRichStringCellValue().toString()).append(",");
-							break;
-						default:
-							value.append("0").append(",");
-							break;
-						}
-					}
-				}
-				value.deleteCharAt(value.length() - 1);
+				// foreachColumn
+        foreachColumn(format, row, cells, value);
+        value.deleteCharAt(value.length() - 1);
 				String[] values = value.toString().split(",");
 				if(values.length == 4){
 					Teacher teacher = new Teacher();
@@ -81,7 +63,30 @@ public class ImportExcel {
 		}
 		return list;
 	}
-	/**
+
+  private static void foreachColumn(HSSFDataFormatter format, HSSFRow row, int cells, StringBuilder value) {
+    for (int j = 0; j < cells; j++) {
+      // 获取到列的值
+      HSSFCell cell = row.getCell(j);
+      if (cell != null) {
+        switch (cell.getCellType()) {
+        case HSSFCell.CELL_TYPE_FORMULA:
+          break;
+        case HSSFCell.CELL_TYPE_NUMERIC:
+          value.append(format.formatCellValue(cell)).append(",");
+          break;
+        case HSSFCell.CELL_TYPE_STRING:
+          value.append(cell.getRichStringCellValue().toString()).append(",");
+          break;
+        default:
+          value.append("0").append(",");
+          break;
+        }
+      }
+    }
+  }
+
+  /**
 	 * 解析Excel表格，填充数据库，生成教室列表
 	 * @param file
 	 * @return
@@ -106,27 +111,9 @@ public class ImportExcel {
 				// 获取到Excel文件中的所有的列
 				int cells = row.getPhysicalNumberOfCells();
 				StringBuilder value = new StringBuilder();
-				// 遍历列
-				for (int j = 0; j < cells; j++) {
-					// 获取到列的值
-					HSSFCell cell = row.getCell(j);
-					if (cell != null) {
-						switch (cell.getCellType()) {
-						case HSSFCell.CELL_TYPE_FORMULA:
-							break;
-						case HSSFCell.CELL_TYPE_NUMERIC:
-							value.append(format.formatCellValue(cell)).append(",");
-							break;
-						case HSSFCell.CELL_TYPE_STRING:
-							value.append(cell.getRichStringCellValue().toString()).append(",");
-							break;
-						default:
-							value.append("0").append(",");
-							break;
-						}
-					}
-				}
-				value.deleteCharAt(value.length() - 1);
+				// foreachColumn
+        foreachColumn(format, row, cells, value);
+        value.deleteCharAt(value.length() - 1);
 				String[] values = value.toString().split(",");
 				if(values.length == 2){
 					ClassRoom classRoom = new ClassRoom();
@@ -168,27 +155,9 @@ public class ImportExcel {
 				// 获取到Excel文件中的所有的列
 				int cells = row.getPhysicalNumberOfCells();
 				StringBuilder value = new StringBuilder();
-				// 遍历列
-				for (int j = 0; j < cells; j++) {
-					// 获取到列的值
-					HSSFCell cell = row.getCell(j);
-					if (cell != null) {
-						switch (cell.getCellType()) {
-						case HSSFCell.CELL_TYPE_FORMULA:
-							break;
-						case HSSFCell.CELL_TYPE_NUMERIC:
-							value.append(format.formatCellValue(cell)).append(",");
-							break;
-						case HSSFCell.CELL_TYPE_STRING:
-							value.append(cell.getRichStringCellValue().toString()).append(",");
-							break;
-						default:
-							value.append("0").append(",");
-							break;
-						}
-					}
-				}
-				value.deleteCharAt(value.length() - 1);
+				// foreachColumn
+        foreachColumn(format, row, cells, value);
+        value.deleteCharAt(value.length() - 1);
 				String[] values = value.toString().split(",");
 				if(values.length == 18){
 					Course course = new Course();
