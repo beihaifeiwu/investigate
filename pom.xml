@@ -52,6 +52,7 @@
     <module>investigate-wx-shake-lottery</module>
     <module>investigate-kafka</module>
     <module>investigate-course-selection</module>
+    <module>investigate-activiti</module>
   </modules>
 
   <dependencies>
