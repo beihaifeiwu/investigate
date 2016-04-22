@@ -148,6 +148,17 @@
 
   </dependencies>
 
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.gif</include>
+        </includes>
+      </resource>
+    </resources>
+  </build>
+
   <repositories>
     <repository>
       <id>maven2-repository.dev.java.net</id>
