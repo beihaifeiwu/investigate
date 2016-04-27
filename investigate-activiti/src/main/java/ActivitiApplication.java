@@ -1,13 +1,18 @@
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration;
+import org.jboss.weld.environment.se.Weld;
+import org.jboss.weld.environment.se.WeldContainer;
 
 /**
- * Created by sifan on 2016/4/22.
+ * Created by sifan on 2016/4/26.
  */
-@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
 public class ActivitiApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ActivitiApplication.class, args);
+        System.setProperty(Weld.ARCHIVE_ISOLATION_SYSTEM_PROPERTY, "false");
+        Weld weld = new Weld();
+        WeldContainer container = weld.initialize();
+
+//        container.instance().select(ManualActiviti.class).get();
+//        container.instance().select(CdiActiviti.class).get();
+
+        container.event().fire(Status.START_PROCESS);
     }
 }
