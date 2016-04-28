@@ -33,17 +33,21 @@ public class ManualActiviti {
         startProcessByKey("interviewProcess");
         startProcessByKey("financialReport");
 
-        while (getTaskListAndHandle() <= 0) {
-            HistoryService historyService = processEngine.getHistoryService();
-            historyService.createHistoricActivityInstanceQuery();
+        while (getTaskListAndHandle() > 0) {
+            getTaskListAndHandle();
         }
+
+        HistoryService historyService = processEngine.getHistoryService();
+        historyService.createHistoricActivityInstanceQuery();
     }
 
-    private void startProcessByKey(String processDefinitionKey) {
+    private ProcessInstance startProcessByKey(String processDefinitionKey) {
         ProcessInstance process = (ProcessInstance) runtimeService.createExecutionQuery().processDefinitionKey(processDefinitionKey).singleResult();
         if (process == null) {
-            runtimeService.startProcessInstanceByKey(processDefinitionKey);
+            process = runtimeService.startProcessInstanceByKey(processDefinitionKey);
         }
+
+        return process;
     }
 
     private int getTaskListAndHandle() {
