@@ -91,6 +91,11 @@
       <artifactId>forms</artifactId>
       <version>3.3.0-v20070511</version>
     </dependency>
+    <dependency>
+      <groupId>com.ibm.icu</groupId>
+      <artifactId>icu4j</artifactId>
+      <version>57.1</version>
+    </dependency>
 
     <!-- H2Gis -->
     <dependency>
@@ -167,6 +172,7 @@
         <includes>
           <include>**/*.gif</include>
           <include>**/*.properties</include>
+          <include>**/*.jpg</include>
         </includes>
       </resource>
     </resources>
