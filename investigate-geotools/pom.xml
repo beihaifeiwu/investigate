@@ -86,6 +86,11 @@
       <artifactId>text</artifactId>
       <version>3.3.0-v20070606-0010</version>
     </dependency>
+    <dependency>
+      <groupId>org.eclipse.ui</groupId>
+      <artifactId>forms</artifactId>
+      <version>3.3.0-v20070511</version>
+    </dependency>
 
     <!-- H2Gis -->
     <dependency>
