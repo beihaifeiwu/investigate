@@ -12,7 +12,8 @@
   <artifactId>investigate-geotools</artifactId>
 
   <properties>
-    <geotools.version>14.3</geotools.version>
+    <geotools.version>15-RC1</geotools.version>
+    <geoserver.version>2.9-RC1</geoserver.version>
   </properties>
 
   <dependencies>
@@ -20,6 +21,28 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
+    </dependency>
+
+    <!-- GeoServer -->
+    <dependency>
+      <groupId>org.geoserver</groupId>
+      <artifactId>gs-main</artifactId>
+      <version>${geoserver.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.geoserver.web</groupId>
+      <artifactId>gs-web-core</artifactId>
+      <version>${geoserver.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.geoserver.web</groupId>
+      <artifactId>gs-web-rest</artifactId>
+      <version>${geoserver.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.geoserver.extension</groupId>
+      <artifactId>gs-h2</artifactId>
+      <version>${geoserver.version}</version>
     </dependency>
 
     <!-- Geotools -->
@@ -183,6 +206,7 @@
           <include>**/*.gif</include>
           <include>**/*.properties</include>
           <include>**/*.jpg</include>
+          <include>**/*.xml</include>
         </includes>
       </resource>
     </resources>
