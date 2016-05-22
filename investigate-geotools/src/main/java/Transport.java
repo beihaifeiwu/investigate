@@ -64,7 +64,7 @@ public final class Transport {
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
+          "EnumValueDescriptor is not for this drinkType.");
       }
       return VALUES[desc.getIndex()];
     }
@@ -84,7 +84,7 @@ public final class Transport {
       extends com.google.protobuf.MessageOrBuilder {
   }
   /**
-   * Protobuf type {@code HeartBeatRequest}
+   * Protobuf drinkType {@code HeartBeatRequest}
    */
   public static final class HeartBeatRequest extends
       com.google.protobuf.GeneratedMessage
@@ -274,7 +274,7 @@ public final class Transport {
       return builder;
     }
     /**
-     * Protobuf type {@code HeartBeatRequest}
+     * Protobuf drinkType {@code HeartBeatRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -393,7 +393,7 @@ public final class Transport {
       extends com.google.protobuf.MessageOrBuilder {
   }
   /**
-   * Protobuf type {@code HeartBeatResponse}
+   * Protobuf drinkType {@code HeartBeatResponse}
    */
   public static final class HeartBeatResponse extends
       com.google.protobuf.GeneratedMessage
@@ -583,7 +583,7 @@ public final class Transport {
       return builder;
     }
     /**
-     * Protobuf type {@code HeartBeatResponse}
+     * Protobuf drinkType {@code HeartBeatResponse}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -732,7 +732,7 @@ public final class Transport {
         getPasswordBytes();
   }
   /**
-   * Protobuf type {@code LoginRequest}
+   * Protobuf drinkType {@code LoginRequest}
    */
   public static final class LoginRequest extends
       com.google.protobuf.GeneratedMessage
@@ -1044,7 +1044,7 @@ public final class Transport {
       return builder;
     }
     /**
-     * Protobuf type {@code LoginRequest}
+     * Protobuf drinkType {@code LoginRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -1355,7 +1355,7 @@ public final class Transport {
     Transport.LoginResponse.Result getResult();
   }
   /**
-   * Protobuf type {@code LoginResponse}
+   * Protobuf drinkType {@code LoginResponse}
    */
   public static final class LoginResponse extends
       com.google.protobuf.GeneratedMessage
@@ -1521,7 +1521,7 @@ public final class Transport {
           com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
         if (desc.getType() != getDescriptor()) {
           throw new java.lang.IllegalArgumentException(
-            "EnumValueDescriptor is not for this type.");
+            "EnumValueDescriptor is not for this drinkType.");
         }
         return VALUES[desc.getIndex()];
       }
@@ -1668,7 +1668,7 @@ public final class Transport {
       return builder;
     }
     /**
-     * Protobuf type {@code LoginResponse}
+     * Protobuf drinkType {@code LoginResponse}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -1839,13 +1839,13 @@ public final class Transport {
   public interface IdentityOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required .Identity.Type type = 1;
+    // required .Identity.Type drinkType = 1;
     /**
-     * <code>required .Identity.Type type = 1;</code>
+     * <code>required .Identity.Type drinkType = 1;</code>
      */
     boolean hasType();
     /**
-     * <code>required .Identity.Type type = 1;</code>
+     * <code>required .Identity.Type drinkType = 1;</code>
      */
     Transport.Identity.Type getType();
 
@@ -1860,7 +1860,7 @@ public final class Transport {
     com.google.protobuf.ByteString getData();
   }
   /**
-   * Protobuf type {@code Identity}
+   * Protobuf drinkType {@code Identity}
    */
   public static final class Identity extends
       com.google.protobuf.GeneratedMessage
@@ -2040,7 +2040,7 @@ public final class Transport {
           com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
         if (desc.getType() != getDescriptor()) {
           throw new java.lang.IllegalArgumentException(
-            "EnumValueDescriptor is not for this type.");
+            "EnumValueDescriptor is not for this drinkType.");
         }
         return VALUES[desc.getIndex()];
       }
@@ -2057,17 +2057,17 @@ public final class Transport {
     }
 
     private int bitField0_;
-    // required .Identity.Type type = 1;
+    // required .Identity.Type drinkType = 1;
     public static final int TYPE_FIELD_NUMBER = 1;
     private Transport.Identity.Type type_;
     /**
-     * <code>required .Identity.Type type = 1;</code>
+     * <code>required .Identity.Type drinkType = 1;</code>
      */
     public boolean hasType() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required .Identity.Type type = 1;</code>
+     * <code>required .Identity.Type drinkType = 1;</code>
      */
     public Transport.Identity.Type getType() {
       return type_;
@@ -2215,7 +2215,7 @@ public final class Transport {
       return builder;
     }
     /**
-     * Protobuf type {@code Identity}
+     * Protobuf drinkType {@code Identity}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -2349,22 +2349,22 @@ public final class Transport {
       }
       private int bitField0_;
 
-      // required .Identity.Type type = 1;
+      // required .Identity.Type drinkType = 1;
       private Transport.Identity.Type type_ = Transport.Identity.Type.MAC;
       /**
-       * <code>required .Identity.Type type = 1;</code>
+       * <code>required .Identity.Type drinkType = 1;</code>
        */
       public boolean hasType() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required .Identity.Type type = 1;</code>
+       * <code>required .Identity.Type drinkType = 1;</code>
        */
       public Transport.Identity.Type getType() {
         return type_;
       }
       /**
-       * <code>required .Identity.Type type = 1;</code>
+       * <code>required .Identity.Type drinkType = 1;</code>
        */
       public Builder setType(Transport.Identity.Type value) {
         if (value == null) {
@@ -2376,7 +2376,7 @@ public final class Transport {
         return this;
       }
       /**
-       * <code>required .Identity.Type type = 1;</code>
+       * <code>required .Identity.Type drinkType = 1;</code>
        */
       public Builder clearType() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -2535,7 +2535,7 @@ public final class Transport {
     long getSceneId();
   }
   /**
-   * Protobuf type {@code LocationSource}
+   * Protobuf drinkType {@code LocationSource}
    */
   public static final class LocationSource extends
       com.google.protobuf.GeneratedMessage
@@ -3061,7 +3061,7 @@ public final class Transport {
       return builder;
     }
     /**
-     * Protobuf type {@code LocationSource}
+     * Protobuf drinkType {@code LocationSource}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -3770,7 +3770,7 @@ public final class Transport {
     int getRssi();
   }
   /**
-   * Protobuf type {@code RSSI}
+   * Protobuf drinkType {@code RSSI}
    */
   public static final class RSSI extends
       com.google.protobuf.GeneratedMessage
@@ -4094,7 +4094,7 @@ public final class Transport {
       return builder;
     }
     /**
-     * Protobuf type {@code RSSI}
+     * Protobuf drinkType {@code RSSI}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -4446,7 +4446,7 @@ public final class Transport {
         int index);
   }
   /**
-   * Protobuf type {@code Filter}
+   * Protobuf drinkType {@code Filter}
    */
   public static final class Filter extends
       com.google.protobuf.GeneratedMessage
@@ -4758,7 +4758,7 @@ public final class Transport {
       return builder;
     }
     /**
-     * Protobuf type {@code Filter}
+     * Protobuf drinkType {@code Filter}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -5334,7 +5334,7 @@ public final class Transport {
     long getSceneId();
   }
   /**
-   * Protobuf type {@code Location}
+   * Protobuf drinkType {@code Location}
    */
   public static final class Location extends
       com.google.protobuf.GeneratedMessage
@@ -5800,7 +5800,7 @@ public final class Transport {
       return builder;
     }
     /**
-     * Protobuf type {@code Location}
+     * Protobuf drinkType {@code Location}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -6394,7 +6394,7 @@ public final class Transport {
     Transport.IdentityOrBuilder getIdentityOrBuilder();
   }
   /**
-   * Protobuf type {@code QueryLocationRequest}
+   * Protobuf drinkType {@code QueryLocationRequest}
    */
   public static final class QueryLocationRequest extends
       com.google.protobuf.GeneratedMessage
@@ -6637,7 +6637,7 @@ public final class Transport {
       return builder;
     }
     /**
-     * Protobuf type {@code QueryLocationRequest}
+     * Protobuf drinkType {@code QueryLocationRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -6917,7 +6917,7 @@ public final class Transport {
     Transport.LocationOrBuilder getLocationOrBuilder();
   }
   /**
-   * Protobuf type {@code QueryLocationResponse}
+   * Protobuf drinkType {@code QueryLocationResponse}
    */
   public static final class QueryLocationResponse extends
       com.google.protobuf.GeneratedMessage
@@ -7160,7 +7160,7 @@ public final class Transport {
       return builder;
     }
     /**
-     * Protobuf type {@code QueryLocationResponse}
+     * Protobuf drinkType {@code QueryLocationResponse}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -7451,7 +7451,7 @@ public final class Transport {
         int index);
   }
   /**
-   * Protobuf type {@code QueryIdentitiesLocationsRequest}
+   * Protobuf drinkType {@code QueryIdentitiesLocationsRequest}
    */
   public static final class QueryIdentitiesLocationsRequest extends
       com.google.protobuf.GeneratedMessage
@@ -7703,7 +7703,7 @@ public final class Transport {
       return builder;
     }
     /**
-     * Protobuf type {@code QueryIdentitiesLocationsRequest}
+     * Protobuf drinkType {@code QueryIdentitiesLocationsRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -8137,7 +8137,7 @@ public final class Transport {
         int index);
   }
   /**
-   * Protobuf type {@code QueryIdentitiesLocationsResponse}
+   * Protobuf drinkType {@code QueryIdentitiesLocationsResponse}
    */
   public static final class QueryIdentitiesLocationsResponse extends
       com.google.protobuf.GeneratedMessage
@@ -8389,7 +8389,7 @@ public final class Transport {
       return builder;
     }
     /**
-     * Protobuf type {@code QueryIdentitiesLocationsResponse}
+     * Protobuf drinkType {@code QueryIdentitiesLocationsResponse}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -8808,7 +8808,7 @@ public final class Transport {
     long getPlanarGraphId();
   }
   /**
-   * Protobuf type {@code QueryPlanarGraphLocationsRequest}
+   * Protobuf drinkType {@code QueryPlanarGraphLocationsRequest}
    */
   public static final class QueryPlanarGraphLocationsRequest extends
       com.google.protobuf.GeneratedMessage
@@ -9033,7 +9033,7 @@ public final class Transport {
       return builder;
     }
     /**
-     * Protobuf type {@code QueryPlanarGraphLocationsRequest}
+     * Protobuf drinkType {@code QueryPlanarGraphLocationsRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -9227,7 +9227,7 @@ public final class Transport {
         int index);
   }
   /**
-   * Protobuf type {@code QueryPlanarGraphLocationsResponse}
+   * Protobuf drinkType {@code QueryPlanarGraphLocationsResponse}
    */
   public static final class QueryPlanarGraphLocationsResponse extends
       com.google.protobuf.GeneratedMessage
@@ -9479,7 +9479,7 @@ public final class Transport {
       return builder;
     }
     /**
-     * Protobuf type {@code QueryPlanarGraphLocationsResponse}
+     * Protobuf drinkType {@code QueryPlanarGraphLocationsResponse}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -9908,7 +9908,7 @@ public final class Transport {
     long getPlanarGraph();
   }
   /**
-   * Protobuf type {@code Region}
+   * Protobuf drinkType {@code Region}
    */
   public static final class Region extends
       com.google.protobuf.GeneratedMessage
@@ -10166,7 +10166,7 @@ public final class Transport {
       return builder;
     }
     /**
-     * Protobuf type {@code Region}
+     * Protobuf drinkType {@code Region}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -10398,7 +10398,7 @@ public final class Transport {
     Transport.FilterOrBuilder getFilterOrBuilder();
   }
   /**
-   * Protobuf type {@code SubscribeLocationEventsRequest}
+   * Protobuf drinkType {@code SubscribeLocationEventsRequest}
    */
   public static final class SubscribeLocationEventsRequest extends
       com.google.protobuf.GeneratedMessage
@@ -10639,7 +10639,7 @@ public final class Transport {
       return builder;
     }
     /**
-     * Protobuf type {@code SubscribeLocationEventsRequest}
+     * Protobuf drinkType {@code SubscribeLocationEventsRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -10918,7 +10918,7 @@ public final class Transport {
         getSubscriptionIdBytes();
   }
   /**
-   * Protobuf type {@code SubscribeResponse}
+   * Protobuf drinkType {@code SubscribeResponse}
    */
   public static final class SubscribeResponse extends
       com.google.protobuf.GeneratedMessage
@@ -11170,7 +11170,7 @@ public final class Transport {
       return builder;
     }
     /**
-     * Protobuf type {@code SubscribeResponse}
+     * Protobuf drinkType {@code SubscribeResponse}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -11397,7 +11397,7 @@ public final class Transport {
         getSubscriptionIdBytes();
   }
   /**
-   * Protobuf type {@code UnsubscribeRequest}
+   * Protobuf drinkType {@code UnsubscribeRequest}
    */
   public static final class UnsubscribeRequest extends
       com.google.protobuf.GeneratedMessage
@@ -11649,7 +11649,7 @@ public final class Transport {
       return builder;
     }
     /**
-     * Protobuf type {@code UnsubscribeRequest}
+     * Protobuf drinkType {@code UnsubscribeRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -11871,7 +11871,7 @@ public final class Transport {
     Transport.UnsubscribeResponse.Result getResult();
   }
   /**
-   * Protobuf type {@code UnsubscribeResponse}
+   * Protobuf drinkType {@code UnsubscribeResponse}
    */
   public static final class UnsubscribeResponse extends
       com.google.protobuf.GeneratedMessage
@@ -12037,7 +12037,7 @@ public final class Transport {
           com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
         if (desc.getType() != getDescriptor()) {
           throw new java.lang.IllegalArgumentException(
-            "EnumValueDescriptor is not for this type.");
+            "EnumValueDescriptor is not for this drinkType.");
         }
         return VALUES[desc.getIndex()];
       }
@@ -12184,7 +12184,7 @@ public final class Transport {
       return builder;
     }
     /**
-     * Protobuf type {@code UnsubscribeResponse}
+     * Protobuf drinkType {@code UnsubscribeResponse}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -12355,13 +12355,13 @@ public final class Transport {
   public interface LocationEventOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required .LocationEvent.Type type = 1;
+    // required .LocationEvent.Type drinkType = 1;
     /**
-     * <code>required .LocationEvent.Type type = 1;</code>
+     * <code>required .LocationEvent.Type drinkType = 1;</code>
      */
     boolean hasType();
     /**
-     * <code>required .LocationEvent.Type type = 1;</code>
+     * <code>required .LocationEvent.Type drinkType = 1;</code>
      */
     Transport.LocationEvent.Type getType();
 
@@ -12380,7 +12380,7 @@ public final class Transport {
     Transport.LocationOrBuilder getLocationOrBuilder();
   }
   /**
-   * Protobuf type {@code LocationEvent}
+   * Protobuf drinkType {@code LocationEvent}
    */
   public static final class LocationEvent extends
       com.google.protobuf.GeneratedMessage
@@ -12550,7 +12550,7 @@ public final class Transport {
           com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
         if (desc.getType() != getDescriptor()) {
           throw new java.lang.IllegalArgumentException(
-            "EnumValueDescriptor is not for this type.");
+            "EnumValueDescriptor is not for this drinkType.");
         }
         return VALUES[desc.getIndex()];
       }
@@ -12567,17 +12567,17 @@ public final class Transport {
     }
 
     private int bitField0_;
-    // required .LocationEvent.Type type = 1;
+    // required .LocationEvent.Type drinkType = 1;
     public static final int TYPE_FIELD_NUMBER = 1;
     private Transport.LocationEvent.Type type_;
     /**
-     * <code>required .LocationEvent.Type type = 1;</code>
+     * <code>required .LocationEvent.Type drinkType = 1;</code>
      */
     public boolean hasType() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required .LocationEvent.Type type = 1;</code>
+     * <code>required .LocationEvent.Type drinkType = 1;</code>
      */
     public Transport.LocationEvent.Type getType() {
       return type_;
@@ -12733,7 +12733,7 @@ public final class Transport {
       return builder;
     }
     /**
-     * Protobuf type {@code LocationEvent}
+     * Protobuf drinkType {@code LocationEvent}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -12878,22 +12878,22 @@ public final class Transport {
       }
       private int bitField0_;
 
-      // required .LocationEvent.Type type = 1;
+      // required .LocationEvent.Type drinkType = 1;
       private Transport.LocationEvent.Type type_ = Transport.LocationEvent.Type.POSITION_UPDATE;
       /**
-       * <code>required .LocationEvent.Type type = 1;</code>
+       * <code>required .LocationEvent.Type drinkType = 1;</code>
        */
       public boolean hasType() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required .LocationEvent.Type type = 1;</code>
+       * <code>required .LocationEvent.Type drinkType = 1;</code>
        */
       public Transport.LocationEvent.Type getType() {
         return type_;
       }
       /**
-       * <code>required .LocationEvent.Type type = 1;</code>
+       * <code>required .LocationEvent.Type drinkType = 1;</code>
        */
       public Builder setType(Transport.LocationEvent.Type value) {
         if (value == null) {
@@ -12905,7 +12905,7 @@ public final class Transport {
         return this;
       }
       /**
-       * <code>required .LocationEvent.Type type = 1;</code>
+       * <code>required .LocationEvent.Type drinkType = 1;</code>
        */
       public Builder clearType() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -13101,7 +13101,7 @@ public final class Transport {
     boolean getDurable();
   }
   /**
-   * Protobuf type {@code AddEtoneInfoRequest}
+   * Protobuf drinkType {@code AddEtoneInfoRequest}
    */
   public static final class AddEtoneInfoRequest extends
       com.google.protobuf.GeneratedMessage
@@ -13481,7 +13481,7 @@ public final class Transport {
       return builder;
     }
     /**
-     * Protobuf type {@code AddEtoneInfoRequest}
+     * Protobuf drinkType {@code AddEtoneInfoRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -13888,7 +13888,7 @@ public final class Transport {
         getFloorBytes();
   }
   /**
-   * Protobuf type {@code DeleteEtoneInfoRequest}
+   * Protobuf drinkType {@code DeleteEtoneInfoRequest}
    */
   public static final class DeleteEtoneInfoRequest extends
       com.google.protobuf.GeneratedMessage
@@ -14140,7 +14140,7 @@ public final class Transport {
       return builder;
     }
     /**
-     * Protobuf type {@code DeleteEtoneInfoRequest}
+     * Protobuf drinkType {@code DeleteEtoneInfoRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -14352,7 +14352,7 @@ public final class Transport {
       extends com.google.protobuf.MessageOrBuilder {
   }
   /**
-   * Protobuf type {@code Shutdown}
+   * Protobuf drinkType {@code Shutdown}
    */
   public static final class Shutdown extends
       com.google.protobuf.GeneratedMessage
@@ -14542,7 +14542,7 @@ public final class Transport {
       return builder;
     }
     /**
-     * Protobuf type {@code Shutdown}
+     * Protobuf drinkType {@code Shutdown}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -14826,7 +14826,7 @@ public final class Transport {
     Transport.Error getError();
   }
   /**
-   * Protobuf type {@code Protocol}
+   * Protobuf drinkType {@code Protocol}
    */
   public static final class Protocol extends
       com.google.protobuf.GeneratedMessage.ExtendableMessage<
@@ -15583,7 +15583,7 @@ public final class Transport {
       return builder;
     }
     /**
-     * Protobuf type {@code Protocol}
+     * Protobuf drinkType {@code Protocol}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.ExtendableBuilder<

@@ -1,18 +1,16 @@
 package com.freetmp.investigate.springboot.integration;
 
 import com.google.common.util.concurrent.Uninterruptibles;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.integration.annotation.Gateway;
 import org.springframework.integration.annotation.MessagingGateway;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.core.Pollers;
 import org.springframework.integration.scheduling.PollerMetadata;
 import org.springframework.integration.stream.CharacterStreamWritingMessageHandler;
-import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -28,6 +26,7 @@ import java.util.stream.Collectors;
 @Configuration
 public class CafeDemo {
 
+  @Data @NoArgsConstructor
   public static class Delivery implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,30 +37,10 @@ public class CafeDemo {
 
     private int orderNumber;
 
-    // Default constructor required by Jackson Java JSON-processor
-    public Delivery() {}
-
     public Delivery(List<Drink> deliveredDrinks) {
       assert(deliveredDrinks.size() > 0);
       this.deliveredDrinks = deliveredDrinks;
       this.orderNumber = deliveredDrinks.get(0).getOrderNumber();
-    }
-
-
-    public int getOrderNumber() {
-      return orderNumber;
-    }
-
-    public void setOrderNumber(int orderNumber) {
-      this.orderNumber = orderNumber;
-    }
-
-    public List<Drink> getDeliveredDrinks() {
-      return deliveredDrinks;
-    }
-
-    public void setDeliveredDrinks(List<Drink> deliveredDrinks) {
-      this.deliveredDrinks = deliveredDrinks;
     }
 
     @Override
@@ -78,6 +57,7 @@ public class CafeDemo {
 
   }
 
+  @Data @NoArgsConstructor
   public static class Drink implements Serializable{
 
     private static final long serialVersionUID = 1L;
@@ -90,46 +70,10 @@ public class CafeDemo {
 
     private int orderNumber;
 
-    // Default constructor required by Jackson Java JSON-processor
-    public Drink() {}
-
     public Drink(int orderNumber, DrinkType drinkType, boolean iced, int shots) {
       this.orderNumber = orderNumber;
       this.drinkType = drinkType;
       this.iced = iced;
-      this.shots = shots;
-    }
-
-
-    public int getOrderNumber() {
-      return orderNumber;
-    }
-
-    public void setOrderNumber(int orderNumber) {
-      this.orderNumber = orderNumber;
-    }
-
-    public boolean isIced() {
-      return this.iced;
-    }
-
-    public void setIced(boolean iced) {
-      this.iced = iced;
-    }
-
-    public DrinkType getDrinkType() {
-      return this.drinkType;
-    }
-
-    public void setDrinkType(DrinkType drinkType) {
-      this.drinkType = drinkType;
-    }
-
-    public int getShots() {
-      return this.shots;
-    }
-
-    public void setShots(int shots) {
       this.shots = shots;
     }
 
@@ -149,48 +93,31 @@ public class CafeDemo {
 
   }
 
+  @Data @NoArgsConstructor
   public static class Order implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
-    private List<OrderItem> orderItems = new ArrayList<OrderItem>();
+    private List<OrderItem> items = new ArrayList<OrderItem>();
 
     /** the order number used for tracking */
     private int number;
-
-    // Default constructor required by Jackson Java JSON-processor
-    public Order() {}
 
     public Order(int number) {
       this.number = number;
     }
 
     public void addItem(DrinkType drinkType, int shots, boolean iced) {
-      this.orderItems.add(new OrderItem(this.number, drinkType, shots, iced));
-    }
-
-    public int getNumber() {
-      return number;
-    }
-
-    public void setNumber(int number) {
-      this.number = number;
-    }
-
-    public List<OrderItem> getItems() {
-      return this.orderItems;
-    }
-
-    public void setItems(List<OrderItem> orderItems) {
-      this.orderItems = orderItems;
+      this.items.add(new OrderItem(this.number, drinkType, shots, iced));
     }
   }
 
+  @Data @NoArgsConstructor
   public static class OrderItem implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private DrinkType type;
+    private DrinkType drinkType;
 
     private int shots = 1;
 
@@ -199,52 +126,12 @@ public class CafeDemo {
     /** the order this item is tied to */
     private int orderNumber;
 
-    // Default constructor required by Jackson Java JSON-processor
-    public OrderItem() {}
-
-    public OrderItem(int orderNumber, DrinkType type, int shots, boolean iced) {
+    public OrderItem(int orderNumber, DrinkType drinkType, int shots, boolean iced) {
       this.orderNumber = orderNumber;
-      this.type = type;
+      this.drinkType = drinkType;
       this.shots = shots;
       this.iced = iced;
     }
-
-    public int getOrderNumber() {
-      return this.orderNumber;
-    }
-
-    public void setOrderNumber(int orderNumber) {
-      this.orderNumber = orderNumber;
-    }
-
-    public boolean isIced() {
-      return this.iced;
-    }
-
-    public void setIced(boolean iced) {
-      this.iced = iced;
-    }
-
-    public int getShots() {
-      return shots;
-    }
-
-    public void setShots(int shots) {
-      this.shots = shots;
-    }
-
-    public DrinkType getDrinkType() {
-      return this.type;
-    }
-
-    public void setDrinkType(DrinkType type) {
-      this.type = type;
-    }
-
-    public String toString() {
-      return ((this.iced) ? "iced " : "hot ") + this.shots + " shot " + this.type;
-    }
-
   }
 
 
@@ -265,6 +152,7 @@ public class CafeDemo {
     return Pollers.fixedDelay(1000).get();
   }
 
+  @SuppressWarnings("deprecation")
   @Bean
   public IntegrationFlow orders() {
     return f -> f
@@ -304,22 +192,5 @@ public class CafeDemo {
                     .collect(Collectors.toList())))
             .correlationStrategy(m -> ((Drink) m.getPayload()).getOrderNumber()), null)
         .handle(CharacterStreamWritingMessageHandler.stdout());
-  }
-
-  @Component @org.springframework.core.annotation.Order(101)
-  public static class CafeRun implements CommandLineRunner {
-
-    @Autowired Cafe cafe;
-
-    @Override
-    public void run(String... args) throws Exception {
-      System.out.println("************Spring Integration Cafe run***********");
-      for (int i = 1; i <= 100; i++) {
-        Order order = new Order(i);
-        order.addItem(DrinkType.LATTE, 2, false);
-        order.addItem(DrinkType.MOCHA, 3, true);
-        cafe.placeOrder(order);
-      }
-    }
   }
 }

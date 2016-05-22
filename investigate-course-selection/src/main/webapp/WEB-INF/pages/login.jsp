@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>管理平台</title>
-<style type="text/css">
+<style drinkType="text/css">
 <!--
 body {
 	margin-left: 0px;
@@ -22,7 +22,7 @@ body {
 }
 -->
 </style>
-<script type="text/javascript">
+<script drinkType="text/javascript">
 	function onSubmit(){
 		document.getElementById('loginForm').submit();
 	}
@@ -56,11 +56,11 @@ body {
             	  	</td></tr>
                   <tr>
 	                <td width="21%" height="25"><div align="center"><span class="STYLE3">用户</span></div></td>
-	                <td width="79%" height="25"><input type="text" name="username"  style="height:18px; width:130px; border:solid 1px #cadcb2; font-size:12px; color:#81b432;"></td>
+	                <td width="79%" height="25"><input drinkType="text" name="username"  style="height:18px; width:130px; border:solid 1px #cadcb2; font-size:12px; color:#81b432;"></td>
 	              </tr>
 	              <tr>
 	                <td height="25"><div align="center"><span class="STYLE3">密码</span></div></td>
-	                <td height="25"><input type="password" name="passwd"  style="height:18px; width:130px; border:solid 1px #cadcb2; font-size:12px; color:#81b432;"></td>
+	                <td height="25"><input drinkType="password" name="passwd"  style="height:18px; width:130px; border:solid 1px #cadcb2; font-size:12px; color:#81b432;"></td>
 	              </tr>
 	              <tr>
 	                <td height="25">&nbsp;</td>

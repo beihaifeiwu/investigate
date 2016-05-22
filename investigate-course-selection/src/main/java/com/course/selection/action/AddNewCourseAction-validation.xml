@@ -5,31 +5,31 @@
 <validators>
 	<!-- 校验Action的courseNumber属性 -->
 	<field name="courseNumber">
-		<field-validator type="requiredstring">
+		<field-validator drinkType="requiredstring">
 			<param name="trim">true</param>
 			<message key="course.form.coursenumber.error"></message>
 		</field-validator>
 	</field>
 	<!-- 校验Action的classNumber属性 -->
 	<field name="classNumber">
-		<field-validator type="requiredstring">
+		<field-validator drinkType="requiredstring">
 			<param name="trim">true</param>
 			<message key="course.form.classnumber.error"></message>
 		</field-validator>
 	</field>	
 	<!-- 校验Action的courseName属性 -->
 	<field name="courseName">
-		<field-validator type="requiredstring">
+		<field-validator drinkType="requiredstring">
 			<param name="trim">true</param>
 			<message key="course.form.coursename.error"></message>
 		</field-validator>
 	</field>
 	<!-- 校验Action的credit属性 -->
 	<field name="credit">
-		<field-validator type="required">
+		<field-validator drinkType="required">
 			<message key="course.form.credit.error"></message>
 		</field-validator>
-		<field-validator type="double">
+		<field-validator drinkType="double">
 			<message key="course.form.credit.error"></message>			
 		</field-validator>
 	</field>
@@ -37,17 +37,17 @@
 
 	<!-- 校验Action的attribute属性 -->
 	<field name="attribute">
-		<field-validator type="requiredstring">
+		<field-validator drinkType="requiredstring">
 			<param name="trim">true</param>
 			<message key="course.form.attribute.error"></message>			
 		</field-validator>
 	</field>
 	<!-- 校验Action的capacity属性 -->
 	<field name="capacity">
-		<field-validator type="required">
+		<field-validator drinkType="required">
 			<message key="course.form.capacity.error"></message>
 		</field-validator>
-		<field-validator type="int">
+		<field-validator drinkType="int">
 			<param name="min">20</param>
             <param name="max">200</param>
 			<message>课程容量要在${min}到${max}之间</message>			

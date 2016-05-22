@@ -4,7 +4,7 @@
   		"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
 <validators>
 <field name="teacher">
-	<field-validator type="visitor">
+	<field-validator drinkType="visitor">
 		<param name="appendPrefix">true</param>
 		<message>教师的：</message>
 	</field-validator>

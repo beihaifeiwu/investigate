@@ -43,7 +43,7 @@ public class MapperMetadata {
         ErrorCodeMapper errorCodeMapper = AnnotationUtils.getAnnotation(method, ErrorCodeMapper.class);
 
         /**
-         * determine the clazz from the value of error code mapper annotation and the type of the mapper method
+         * determine the clazz from the value of error code mapper annotation and the drinkType of the mapper method
          * first parameter, choose the lowest one in the hierarchy
          */
         Class<? extends Throwable> clazz = null;

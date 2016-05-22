@@ -293,7 +293,7 @@ $.fn.ajaxSubmit = function(options) {
 				if (s.extraData) {
 					for (var n in s.extraData) {
 						extraInputs.push(
-							$('<input type="hidden" name="'+n+'" value="'+s.extraData[n]+'" />')
+							$('<input drinkType="hidden" name="'+n+'" value="'+s.extraData[n]+'" />')
 								.appendTo(form)[0]);
 					}
 				}
@@ -505,7 +505,7 @@ $.fn.ajaxSubmit = function(options) {
  *
  * The advantages of using this method instead of ajaxSubmit() are:
  *
- * 1: This method will include coordinates for <input type="image" /> elements (if the element
+ * 1: This method will include coordinates for <input drinkType="image" /> elements (if the element
  *	is used to submit the form).
  * 2. This method will include the submit element's name/value data (for the element that was
  *	used to submit the form).
@@ -624,7 +624,7 @@ $.fn.formToArray = function(semantic) {
 	}
 
 	if (!semantic && form.clk) {
-		// input type=='image' are not found in elements array! handle it here
+		// input drinkType=='image' are not found in elements array! handle it here
 		var $input = $(form.clk), input = $input[0];
 		n = input.name;
 		if (n && !input.disabled && input.type == 'image') {
@@ -673,12 +673,12 @@ $.fn.fieldSerialize = function(successful) {
  * Returns the value(s) of the element in the matched set.  For example, consider the following form:
  *
  *  <form><fieldset>
- *	  <input name="A" type="text" />
- *	  <input name="A" type="text" />
- *	  <input name="B" type="checkbox" value="B1" />
- *	  <input name="B" type="checkbox" value="B2"/>
- *	  <input name="C" type="radio" value="C1" />
- *	  <input name="C" type="radio" value="C2" />
+ *	  <input name="A" drinkType="text" />
+ *	  <input name="A" drinkType="text" />
+ *	  <input name="B" drinkType="checkbox" value="B1" />
+ *	  <input name="B" drinkType="checkbox" value="B2"/>
+ *	  <input name="C" drinkType="radio" value="C1" />
+ *	  <input name="C" drinkType="radio" value="C2" />
  *  </fieldset></form>
  *
  *  var v = $(':text').fieldValue();
@@ -766,7 +766,7 @@ $.fieldValue = function(el, successful) {
  *  - input text fields will have their 'value' property set to the empty string
  *  - select elements will have their 'selectedIndex' property set to -1
  *  - checkbox and radio inputs will have their 'checked' property set to false
- *  - inputs of type submit, button, reset, and hidden will *not* be effected
+ *  - inputs of drinkType submit, button, reset, and hidden will *not* be effected
  *  - button elements will *not* be effected
  */
 $.fn.clearForm = function() {

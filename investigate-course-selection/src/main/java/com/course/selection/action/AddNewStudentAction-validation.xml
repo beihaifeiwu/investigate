@@ -4,19 +4,19 @@
   		"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
 <validators>
 <field name="student">
-	<field-validator type="visitor">
+	<field-validator drinkType="visitor">
 		<param name="appendPrefix">true</param>
 		<message>学生的：</message>
 	</field-validator>
 </field>
 <field name="newPassword">
-	<field-validator type="regex">
+	<field-validator drinkType="regex">
 		<param name="regex"><![CDATA[(\w{3,16})]]></param>
 		<message key="teacher.form.password.illegal"></message>
 	</field-validator>
 </field>
 <field name="reNewPassword">
-	<field-validator type="fieldexpression">
+	<field-validator drinkType="fieldexpression">
 		<param name="expression"><![CDATA[reNewPassword.equals(newPassword)]]></param>
 		<message key="teacher.form.password.notequal"></message>
 	</field-validator>

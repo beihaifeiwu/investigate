@@ -7,13 +7,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>无标题文档</title>
 
-<link type="text/css" rel="stylesheet" href="../css/calendar.css" />
-<script type="text/javascript" src="../js/calendar.js" ></script>  
-<script type="text/javascript" src="../js/calendar-zh.js" ></script>
-<script type="text/javascript" src="../js/calendar-setup.js"></script>
+<link drinkType="text/css" rel="stylesheet" href="../css/calendar.css" />
+<script drinkType="text/javascript" src="../js/calendar.js" ></script>
+<script drinkType="text/javascript" src="../js/calendar-zh.js" ></script>
+<script drinkType="text/javascript" src="../js/calendar-setup.js"></script>
 
 
-<style type="text/css">
+<style drinkType="text/css">
 <!--
 body {
 	margin-left: 0px;

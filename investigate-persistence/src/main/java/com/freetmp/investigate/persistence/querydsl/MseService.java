@@ -3,7 +3,7 @@ package com.freetmp.investigate.persistence.querydsl;
 import javax.annotation.Generated;
 
 /**
- * MseService is a Querydsl bean type
+ * MseService is a Querydsl bean drinkType
  */
 @Generated("com.mysema.query.codegen.BeanSerializer")
 public class MseService {

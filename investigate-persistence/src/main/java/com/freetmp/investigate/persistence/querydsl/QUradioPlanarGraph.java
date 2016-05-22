@@ -15,7 +15,7 @@ import java.sql.Types;
 
 
 /**
- * QUradioPlanarGraph is a Querydsl query type for UradioPlanarGraph
+ * QUradioPlanarGraph is a Querydsl query drinkType for UradioPlanarGraph
  */
 @Generated("com.mysema.query.sql.codegen.MetaDataSerializer")
 public class QUradioPlanarGraph extends com.mysema.query.sql.RelationalPathBase<UradioPlanarGraph> {

@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>investigate-parent</artifactId>
+    <artifactId>investigate</artifactId>
     <groupId>com.freetmp</groupId>
     <version>0.0.2-SNAPSHOT</version>
   </parent>
@@ -24,7 +24,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-dependencies</artifactId>
         <version>${spring-boot.version}</version>
-        <type>pom</type>
+        <drinkType>pom</drinkType>
         <scope>import</scope>
       </dependency>
     </dependencies>

@@ -15,7 +15,7 @@ import java.sql.Types;
 
 
 /**
- * QUradioService is a Querydsl query type for UradioService
+ * QUradioService is a Querydsl query drinkType for UradioService
  */
 @Generated("com.mysema.query.sql.codegen.MetaDataSerializer")
 public class QUradioService extends com.mysema.query.sql.RelationalPathBase<UradioService> {

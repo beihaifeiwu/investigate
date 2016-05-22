@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
+<style drinkType="text/css">
 <!--
 body {
 	margin-left: 0px;
@@ -30,7 +30,7 @@ a:visited {
 }
 -->
 </style>
-<style type="text/css">
+<style drinkType="text/css">
 .menu_title SPAN {
 	FONT-WEIGHT: bold; LEFT: 3px; COLOR: #ffffff; POSITION: relative; TOP: 2px 
 }

@@ -7,7 +7,7 @@
         <key>
             <column name="ID" />
         </key>
-        <property name="Title" type="java.lang.String">
+        <property name="Title" drinkType="java.lang.String">
             <column name="TITLE" />
         </property>
     </joined-subclass>

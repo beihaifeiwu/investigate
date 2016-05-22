@@ -15,7 +15,7 @@ import java.sql.Types;
 
 
 /**
- * QMsePlanarGraph is a Querydsl query type for MsePlanarGraph
+ * QMsePlanarGraph is a Querydsl query drinkType for MsePlanarGraph
  */
 @Generated("com.mysema.query.sql.codegen.MetaDataSerializer")
 public class QMsePlanarGraph extends com.mysema.query.sql.RelationalPathBase<MsePlanarGraph> {

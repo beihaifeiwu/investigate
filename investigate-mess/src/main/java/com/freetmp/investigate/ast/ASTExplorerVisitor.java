@@ -35,7 +35,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given AST node prior to the type-specific visit.
+//	 * Visits the given AST node prior to the drinkType-specific visit.
 //	 * (before <code>visit</code>).
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
@@ -143,7 +143,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given AST node following the type-specific visit
+//	 * Visits the given AST node following the drinkType-specific visit
 //	 * (after <code>endVisit</code>).
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
@@ -157,7 +157,7 @@
 //
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -175,7 +175,7 @@
 //
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -192,7 +192,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -208,7 +208,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -224,7 +224,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -240,7 +240,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -256,7 +256,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -272,7 +272,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -288,7 +288,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -304,7 +304,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -321,7 +321,7 @@
 //
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -338,7 +338,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -354,7 +354,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -370,7 +370,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -386,7 +386,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -402,7 +402,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -418,7 +418,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -434,7 +434,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -450,7 +450,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -466,7 +466,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -482,7 +482,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -498,7 +498,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -514,7 +514,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -530,7 +530,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -547,7 +547,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -564,7 +564,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -581,7 +581,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -597,7 +597,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -613,7 +613,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -629,7 +629,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -645,7 +645,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -661,7 +661,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -677,7 +677,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -693,7 +693,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -709,7 +709,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -746,7 +746,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -763,7 +763,7 @@
 //
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -781,7 +781,7 @@
 //
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -799,7 +799,7 @@
 //
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -817,7 +817,7 @@
 //
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -835,7 +835,7 @@
 //
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -853,7 +853,7 @@
 //
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -871,7 +871,7 @@
 //
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -887,7 +887,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -904,7 +904,7 @@
 //
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -922,7 +922,7 @@
 //
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -939,7 +939,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -955,7 +955,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -971,7 +971,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -988,7 +988,7 @@
 //
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1005,7 +1005,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1021,7 +1021,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1037,7 +1037,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1053,7 +1053,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1069,7 +1069,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1085,7 +1085,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1102,7 +1102,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1118,7 +1118,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1134,7 +1134,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1151,7 +1151,7 @@
 //
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1169,7 +1169,7 @@
 //
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1185,7 +1185,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1201,7 +1201,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1217,7 +1217,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1233,7 +1233,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1249,7 +1249,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1265,7 +1265,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1281,7 +1281,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1298,7 +1298,7 @@
 //
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1316,7 +1316,7 @@
 //
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1334,7 +1334,7 @@
 //
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1350,7 +1350,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1366,7 +1366,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1382,7 +1382,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1398,7 +1398,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1414,7 +1414,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1430,7 +1430,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1447,7 +1447,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1463,7 +1463,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1479,7 +1479,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1495,7 +1495,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1511,7 +1511,7 @@
 //	}
 //
 //	/**
-//	 * Visits the given type-specific AST node.
+//	 * Visits the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing and return true.
 //	 * Subclasses may reimplement.
@@ -1528,7 +1528,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1541,7 +1541,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1554,7 +1554,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1566,7 +1566,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1578,7 +1578,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1590,7 +1590,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1602,7 +1602,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1614,7 +1614,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1626,7 +1626,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1638,7 +1638,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1650,7 +1650,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1663,7 +1663,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1675,7 +1675,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1687,7 +1687,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1699,7 +1699,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1711,7 +1711,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1723,7 +1723,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1735,7 +1735,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1747,7 +1747,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1759,7 +1759,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1771,7 +1771,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1783,7 +1783,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1795,7 +1795,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1807,7 +1807,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1820,7 +1820,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1833,7 +1833,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1846,7 +1846,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1858,7 +1858,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1870,7 +1870,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1882,7 +1882,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1894,7 +1894,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1906,7 +1906,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1918,7 +1918,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1930,7 +1930,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1942,7 +1942,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1954,7 +1954,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1966,7 +1966,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1978,7 +1978,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -1991,7 +1991,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2004,7 +2004,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2017,7 +2017,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2030,7 +2030,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2043,7 +2043,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2056,7 +2056,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2068,7 +2068,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2080,7 +2080,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2093,7 +2093,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2106,7 +2106,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2118,7 +2118,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2130,7 +2130,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2142,7 +2142,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2155,7 +2155,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2167,7 +2167,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2179,7 +2179,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2191,7 +2191,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2203,7 +2203,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2215,7 +2215,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2228,7 +2228,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2240,7 +2240,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2252,7 +2252,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2264,7 +2264,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2277,7 +2277,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2289,7 +2289,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2301,7 +2301,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2313,7 +2313,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2325,7 +2325,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2337,7 +2337,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2349,7 +2349,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2361,7 +2361,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2373,7 +2373,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2386,7 +2386,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2399,7 +2399,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2411,7 +2411,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2423,7 +2423,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2435,7 +2435,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2447,7 +2447,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2459,7 +2459,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2471,7 +2471,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2484,7 +2484,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2496,7 +2496,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2508,7 +2508,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2520,7 +2520,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>
@@ -2532,7 +2532,7 @@
 //	}
 //
 //	/**
-//	 * End of visit the given type-specific AST node.
+//	 * End of visit the given drinkType-specific AST node.
 //	 * <p>
 //	 * The default implementation does nothing. Subclasses may reimplement.
 //	 * </p>

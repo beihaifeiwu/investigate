@@ -65,7 +65,7 @@ public final class Protocol {
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
+          "EnumValueDescriptor is not for this drinkType.");
       }
       return VALUES[desc.getIndex()];
     }
@@ -156,7 +156,7 @@ public final class Protocol {
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
+          "EnumValueDescriptor is not for this drinkType.");
       }
       return VALUES[desc.getIndex()];
     }
@@ -256,7 +256,7 @@ public final class Protocol {
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
+          "EnumValueDescriptor is not for this drinkType.");
       }
       return VALUES[desc.getIndex()];
     }
@@ -305,7 +305,7 @@ public final class Protocol {
         getPasswordBytes();
   }
   /**
-   * Protobuf type {@code com.freetmp.investigate.transport.LoginRequest}
+   * Protobuf drinkType {@code com.freetmp.investigate.transport.LoginRequest}
    */
   public static final class LoginRequest extends
       com.google.protobuf.GeneratedMessage implements
@@ -619,7 +619,7 @@ public final class Protocol {
       return builder;
     }
     /**
-     * Protobuf type {@code com.freetmp.investigate.transport.LoginRequest}
+     * Protobuf drinkType {@code com.freetmp.investigate.transport.LoginRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
@@ -931,7 +931,7 @@ public final class Protocol {
     com.freetmp.investigate.transport.Protocol.LoginResponse.Result getResult();
   }
   /**
-   * Protobuf type {@code com.freetmp.investigate.transport.LoginResponse}
+   * Protobuf drinkType {@code com.freetmp.investigate.transport.LoginResponse}
    */
   public static final class LoginResponse extends
       com.google.protobuf.GeneratedMessage implements
@@ -1098,7 +1098,7 @@ public final class Protocol {
           com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
         if (desc.getType() != getDescriptor()) {
           throw new java.lang.IllegalArgumentException(
-            "EnumValueDescriptor is not for this type.");
+            "EnumValueDescriptor is not for this drinkType.");
         }
         return VALUES[desc.getIndex()];
       }
@@ -1245,7 +1245,7 @@ public final class Protocol {
       return builder;
     }
     /**
-     * Protobuf type {@code com.freetmp.investigate.transport.LoginResponse}
+     * Protobuf drinkType {@code com.freetmp.investigate.transport.LoginResponse}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
@@ -1491,7 +1491,7 @@ public final class Protocol {
     com.freetmp.investigate.transport.Protocol.Status getStatus();
   }
   /**
-   * Protobuf type {@code com.freetmp.investigate.transport.Location}
+   * Protobuf drinkType {@code com.freetmp.investigate.transport.Location}
    */
   public static final class Location extends
       com.google.protobuf.GeneratedMessage implements
@@ -1977,7 +1977,7 @@ public final class Protocol {
       return builder;
     }
     /**
-     * Protobuf type {@code com.freetmp.investigate.transport.Location}
+     * Protobuf drinkType {@code com.freetmp.investigate.transport.Location}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
@@ -2530,7 +2530,7 @@ public final class Protocol {
         int index);
   }
   /**
-   * Protobuf type {@code com.freetmp.investigate.transport.Locations}
+   * Protobuf drinkType {@code com.freetmp.investigate.transport.Locations}
    */
   public static final class Locations extends
       com.google.protobuf.GeneratedMessage implements
@@ -2783,7 +2783,7 @@ public final class Protocol {
       return builder;
     }
     /**
-     * Protobuf type {@code com.freetmp.investigate.transport.Locations}
+     * Protobuf drinkType {@code com.freetmp.investigate.transport.Locations}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements

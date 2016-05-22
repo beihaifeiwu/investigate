@@ -60,7 +60,7 @@
     document.getElementById("chou").addEventListener("click",function(){
       document.getElementById("background_div").style.display = "block";
       $.ajax({
-        type: "GET",
+        drinkType: "GET",
         url: /*[[@{/lottery/draw(OpenID=${OpenID})}]]*/ "test.json",
         dataType: "json",
         success: function(data){
@@ -99,7 +99,7 @@
     document.getElementById("gift").addEventListener("click",function(){
       document.getElementById("background_div").style.display = "block";
       $.ajax({
-        type: "GET",
+        drinkType: "GET",
         url: /*[[@{/lottery/draw(OpenID=${OpenID})}]]*/ "test.json",
         dataType: "json",
         success: function(data){

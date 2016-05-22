@@ -6,13 +6,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="pragma" content="no-cache"  />
-<meta http-equiv="content-type" content="no-cache, must-revalidate" />
+<meta http-equiv="content-drinkType" content="no-cache, must-revalidate" />
 <meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT"/>
 <title>无标题文档</title>
-<script type="text/javascript" src="../js/Json2.js"></script>
-<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+<script drinkType="text/javascript" src="../js/Json2.js"></script>
+<script drinkType="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
 <link rel="stylesheet" href="../css/timetable.css"/>
-<style type="text/css">
+<style drinkType="text/css">
 <!--
 body {
 	margin-left: 0px;
@@ -102,7 +102,7 @@ a:active {
 					<s:combobox label="选课限制" requiredLabel="true" labelposition="left" list="{'必修','选修'}" name="attribute" value="%{attribute}"/>
 					<s:submit value="提交"></s:submit>
 				</s:form>
-				<script type="text/javascript" src="../js/timetable-0.2.4.js"></script>
+				<script drinkType="text/javascript" src="../js/timetable-0.2.4.js"></script>
 	        </div>
         </td>
         <td width="9" background="../images/tab_16.gif">&nbsp;</td>

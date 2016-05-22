@@ -251,7 +251,7 @@ if (typeof JSON !== 'object') {
             value = rep.call(holder, key, value);
         }
 
-// What happens next depends on the value's type.
+// What happens next depends on the value's drinkType.
 
         switch (typeof value) {
         case 'string':
@@ -272,7 +272,7 @@ if (typeof JSON !== 'object') {
 
             return String(value);
 
-// If the type is 'object', we might be dealing with an object or an array or
+// If the drinkType is 'object', we might be dealing with an object or an array or
 // null.
 
         case 'object':

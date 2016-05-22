@@ -14,7 +14,7 @@
     <package name="default" namespace="/" extends="json-default">
 		<!-- 定义自定义的返回结果类型 -->
         <result-types>
-        	<result-type name="image" class="com.course.selection.action.result.ImageResult"></result-type>
+        	<result-drinkType name="image" class="com.course.selection.action.result.ImageResult"></result-drinkType>
         </result-types>
 
 		<!-- 定义通用的拦截器 -->
@@ -67,7 +67,7 @@
         </action>
         <!-- ExtractImageAction 的配置 -->
         <action name="image" class="com.course.selection.action.ExtractImageAction">
-        	<result name="success" type="image"></result>
+        	<result name="success" drinkType="image"></result>
         </action>
     </package>
     
@@ -102,7 +102,7 @@
     		
     		<result name="input">/WEB-INF/pages/tab/admin/message.jsp</result>
     		
-    		<result name="success" type="redirectAction">
+    		<result name="success" drinkType="redirectAction">
     			<param name="actionName">${nextAction}</param>
     			<param name="namespace">/admin</param>
     			<param name="path">${realPath}</param>
@@ -391,7 +391,7 @@
     		<result name="success">/WEB-INF/pages/tab/student/scan_pickable_course_list.jsp</result>    	
     	</action>
     	<action name="pickCourse" class="com.course.selection.action.student.PickCourseAction">
-    		<result name="success" type="json"></result>
+    		<result name="success" drinkType="json"></result>
     	</action>
     	<action name="studentCourseTable" class="com.course.selection.action.student.StudentCourseTableAction">
     		<result name="success">/WEB-INF/pages/tab/student/coursetable_student.jsp</result>
@@ -470,10 +470,10 @@
     		<result name="success">/WEB-INF/pages/tab/teacher/message.jsp</result>
     	</action>
     	<action name="getRoomNames" class="com.course.selection.action.teacher.ClassRoomNameAction">
-    		<result name="success" type="json"></result>
+    		<result name="success" drinkType="json"></result>
     	</action>
     	<action name="getRoomEmptyTime" class="com.course.selection.action.teacher.EmptyTimePeriodAction">
-    		<result name="success" type="json"></result>
+    		<result name="success" drinkType="json"></result>
     	</action>
 	</package>
 	

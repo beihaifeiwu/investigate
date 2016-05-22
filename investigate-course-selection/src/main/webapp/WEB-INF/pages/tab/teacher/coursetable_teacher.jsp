@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>无标题文档</title>
-<style type="text/css">
+<style drinkType="text/css">
 <!--
 body {
 	margin-left: 0px;
@@ -83,7 +83,7 @@ fieldset {
 }
 -->
 </style>
-<script type="text/javascript">
+<script drinkType="text/javascript">
 var  highlightcolor='#eafcd5';
 //此处clickcolor只能用win系统颜色代码才能成功,如果用#xxxxxx的代码就不行,还没搞清楚为什么:(
 var  clickcolor='#51b2f6';

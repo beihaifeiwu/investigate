@@ -4,11 +4,11 @@
 <!-- Generated 2013-7-2 8:33:19 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
  <class name="com.course.selection.domain.TimePoint" table="TIMEPOINT">
-  <id name="ID" type="int">
+  <id name="ID" drinkType="int">
    <column name="ID"/>
    <generator class="native"/>
   </id>
-  <property generated="never" lazy="false" name="Weeks" type="int">
+  <property generated="never" lazy="false" name="Weeks" drinkType="int">
    <column name="WEEKS"/>
   </property>
   <primitive-array name="Period" table="TIMEPOINT_PERIOD">
@@ -18,7 +18,7 @@
    <index>
     <column name="ARRAY_INDEX"/>
    </index>
-   <element type="short">
+   <element drinkType="short">
     <column name="PERIOD"/>
    </element>
   </primitive-array>

@@ -145,7 +145,7 @@ public class ImageTiler {
    * Scale the coverage based on the set tileScale
    *
    * As an alternative to using parameters to do the operations, we can use the
-   * Operations class to do them in a slightly more type safe way.
+   * Operations class to do them in a slightly more drinkType safe way.
    *
    * @param coverage the coverage to scale
    * @return the scaled coverage

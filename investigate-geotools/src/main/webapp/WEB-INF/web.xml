@@ -97,7 +97,7 @@
      <filter-class>org.geoserver.filters.GZIPFilter</filter-class>
      <init-param>
          <!-- The compressed-types parameter is a comma-separated list of regular expressions.
-              If a mime type matches any of the regular expressions then it will be compressed.
+              If a mime drinkType matches any of the regular expressions then it will be compressed.
               -->
          <param-name>compressed-types</param-name>
          <param-value>text/.*,.*xml.*,application/json,application/x-javascript</param-value>
@@ -248,15 +248,15 @@
     
     <mime-mapping>
       <extension>xsl</extension>
-      <mime-type>text/xml</mime-type>
+      <mime-drinkType>text/xml</mime-drinkType>
     </mime-mapping>
     <mime-mapping>
       <extension>sld</extension>
-      <mime-type>text/xml</mime-type>
+      <mime-drinkType>text/xml</mime-drinkType>
     </mime-mapping>
     <mime-mapping>
       <extension>json</extension>
-      <mime-type>application/json</mime-type>
+      <mime-drinkType>application/json</mime-drinkType>
     </mime-mapping>
   
     <welcome-file-list>

@@ -7,7 +7,7 @@
         <key>
             <column name="ID" />
         </key>
-		<property name="clazz" type="java.lang.String"></property>
+		<property name="clazz" drinkType="java.lang.String"></property>
         <set name="course" table="COURSE_STUDENT" inverse="false" lazy="true">
             <key>
                 <column name="STUDENTID" />

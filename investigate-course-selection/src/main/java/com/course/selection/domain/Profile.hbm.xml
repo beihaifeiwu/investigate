@@ -4,29 +4,29 @@
 <!-- Generated 2013-7-2 8:33:19 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
  <class name="com.course.selection.domain.Profile" table="PROFILE">
-  <id name="ID" type="int">
+  <id name="ID" drinkType="int">
    <column name="ID"/>
    <generator class="native"/>
   </id>
-  <property generated="never" lazy="false" name="Name" type="java.lang.String">
+  <property generated="never" lazy="false" name="Name" drinkType="java.lang.String">
    <column name="NAME"/>
   </property>
-  <property generated="never" lazy="false" name="PhoneNumber" type="java.lang.String">
+  <property generated="never" lazy="false" name="PhoneNumber" drinkType="java.lang.String">
    <column name="PHONENUMBER"/>
   </property>
-  <property generated="never" lazy="false" name="Email" type="java.lang.String">
+  <property generated="never" lazy="false" name="Email" drinkType="java.lang.String">
    <column name="EMAIL"/>
   </property>
-  <property generated="never" lazy="false" name="BirthPlace" type="java.lang.String">
+  <property generated="never" lazy="false" name="BirthPlace" drinkType="java.lang.String">
    <column name="BIRTHPLACE"/>
   </property>
-  <property generated="never" lazy="false" name="BirthTime" type="java.sql.Date">
+  <property generated="never" lazy="false" name="BirthTime" drinkType="java.sql.Date">
    <column name="BIRTHTIME"/>
   </property>
   <property generated="never" lazy="true" name="imageData">
    <column name="PHOTO"/>
   </property>
-  <property name="department" generated="never" lazy="false" type="java.lang.String">
+  <property name="department" generated="never" lazy="false" drinkType="java.lang.String">
   	<column name="DEPARTMENT"></column>
   </property>
  </class>

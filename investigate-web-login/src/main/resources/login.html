@@ -19,11 +19,11 @@
 	<script src="js/html5.js" th:src="@{/js/html5.js}"></script>
 <![endif]-->
 <script src="js/jquery-1.8.2.min.js" th:src="@{/js/jquery-1.8.2.min.js}"></script>
-<script type="text/javascript" src="js/jquery.form.js" th:src="@{/js/jquery.form.js}"></script>
-<script type="text/javascript" src="js/tooltips.js" th:src="@{/js/tooltips.js}"></script>
-<script type="text/javascript" src="js/login.js" th:src="@{/js/login.js}"></script>
-<script type="text/javascript" src="js/md5.js" th:src="@{/js/md5.js}"></script>
-<script type="text/javascript" src="js/des.js" th:src="@{/js/des.js}"></script>
+<script drinkType="text/javascript" src="js/jquery.form.js" th:src="@{/js/jquery.form.js}"></script>
+<script drinkType="text/javascript" src="js/tooltips.js" th:src="@{/js/tooltips.js}"></script>
+<script drinkType="text/javascript" src="js/login.js" th:src="@{/js/login.js}"></script>
+<script drinkType="text/javascript" src="js/md5.js" th:src="@{/js/md5.js}"></script>
+<script drinkType="text/javascript" src="js/des.js" th:src="@{/js/des.js}"></script>
 </head>
 
 <body>
@@ -40,29 +40,29 @@
 
 					<div class="form-group">
 						<label for="email" class="t">邮　箱：</label>
-						<input id="email" th:field="*{email}" value="" name="email" type="text" class="form-control x319 in" autocomplete="off">
+						<input id="email" th:field="*{email}" value="" name="email" drinkType="text" class="form-control x319 in" autocomplete="off">
 						<p th:if="${#fields.hasErrors('email')}" class="label label-danger" th:errors="*{email}">Incorrect email</p>
 					</div>
 					<div class="form-group">
 						<label for="password" class="t">密　码：</label>
-						<input id="password" th:field="*{password}" value="" name="password" type="password" class="password form-control x319 in">
+						<input id="password" th:field="*{password}" value="" name="password" drinkType="password" class="password form-control x319 in">
             <p th:if="${#fields.hasErrors('password')}" class="label label-danger" th:errors="*{password}">Incorrect email</p>
 					</div>
 					<div class="form-group">
 						<label for="captcha" class="t">验证码：</label>
-						 <input id="captcha" th:field="*{captcha}" name="captcha" type="text" class="form-control x164 in">
+						 <input id="captcha" th:field="*{captcha}" name="captcha" drinkType="text" class="form-control x164 in">
 						<img id="captcha_img" alt="点击更换" title="点击更换" src="images/captcha.jpeg" th:src="@{/captcha}" class="m">
             <p th:if="${#fields.hasErrors('captcha')}" class="label label-danger" th:errors="*{captcha}">Incorrect email</p>
 					</div>
 					<div class="form-group">
 						<label class="t"></label>
 						<label for="remember" class="m">
-						<input id="remember" type="checkbox" value="true">&nbsp;记住登陆账号!</label>
+						<input id="remember" drinkType="checkbox" value="true">&nbsp;记住登陆账号!</label>
 					</div>
 					<div class="form-group space">
 						<label class="t"></label>　　　
-						<button type="submit"  id="submit_btn" class="btn btn-primary btn-lg">&nbsp;登&nbsp;录&nbsp </button>
-						<input type="reset" value="&nbsp;重&nbsp;置&nbsp;" class="btn btn-default btn-lg">
+						<button drinkType="submit"  id="submit_btn" class="btn btn-primary btn-lg">&nbsp;登&nbsp;录&nbsp </button>
+						<input drinkType="reset" value="&nbsp;重&nbsp;置&nbsp;" class="btn btn-default btn-lg">
 					</div>
 				</form>
 			</div>

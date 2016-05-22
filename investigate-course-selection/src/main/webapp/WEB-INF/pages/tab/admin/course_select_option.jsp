@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>无标题文档</title>
-<style type="text/css">
+<style drinkType="text/css">
 <!--
 body {
 	margin-left: 0px;
@@ -90,9 +90,9 @@ fieldset {
 					        
 					        <tr><td><span>上传Excel文件</span></td></tr>
 					        
-					        <tr><td><input type="file" name="upload" value="选择文件"/></td></tr>
+					        <tr><td><input drinkType="file" name="upload" value="选择文件"/></td></tr>
 					        
-					        <tr><td><input type="submit" value="提交" /></td></tr>
+					        <tr><td><input drinkType="submit" value="提交" /></td></tr>
 				        
 			        </s:form>
 		        </fieldset>

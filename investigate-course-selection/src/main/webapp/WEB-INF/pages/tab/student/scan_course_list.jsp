@@ -6,9 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="../js/ymPrompt.js"></script>
-<link rel="stylesheet" type="text/css" href="../css/dmm-green/ymPrompt.css"  />
-<style type="text/css">
+<script drinkType="text/javascript" src="../js/ymPrompt.js"></script>
+<link rel="stylesheet" drinkType="text/css" href="../css/dmm-green/ymPrompt.css"  />
+<style drinkType="text/css">
 <!--
 body {
 	margin-left: 0px;
@@ -167,7 +167,7 @@ function submitForm(){
                <tr>
                 <td class="STYLE1">
                  <div align="center">
-                  <input type="checkbox" name="checkAll" id="checkAll" value="checkbox" onchange="selectAllBox()"/>
+                  <input drinkType="checkbox" name="checkAll" id="checkAll" value="checkbox" onchange="selectAllBox()"/>
                  </div></td>
                 <td class="STYLE1"><div align="center">全选</div></td>
                </tr>
@@ -286,7 +286,7 @@ function submitForm(){
 	                  	</div>
 	                  </td>
 	                  <td width="150" height="22">
-	                  	<script type="text/javascript">
+	                  	<script drinkType="text/javascript">
 	                  		function jumpOnClick(){
 	                  			document.getElementById("pageJump").submit();
 	                  		}
@@ -298,7 +298,7 @@ function submitForm(){
 		                  <td width="59" height="22" valign="middle"><div align="right">转到第</div></td>
 		                  <td width="25" height="22" valign="middle">
 		                  	<span class="STYLE7">
-		                    	<input name="gotoPage" type="text" class="STYLE1" style="height:10px; width:25px;" size="5" />
+		                    	<input name="gotoPage" drinkType="text" class="STYLE1" style="height:10px; width:25px;" size="5" />
 		                  	</span>
 		                  </td>
 		                  <td width="23" height="22" valign="middle">页</td>

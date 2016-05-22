@@ -3,7 +3,7 @@ package com.freetmp.investigate.persistence.querydsl;
 import javax.annotation.Generated;
 
 /**
- * UradioPlanarGraph is a Querydsl bean type
+ * UradioPlanarGraph is a Querydsl bean drinkType
  */
 @Generated("com.mysema.query.codegen.BeanSerializer")
 public class UradioPlanarGraph {

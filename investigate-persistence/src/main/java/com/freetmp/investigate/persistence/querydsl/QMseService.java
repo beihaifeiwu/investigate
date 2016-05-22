@@ -15,7 +15,7 @@ import java.sql.Types;
 
 
 /**
- * QMseService is a Querydsl query type for MseService
+ * QMseService is a Querydsl query drinkType for MseService
  */
 @Generated("com.mysema.query.sql.codegen.MetaDataSerializer")
 public class QMseService extends com.mysema.query.sql.RelationalPathBase<MseService> {

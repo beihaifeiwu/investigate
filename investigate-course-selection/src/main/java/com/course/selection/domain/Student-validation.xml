@@ -4,19 +4,19 @@
   		"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
 <validators>
 <field name="profile">
-	<field-validator type="visitor">
+	<field-validator drinkType="visitor">
 		<param name="appendPrefix">true</param>
 		<message>基本信息：</message>
 	</field-validator>
 </field>
 <field name="clazz">
-	<field-validator type="requiredstring">
+	<field-validator drinkType="requiredstring">
 		<param name="trim">true</param>
 		<message key="student.form.clazz.require"></message>
 	</field-validator>
 </field>
 <field name="account">
-	<field-validator type="requiredstring">
+	<field-validator drinkType="requiredstring">
 		<param name="trim">true</param>
 		<message key="student.form.account.require"></message>
 	</field-validator>

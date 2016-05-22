@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
+<style drinkType="text/css">
 <!--
 body {
 	margin-left: 0px;
@@ -203,7 +203,7 @@ function  clickto(){
 	                  	</div>
 	                  </td>
 	                  <td width="150" height="22">
-	                  	<script type="text/javascript">
+	                  	<script drinkType="text/javascript">
 	                  		function jumpOnClick(){
 	                  			document.getElementById("pageJump").submit();
 	                  		}
@@ -216,7 +216,7 @@ function  clickto(){
 		                  <td width="59" height="22" valign="middle"><div align="right">转到第</div></td>
 		                  <td width="25" height="22" valign="middle">
 		                  	<span class="STYLE7">
-		                    	<input name="gotoPage" type="text" class="STYLE1" style="height:10px; width:25px;" size="5" />
+		                    	<input name="gotoPage" drinkType="text" class="STYLE1" style="height:10px; width:25px;" size="5" />
 		                  	</span>
 		                  </td>
 		                  <td width="23" height="22" valign="middle">页</td>

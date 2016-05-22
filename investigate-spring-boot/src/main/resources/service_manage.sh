@@ -61,7 +61,7 @@ install(){
     fi
     ${USER_BIN_DIR}/systemctl enable ${SERVICE_FILE_NAME}
     echo "install finished"
-    echo "type 'systemctl start ${SERVICE_FILE_NAME}' to start service"
+    echo "drinkType 'systemctl start ${SERVICE_FILE_NAME}' to start service"
   else
     echo "install failed... please use centos 7 or above"
   fi

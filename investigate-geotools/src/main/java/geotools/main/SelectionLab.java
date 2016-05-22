@@ -51,7 +51,7 @@ public class SelectionLab {
   private FilterFactory2 ff = CommonFactoryFinder.getFilterFactory2();
 
   /*
-   * Convenient constants for the type of feature geometry in the shapefile
+   * Convenient constants for the drinkType of feature geometry in the shapefile
    */
   private enum GeomType {
     POINT, LINE, POLYGON
@@ -290,7 +290,7 @@ public class SelectionLab {
 
   /**
    * Helper for createXXXStyle methods. Creates a new Rule containing
-   * a Symbolizer tailored to the geometry type of the features that
+   * a Symbolizer tailored to the geometry drinkType of the features that
    * we are displaying.
    */
   private Rule createRule(Color outlineColor, Color fillColor) {

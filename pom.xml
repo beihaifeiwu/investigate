@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.freetmp</groupId>
-  <artifactId>investigate-parent</artifactId>
+  <artifactId>investigate</artifactId>
   <packaging>pom</packaging>
   <version>0.0.2-SNAPSHOT</version>
   <name>freetmp investigate</name>
@@ -15,7 +15,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <slf4j.version>1.7.12</slf4j.version>
-    <logback.version>1.1.3</logback.version>
+    <logback.version>1.1.7</logback.version>
 
     <postgis.version>1.3.3</postgis.version>
     <postgresql.version>9.3-1102-jdbc41</postgresql.version>

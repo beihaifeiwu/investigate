@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>无标题文档</title>
-<style type="text/css">
+<style drinkType="text/css">
 <!--
 body {
 	margin-left: 0px;
@@ -82,14 +82,14 @@ fieldset {
         		<fieldset>
         		<legend>选择搜索课程的方式：</legend>
 			        <s:form action="searchCourseByMethod" namespace="/student" method="post" cssClass="STYLE4">
-					    <input type="text" name="content"></input>    					        
+					    <input drinkType="text" name="content"></input>
 					    <select name="method">
 							  <option value="1" selected="selected">按课程号搜索</option>
 							  <option value="2" >按课程名搜索</option>
 							  <option value="3" >按主讲教师（姓名）搜索</option>
 							  <option value="4" >显示全部</option>
 						</select>    
-					    <tr><td><input type="submit" value="提交" /></td></tr>
+					    <tr><td><input drinkType="submit" value="提交" /></td></tr>
 			        </s:form>
 		        </fieldset>
 	        </div>

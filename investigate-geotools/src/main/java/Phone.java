@@ -127,7 +127,7 @@ public final class Phone {
     int getScene();
   }
   /**
-   * Protobuf type {@code Result}
+   * Protobuf drinkType {@code Result}
    */
   public static final class Result extends
       com.google.protobuf.GeneratedMessage
@@ -596,7 +596,7 @@ public final class Phone {
       return builder;
     }
     /**
-     * Protobuf type {@code Result}
+     * Protobuf drinkType {@code Result}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>

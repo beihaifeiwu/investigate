@@ -3,7 +3,7 @@ package com.freetmp.investigate.persistence.querydsl;
 import javax.annotation.Generated;
 
 /**
- * MsePlanarGraph is a Querydsl bean type
+ * MsePlanarGraph is a Querydsl bean drinkType
  */
 @Generated("com.mysema.query.codegen.BeanSerializer")
 public class MsePlanarGraph {

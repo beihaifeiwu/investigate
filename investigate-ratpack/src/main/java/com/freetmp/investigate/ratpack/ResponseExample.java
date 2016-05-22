@@ -22,7 +22,7 @@ public class ResponseExample {
     static class FooRender extends RendererSupport<Foo> {
 
         @Override public void render(Context context, Foo foo) throws Exception {
-            context.getResponse().send("Custom type: Foo, value=" + foo.value);
+            context.getResponse().send("Custom drinkType: Foo, value=" + foo.value);
         }
     }
 
@@ -65,7 +65,7 @@ public class ResponseExample {
         ).test(httpClient ->{
             ReceivedResponse response = httpClient.get();
             Assertions.assertThat(response.getStatusCode()).isEqualTo(200);
-            Assertions.assertThat(response.getBody().getText()).isEqualTo("Custom type: Foo, value=bar");
+            Assertions.assertThat(response.getBody().getText()).isEqualTo("Custom drinkType: Foo, value=bar");
         });
     }
 }

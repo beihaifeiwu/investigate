@@ -72,7 +72,7 @@ public class AnnotationBasedCodeMapper implements Mapper {
         sb.append("method=").append(method);
         sb.append(", object=").append(object);
         sb.append(", clazz=").append(clazz);
-        sb.append(", type=").append(type);
+        sb.append(", drinkType=").append(type);
         sb.append('}');
         return sb.toString();
     }

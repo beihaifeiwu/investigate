@@ -21,7 +21,7 @@ public class ErrorCoderConfiguration {
     private String mapperLocations;
 
     /**
-     * specify which response type to use, PLAIN_TEXT or JSON, default is JSON
+     * specify which response drinkType to use, PLAIN_TEXT or JSON, default is JSON
      */
     private String renderType;
 
@@ -73,7 +73,7 @@ public class ErrorCoderConfiguration {
                 builder.render(type);
                 configureRenderSuccess = true;
             } catch (IllegalArgumentException e) {
-                log.warn("Cannot create render type from {}", renderType, e);
+                log.warn("Cannot create render drinkType from {}", renderType, e);
             }
         }
 
@@ -84,7 +84,7 @@ public class ErrorCoderConfiguration {
                 builder.render(render);
                 configureRenderSuccess = true;
             } catch (Exception e) {
-                log.error("Cannot create render object of type {}", renderClass, e);
+                log.error("Cannot create render object of drinkType {}", renderClass, e);
             }
         }
 

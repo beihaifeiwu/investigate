@@ -45,7 +45,7 @@ public class Csv2Shp {
      * See also the createFeatureType method below for another, more flexible approach.
      */
     final SimpleFeatureType TYPE = DataUtilities.createType("Location",
-        "the_geom:Point:srid=4326," + // <- the geometry attribute: Point type
+        "the_geom:Point:srid=4326," + // <- the geometry attribute: Point drinkType
             "name:String," +   // <- a String attribute
             "number:Integer"   // a number attribute
     );
@@ -120,7 +120,7 @@ public class Csv2Shp {
     /*
      * The Shapefile format has a couple limitations:
      * - "the_geom" is always first, and used for the geometry attribute name
-     * - "the_geom" must be of type Point, MultiPoint, MuiltiLineString, MultiPolygon
+     * - "the_geom" must be of drinkType Point, MultiPoint, MuiltiLineString, MultiPolygon
      * - Attribute names are limited in length
      * - Not all data types are supported (example Timestamp represented as Date)
      *

@@ -15,7 +15,7 @@ import java.sql.Types;
 
 
 /**
- * QEtonePlanarGraph is a Querydsl query type for EtonePlanarGraph
+ * QEtonePlanarGraph is a Querydsl query drinkType for EtonePlanarGraph
  */
 @Generated("com.mysema.query.sql.codegen.MetaDataSerializer")
 public class QEtonePlanarGraph extends com.mysema.query.sql.RelationalPathBase<EtonePlanarGraph> {

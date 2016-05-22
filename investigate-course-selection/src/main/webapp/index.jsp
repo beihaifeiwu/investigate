@@ -6,9 +6,9 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>系统首页</title>
-    <link rel="stylesheet" href="css/default/default.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="css/nivo-slider.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/default/default.css" drinkType="text/css" media="screen" />
+    <link rel="stylesheet" href="css/nivo-slider.css" drinkType="text/css" media="screen" />
+    <link rel="stylesheet" href="css/style.css" drinkType="text/css" media="screen" />
 </head>
 <body>
     <div id="wrapper">
@@ -42,9 +42,9 @@
             
         </div>
     </div>
-    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery.nivo.slider.js"></script>
-    <script type="text/javascript">
+    <script drinkType="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script drinkType="text/javascript" src="js/jquery.nivo.slider.js"></script>
+    <script drinkType="text/javascript">
     $(window).load(function() {
         $('#slider').nivoSlider();
     });
