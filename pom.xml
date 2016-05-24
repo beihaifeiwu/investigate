@@ -21,7 +21,7 @@
     <postgresql.version>9.3-1102-jdbc41</postgresql.version>
 
     <assertj-core.version>3.0.0</assertj-core.version>
-    <kotlin.version>1.0.1-2</kotlin.version>
+    <kotlin.version>1.0.2</kotlin.version>
   </properties>
 
   <modules>
@@ -30,9 +30,7 @@
     <module>investigate-selfmade-tomcat</module>
     <module>investigate-spring-boot</module>
     <module>investigate-pubsub</module>
-    <module>investigate-webservice</module>
     <module>investigate-persistence</module>
-    <module>investigate-spring-jersey1</module>
     <module>investigate-qi4j</module>
     <module>investigate-ratpack</module>
     <module>investigate-akka</module>
@@ -40,16 +38,11 @@
     <module>investigate-algorithm</module>
     <module>investigate-kotlin</module>
 <!--    <module>investigate-apidoc</module>-->
-    <module>investigate-vaadin</module>
     <module>investigate-quasar</module>
     <module>investigate-scala</module>
-    <module>investigate-web-login</module>
-    <module>investigate-spring-batch</module>
     <module>investigate-dependency-manager</module>
     <module>investigate-error-coder</module>
-    <module>investigate-statemachine</module>
     <module>investigate-geotools</module>
-    <module>investigate-wx-shake-lottery</module>
     <module>investigate-kafka</module>
     <module>investigate-course-selection</module>
     <module>investigate-activiti</module>

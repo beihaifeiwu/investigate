@@ -1,7 +1,7 @@
 package commands
 
-import com.freetmp.investigate.crsh.AbstractCrashCommand
-import com.freetmp.investigate.springboot.reactor.QuoteService
+import investigate.crsh.AbstractCrashCommand
+import investigate.springboot.reactor.QuoteService
 import org.crsh.cli.Command
 import org.crsh.cli.Option
 import org.crsh.cli.Usage

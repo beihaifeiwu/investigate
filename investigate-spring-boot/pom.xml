@@ -11,7 +11,6 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>investigate-spring-boot</artifactId>
-  <version>0.0.2-SNAPSHOT</version>
 
   <properties>
     <java.version>1.8</java.version>
@@ -46,6 +45,16 @@
       <artifactId>spring-boot-starter-jersey</artifactId>
     </dependency>
 
+    <!-- Use thymeleaf instead of jsp -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>net.sourceforge.nekohtml</groupId>
+      <artifactId>nekohtml</artifactId>
+    </dependency>
+
     <!-- Creating an Asynchronous, Event-Driven Application with Reactor -->
     <dependency>
       <groupId>io.projectreactor.spring</groupId>
@@ -74,6 +83,40 @@
       <artifactId>spring-boot-starter-security</artifactId>
     </dependency>
 
+    <!-- Spring Batch -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-batch</artifactId>
+    </dependency>
+
+    <!-- Spring JPA -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+    </dependency>
+
+    <!-- Spring statemachine and shell -->
+    <dependency>
+      <groupId>org.springframework.statemachine</groupId>
+      <artifactId>spring-statemachine-core</artifactId>
+      <version>1.1.0.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.shell</groupId>
+      <artifactId>spring-shell</artifactId>
+      <version>1.1.0.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.statemachine</groupId>
+      <artifactId>spring-statemachine-test</artifactId>
+      <version>1.1.0.RELEASE</version>
+      <scope>test</scope>
+    </dependency>
+
     <!-- Monitoring and management using a remote shell -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -84,6 +127,38 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+
+    <!-- Groovy -->
+    <dependency>
+      <groupId>org.codehaus.groovy</groupId>
+      <artifactId>groovy-all</artifactId>
+      <version>2.4.6</version>
+    </dependency>
+
+    <!-- Utilities -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.squareup.okhttp</groupId>
+      <artifactId>okhttp</artifactId>
+      <version>2.7.5</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.glassfish</groupId>
+      <artifactId>javax.json</artifactId>
+      <version>1.0.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jsoup</groupId>
+      <artifactId>jsoup</artifactId>
+      <version>1.9.2</version>
     </dependency>
 
     <dependency>
@@ -97,15 +172,15 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>org.codehaus.gmaven</groupId>
-        <artifactId>gmaven-plugin</artifactId>
+        <groupId>org.codehaus.gmavenplus</groupId>
+        <artifactId>gmavenplus-plugin</artifactId>
         <version>1.5</version>
         <executions>
           <execution>
             <goals>
-              <goal>generateStubs</goal>
+              <goal>addSources</goal>
+              <goal>addTestSources</goal>
               <goal>compile</goal>
-              <goal>generateTestStubs</goal>
               <goal>testCompile</goal>
             </goals>
           </execution>
@@ -165,7 +240,7 @@
               </binFileExtensions>
               <daemons>
                 <daemon>
-                  <mainClass>com.freetmp.investigate.springboot.Application</mainClass>
+                  <mainClass>investigate.springboot.Application</mainClass>
                   <generatorConfigurations>
                     <generatorConfiguration>
                       <generator>jsw</generator>

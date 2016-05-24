@@ -1,8 +1,8 @@
 package commands
 
-import com.freetmp.investigate.crsh.AbstractCrashCommand
-import com.freetmp.investigate.springboot.integration.CafeDemo
-import com.freetmp.investigate.springboot.integration.SimpleStart
+import investigate.crsh.AbstractCrashCommand
+import investigate.springboot.integration.CafeDemo
+import investigate.springboot.integration.SimpleStart
 import org.crsh.cli.Argument
 import org.crsh.cli.Command
 import org.crsh.cli.Required
